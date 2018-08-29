@@ -4,13 +4,28 @@ using UnityEngine;
 
 public class MainEntry : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+    public FlowType flowTypeInitial; //type de flux
+    FlowManager flowManager;
+
+    private void Awake()
+    {
+        flowManager = new FlowManager(); //création du manager de flux
+    }
+
+    private void Start()
+    {
+        flowManager.InitializeFlow(flowTypeInitial); //initialisation du flux 
+    }
+
+    //Update du flux
+    private void Update()
+    {
+        flowManager.UpdateFlow(Time.deltaTime);
+    }
+
+    //FixedUpdate du flux
+    private void FixedUpdate()
+    {
+        flowManager.FixedUpdateFlow(Time.deltaTime);
+    }
 }

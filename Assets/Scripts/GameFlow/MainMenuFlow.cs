@@ -2,15 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-//Flux du jeu
-public class GameFlow : Flow {
-
-    public static GameLinks gl;
+//Flux du menu principal
+public class MainMenuFlow : Flow {
 
     public override void InitializeFlow() //initialisation de tous éléments du flux
     {
         base.InitializeFlow();
-        gl = GameObject.FindObjectOfType<GameLinks>(); //récupérations de tous les liens du jeu
     }
 
     //Update de tous éléments du flux

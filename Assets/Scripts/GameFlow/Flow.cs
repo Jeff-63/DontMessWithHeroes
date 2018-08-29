@@ -2,15 +2,27 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Flow : MonoBehaviour {
+public class Flow
+{
+    //Classe de base Flow
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+    public virtual void InitializeFlow()
+    {
+
+    }
+
+    public virtual void Update(float dt)
+    {
+
+    }
+
+    public virtual void FixedUpdate(float dt)
+    {
+
+    }
+
+    public virtual void EndFlow()
+    {
+
+    }
 }
