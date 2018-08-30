@@ -13,7 +13,7 @@ public class Ghost : BaseCharacterClass {
         experience = 25; //enemy experience is the experience that is grant to the player if he kills it
         strenght = 3;
         endurance = 10;
-        agility = 10;
+        agility = 7;
         intelligence = 14;
         currentHP = 80;
         maxHP = 80;
