@@ -2,13 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Skeleton : BaseCharacterClass
+public class Orc : BaseCharacterClass
 {
 
-    public Skeleton()
+    public Orc()
     {
-        characterClass = "Skeleton";
-        characterClassDescription = "";// need to find skeleton enemy description
+        characterClass = "Orc";
+        characterClassDescription = "";
 
         characterLevel = 1;
         experience = 25; //enemy experience is the experience that is grant to the player if he kills it

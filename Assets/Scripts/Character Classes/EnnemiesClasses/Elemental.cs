@@ -2,12 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Ghost : BaseCharacterClass {
+public class Elemental : BaseCharacterClass {
 
-    public Ghost()
+    public Elemental()
     {
-        characterClass = "Ghost";
-        characterClassDescription = "";// need to find ghost enemy description
+        characterClass = "Elemental";
+        characterClassDescription = "";
 
         characterLevel = 1;
         experience = 25; //enemy experience is the experience that is grant to the player if he kills it
