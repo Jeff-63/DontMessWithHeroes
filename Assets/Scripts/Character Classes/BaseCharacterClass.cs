@@ -18,4 +18,10 @@ public class BaseCharacterClass {
     public int currentHP; // value of health at the current moment
     public int maxHP; // max value for health, can increase with the levels
 
+
+
+    public UIManager.UIpkg CreaterUIPkg()
+    {
+
+    }
 }

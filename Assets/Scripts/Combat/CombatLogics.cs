@@ -74,7 +74,7 @@ public class CombatLogics : BaseCharacterClass
     {
         bool isCCHit = false;
 
-        if (Random.Range(0, 100) <= CriticalHitChance)
+        if (Random.Range(0, 100) <= CriticalHitChance) // 8% chance to crit, if you crit x2 damage
         {
             isCCHit = true;
         }
@@ -86,7 +86,7 @@ public class CombatLogics : BaseCharacterClass
     {
         bool isEvading = false;
 
-        if (Random.Range(0, 100) <= EvadeChance)
+        if (Random.Range(0, 100) <= EvadeChance) //5% evading an attack, 0 damage if evaded
         {
             isEvading = true;
         }
@@ -96,7 +96,7 @@ public class CombatLogics : BaseCharacterClass
     public bool RunAwayFromCombat(BaseCharacterClass player, BaseCharacterClass enemy)
     {
         bool isRunningAwayFromCombat = false;
-        if ((player.agility * Random.Range(0, 255)) < (enemy.agility * Random.Range(0, 255) * EnemyNerfValueForEscape))
+        if ((player.agility * Random.Range(0, 255)) < (enemy.agility * Random.Range(0, 255) * EnemyNerfValueForEscape)) //Agil
         {
             isRunningAwayFromCombat = true;
         }

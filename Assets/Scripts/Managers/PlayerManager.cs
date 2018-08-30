@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerManager {
     Player player;
-    Vector3 startingPos = new Vector3(-17,4);
+    GameObject spawnPoint;
 
     public void Init()
     {
@@ -18,7 +18,8 @@ public class PlayerManager {
     public void CreatePlayer()
     {
         GameObject playerObj = GameObject.Instantiate<GameObject>(Resources.Load<GameObject>("Prefabs/Player")); //crée instance joueur
-        playerObj.transform.position = startingPos;
+        spawnPoint = GameObject.Instantiate<GameObject>(Resources.Load<GameObject>("Prefabs/Spawn"));// cree le spawnpoint
+        playerObj.transform.position = spawnPoint.transform.position;
         player = playerObj.GetComponent<Player>();
         player.Init();
     }

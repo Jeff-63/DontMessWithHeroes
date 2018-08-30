@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Player : MonoBehaviour {
-    readonly float Player_Speed_Test = 2;
+    readonly float Player_Speed_Test = 5;
     InputManager inputManager;
     Rigidbody2D rb2D;
     
