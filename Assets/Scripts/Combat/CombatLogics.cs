@@ -9,6 +9,8 @@ public class CombatLogics : BaseCharacterClass
     readonly float EnemyNerfValueForEscape = 0.9f;
     readonly float CriticalHitChance = 8;
     readonly float EvadeChance = 5;
+    readonly float CritRatio = 2;
+    readonly float BlockReduction = 2;
 
 
 
@@ -21,7 +23,7 @@ public class CombatLogics : BaseCharacterClass
             {
                 if (CriticalHit())
                 {
-                    damageDealt = (attacker.strenght - defender.endurance) * 2;
+                    damageDealt = (attacker.strenght - defender.endurance) * CritRatio;
                 }
                 else
                 {
@@ -33,7 +35,7 @@ public class CombatLogics : BaseCharacterClass
             {
                 if (CriticalHit())
                 {
-                    damageDealt = (attacker.intelligence - defender.intelligence) * 2;
+                    damageDealt = (attacker.intelligence - defender.intelligence) * CritRatio;
                 }
                 else
                 {
@@ -56,11 +58,11 @@ public class CombatLogics : BaseCharacterClass
             if (atkType == AttackType.Physical)
             {
 
-                damageDealt = (attacker.strenght - defender.endurance) / 2;
+                damageDealt = (attacker.strenght - defender.endurance) / BlockReduction;
             }
             else
             {
-                damageDealt = (attacker.intelligence - defender.intelligence) / 2;
+                damageDealt = (attacker.intelligence - defender.intelligence) / BlockReduction;
             }
         }
 
