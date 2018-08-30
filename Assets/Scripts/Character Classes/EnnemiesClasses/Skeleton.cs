@@ -14,7 +14,7 @@ public class Skeleton : BaseCharacterClass
         experience = 25; //enemy experience is the experience that is grant to the player if he kills it
         strenght = 12;
         endurance = 12;
-        agility = 12;
+        agility = 9;
         intelligence = 5;
         currentHP = 80;
         maxHP = 80;
