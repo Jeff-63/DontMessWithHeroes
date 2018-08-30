@@ -30,6 +30,7 @@ TextureImporter:
     21300050: Gladiator_25
     21300052: Gladiator_26
     21300054: Gladiator_27
+    21300056: Gladiator_28
   externalObjects: {}
   serializedVersion: 4
   mipmaps:
@@ -110,10 +111,10 @@ TextureImporter:
       name: Gladiator_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 821.1428
-        width: 239.75
-        height: 136.85715
+        x: 112
+        y: 824
+        width: 112
+        height: 116
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -124,10 +125,10 @@ TextureImporter:
       name: Gladiator_1
       rect:
         serializedVersion: 2
-        x: 239
-        y: 821.1428
-        width: 239.75
-        height: 136.85715
+        x: 326
+        y: 823
+        width: 106
+        height: 112
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -138,10 +139,10 @@ TextureImporter:
       name: Gladiator_2
       rect:
         serializedVersion: 2
-        x: 478
-        y: 821.1428
-        width: 239.75
-        height: 136.85715
+        x: 547
+        y: 823
+        width: 106
+        height: 111
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -152,10 +153,10 @@ TextureImporter:
       name: Gladiator_3
       rect:
         serializedVersion: 2
-        x: 717
-        y: 821.1428
-        width: 239.75
-        height: 136.85715
+        x: 757
+        y: 824
+        width: 107
+        height: 111
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -166,10 +167,10 @@ TextureImporter:
       name: Gladiator_4
       rect:
         serializedVersion: 2
-        x: 0
-        y: 685.1428
-        width: 239.75
-        height: 136.85715
+        x: 104
+        y: 690
+        width: 103
+        height: 107
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -180,10 +181,10 @@ TextureImporter:
       name: Gladiator_5
       rect:
         serializedVersion: 2
-        x: 239
-        y: 685.1428
-        width: 239.75
-        height: 136.85715
+        x: 327
+        y: 692
+        width: 103
+        height: 107
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -194,10 +195,10 @@ TextureImporter:
       name: Gladiator_6
       rect:
         serializedVersion: 2
-        x: 478
-        y: 685.1428
-        width: 239.75
-        height: 136.85715
+        x: 555
+        y: 690
+        width: 101
+        height: 107
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -208,10 +209,10 @@ TextureImporter:
       name: Gladiator_7
       rect:
         serializedVersion: 2
-        x: 717
-        y: 685.1428
-        width: 239.75
-        height: 136.85715
+        x: 759
+        y: 690
+        width: 102
+        height: 109
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -222,10 +223,10 @@ TextureImporter:
       name: Gladiator_8
       rect:
         serializedVersion: 2
-        x: 0
-        y: 549.1428
-        width: 239.75
-        height: 136.85715
+        x: 87
+        y: 552
+        width: 113
+        height: 110
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -236,10 +237,10 @@ TextureImporter:
       name: Gladiator_9
       rect:
         serializedVersion: 2
-        x: 239
-        y: 549.1428
-        width: 239.75
-        height: 136.85715
+        x: 319
+        y: 551
+        width: 113
+        height: 112
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -250,10 +251,10 @@ TextureImporter:
       name: Gladiator_10
       rect:
         serializedVersion: 2
-        x: 478
-        y: 549.1428
-        width: 239.75
-        height: 136.85715
+        x: 552
+        y: 551
+        width: 93
+        height: 111
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -264,10 +265,10 @@ TextureImporter:
       name: Gladiator_11
       rect:
         serializedVersion: 2
-        x: 717
-        y: 549.1428
-        width: 239.75
-        height: 136.85715
+        x: 769
+        y: 556
+        width: 92
+        height: 106
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -278,10 +279,10 @@ TextureImporter:
       name: Gladiator_12
       rect:
         serializedVersion: 2
-        x: 0
-        y: 413.14285
-        width: 239.75
-        height: 136.85715
+        x: 115
+        y: 427
+        width: 95
+        height: 101
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -292,10 +293,10 @@ TextureImporter:
       name: Gladiator_13
       rect:
         serializedVersion: 2
-        x: 239
-        y: 413.14285
-        width: 239.75
-        height: 136.85715
+        x: 319
+        y: 431
+        width: 109
+        height: 104
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -306,10 +307,10 @@ TextureImporter:
       name: Gladiator_14
       rect:
         serializedVersion: 2
-        x: 478
-        y: 413.14285
-        width: 239.75
-        height: 136.85715
+        x: 536
+        y: 432
+        width: 120
+        height: 111
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -320,10 +321,10 @@ TextureImporter:
       name: Gladiator_15
       rect:
         serializedVersion: 2
-        x: 717
-        y: 413.14285
-        width: 239.75
-        height: 136.85715
+        x: 758
+        y: 442
+        width: 111
+        height: 101
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -334,10 +335,10 @@ TextureImporter:
       name: Gladiator_16
       rect:
         serializedVersion: 2
-        x: 0
-        y: 277.14285
-        width: 239.75
-        height: 136.85715
+        x: 589
+        y: 431
+        width: 6
+        height: 8
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -348,10 +349,10 @@ TextureImporter:
       name: Gladiator_17
       rect:
         serializedVersion: 2
-        x: 239
-        y: 277.14285
-        width: 239.75
-        height: 136.85715
+        x: 106
+        y: 294
+        width: 90
+        height: 104
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -362,10 +363,10 @@ TextureImporter:
       name: Gladiator_18
       rect:
         serializedVersion: 2
-        x: 478
-        y: 277.14285
-        width: 239.75
-        height: 136.85715
+        x: 329
+        y: 293
+        width: 85
+        height: 106
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -376,10 +377,10 @@ TextureImporter:
       name: Gladiator_19
       rect:
         serializedVersion: 2
-        x: 717
-        y: 277.14285
-        width: 239.75
-        height: 136.85715
+        x: 544
+        y: 295
+        width: 92
+        height: 111
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -390,10 +391,10 @@ TextureImporter:
       name: Gladiator_20
       rect:
         serializedVersion: 2
-        x: 0
-        y: 141.14285
-        width: 239.75
-        height: 136.85715
+        x: 767
+        y: 294
+        width: 102
+        height: 103
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -404,10 +405,10 @@ TextureImporter:
       name: Gladiator_21
       rect:
         serializedVersion: 2
-        x: 239
-        y: 141.14285
-        width: 239.75
-        height: 136.85715
+        x: 112
+        y: 164
+        width: 97
+        height: 108
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -418,10 +419,10 @@ TextureImporter:
       name: Gladiator_22
       rect:
         serializedVersion: 2
-        x: 478
-        y: 141.14285
-        width: 239.75
-        height: 136.85715
+        x: 323
+        y: 163
+        width: 116
+        height: 109
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -432,10 +433,10 @@ TextureImporter:
       name: Gladiator_23
       rect:
         serializedVersion: 2
-        x: 717
-        y: 141.14285
-        width: 239.75
-        height: 136.85715
+        x: 547
+        y: 163
+        width: 115
+        height: 108
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -446,10 +447,10 @@ TextureImporter:
       name: Gladiator_24
       rect:
         serializedVersion: 2
-        x: 0
-        y: 5.142853
-        width: 239.75
-        height: 136.85715
+        x: 768
+        y: 163
+        width: 111
+        height: 108
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -460,10 +461,10 @@ TextureImporter:
       name: Gladiator_25
       rect:
         serializedVersion: 2
-        x: 239
-        y: 5.142853
-        width: 239.75
-        height: 136.85715
+        x: 112
+        y: 31
+        width: 112
+        height: 112
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -474,10 +475,10 @@ TextureImporter:
       name: Gladiator_26
       rect:
         serializedVersion: 2
-        x: 478
-        y: 5.142853
-        width: 239.75
-        height: 136.85715
+        x: 330
+        y: 32
+        width: 117
+        height: 111
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -488,10 +489,24 @@ TextureImporter:
       name: Gladiator_27
       rect:
         serializedVersion: 2
-        x: 717
-        y: 5.142853
-        width: 239.75
-        height: 136.85715
+        x: 560
+        y: 31
+        width: 100
+        height: 101
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Gladiator_28
+      rect:
+        serializedVersion: 2
+        x: 762
+        y: 31
+        width: 110
+        height: 69
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
