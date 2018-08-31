@@ -19,11 +19,13 @@ public class BaseCharacterClass {
     public int agility; // affects critical hits, accuracy of attacks and possibility of evading an attack
     public int currentHP; // value of health at the current moment
     public int maxHP; // max value for health, can increase with the levels
+    public int currentMana; // value of mana at the current moment
+    public int maxMana; // max value of mana, can be increased with the levels
 
 
 
-  //  public UIManager.UIpkg CreaterUIPkg()
-  //  {
-  //     // return new //
-  //  }
+    public UIManager.UIpkg CreaterUIPkg()
+    {
+        return new UIManager.UIpkg(characterLevel, experience, maxExperience, strenght, endurance, intelligence, agility, currentHP, maxHP, currentMana, maxMana);
+    }
 }

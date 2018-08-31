@@ -7,11 +7,13 @@ public class Player : MonoBehaviour
     readonly float Player_Speed = 5;
     InputManager inputManager;
     Rigidbody2D rb2D;
+    BaseCharacterClass bcc;
 
     public void Init()
     {
         inputManager = new InputManager();
         rb2D = GetComponent<Rigidbody2D>();
+        bcc = new BaseCharacterClass();
     }
 
     public void UpdatePlayer(float dt)

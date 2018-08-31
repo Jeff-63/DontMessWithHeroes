@@ -20,10 +20,18 @@ public class UIManager
 
     public class UIpkg
     {
-        public float currentHP, maxHP, currentMana, maxMana;
+      
+        public int characterLevel, experience, maxExperience, strenght, endurance, intelligence, agility, currentHP, maxHP, currentMana, maxMana;
 
-        public UIpkg(float _currentHP, float _maxHP, float _currentMana, float _maxMana)
+        public UIpkg(int _characterLevel,int _experience,int _maxExperience, int _strenght, int _endurance, int _intelligence, int _agility, int _currentHP, int _maxHP, int _currentMana, int _maxMana)
         {
+            characterLevel = _characterLevel;
+            experience = _experience;
+            maxExperience = _maxExperience;
+            strenght = _strenght;
+            endurance = _endurance;
+            intelligence = _intelligence;
+            agility = _agility;
             currentHP = _currentHP;
             maxHP = _maxHP;
             currentMana = _currentMana;
