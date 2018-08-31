@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class Warrior : BaseCharacterClass
 {
-
-
+    
     public Warrior()
     {
         characterClass = "Warrior";

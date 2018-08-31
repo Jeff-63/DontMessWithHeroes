@@ -17,7 +17,7 @@ public class CombatFlow : Flow{
     public override void Update(float dt)
     {
         base.Update(dt);
-        uiManager.GetUIPkg()
+      //  uiManager.GetUIPkg(/*create ui package*/);
     }
 
     //FixedUpdate de tous éléments du flux

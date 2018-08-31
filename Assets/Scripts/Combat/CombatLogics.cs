@@ -4,6 +4,7 @@ using UnityEngine;
 
 
 public enum AttackType { Physical, Magic }
+public enum CombatStance { PhysicalAttack, MagicAttack, Defense, Escape }
 public class CombatLogics : BaseCharacterClass
 {
     readonly float EnemyNerfValueForEscape = 0.9f;
