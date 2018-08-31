@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-public enum PlayerClasses { Warrior, Wizard}
+public enum CharacterClasses { Warrior, Wizard, Orc, Elemental, Boss}
 public class BaseCharacterClass {
 
     public string characterClass; // for player : wizard or warrior -- for ennemies : enemy type 

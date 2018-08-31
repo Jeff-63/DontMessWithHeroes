@@ -2,11 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player : MonoBehaviour {
+public class Player : MonoBehaviour
+{
     readonly float Player_Speed = 5;
     InputManager inputManager;
     Rigidbody2D rb2D;
-    
+
     public void Init()
     {
         inputManager = new InputManager();
@@ -36,10 +37,12 @@ public class Player : MonoBehaviour {
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        Debug.Log("Collision with : " + collision.gameObject.GetType().ToString());
 
         if (collision.gameObject.tag == "Ennemi")
-            Debug.Log("Start combat with : " + collision.gameObject.GetComponent<Enemy>().GetType().ToString());
+        {
+            Application.LoadLevel("CombatScene");
+        }
+
 
     }
 }

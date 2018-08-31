@@ -4,18 +4,18 @@ using UnityEngine;
 
 
 public enum AttackType { Physical, Magic }
-public enum CombatStance { PhysicalAttack, MagicAttack, Defense, Escape }
+public enum ActionEnCombat { Attack, Defense, Escape }
 public class CombatLogics : BaseCharacterClass
 {
-    readonly float EnemyNerfValueForEscape = 0.9f;
-    readonly float CriticalHitChance = 8;
-    readonly float EvadeChance = 5;
-    readonly float CritRatio = 2;
-    readonly float BlockReduction = 2;
+    readonly static float EnemyNerfValueForEscape = 0.9f;
+    readonly static float CriticalHitChance = 8;
+    readonly static float EvadeChance = 5;
+    readonly static float CritRatio = 2;
+    readonly static float BlockReduction = 2;
 
 
 
-    public float Attack(BaseCharacterClass attacker, BaseCharacterClass defender, AttackType atkType)
+    public static float Attack(BaseCharacterClass attacker, BaseCharacterClass defender, AttackType atkType)
     {
         float damageDealt = 0;
         if (!EvadeAttack())
@@ -51,7 +51,7 @@ public class CombatLogics : BaseCharacterClass
 
         return damageDealt;
     }
-    public float DefendingAttack(BaseCharacterClass attacker, BaseCharacterClass defender, AttackType atkType)
+    public static float DefendingAttack(BaseCharacterClass attacker, BaseCharacterClass defender, AttackType atkType)
     {
         float damageDealt = 0;
         if (!EvadeAttack())
@@ -71,7 +71,7 @@ public class CombatLogics : BaseCharacterClass
 
         return damageDealt;
     }
-    public bool CriticalHit()
+    public static bool CriticalHit()
     {
         bool isCCHit = false;
 
@@ -83,7 +83,7 @@ public class CombatLogics : BaseCharacterClass
 
         return isCCHit;
     }
-    public bool EvadeAttack()
+    public static bool EvadeAttack()
     {
         bool isEvading = false;
 
@@ -94,7 +94,7 @@ public class CombatLogics : BaseCharacterClass
 
         return isEvading;
     }
-    public bool RunAwayFromCombat(BaseCharacterClass player, BaseCharacterClass enemy)
+    public static bool RunAwayFromCombat(BaseCharacterClass player, BaseCharacterClass enemy)
     {
         bool isRunningAwayFromCombat = false;
         if ((player.agility * Random.Range(0, 255)) < (enemy.agility * Random.Range(0, 255) * EnemyNerfValueForEscape)) //Agil
