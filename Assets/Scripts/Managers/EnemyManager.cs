@@ -2,15 +2,31 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyManager : MonoBehaviour {
+public class EnemyManager{
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+    List<Enemy> ennemies;
+
+    public void Init()
+    {
+        ennemies = new List<Enemy>();
+        CreateEnnemi();
+    }
+
+    public void Update(float dt)
+    {
+        foreach (Enemy ennemi in ennemies)
+        {
+            ennemi.UpdateEnnemi(dt);
+        }
+    }
+
+    public void CreateEnnemi()
+    {
+        GameObject enemyObj = GameObject.Instantiate<GameObject>(Resources.Load<GameObject>("Prefabs/Ennemi")); //crée instance ennemi
+        enemyObj.transform.position = GameObject.Instantiate<GameObject>(Resources.Load<GameObject>("Prefabs/EnnemiSpawn")).transform.position;
+        Enemy enemy = enemyObj.GetComponent<Enemy>();
+        enemy.Init();
+        ennemies.Add(enemy);
+    }
+
 }

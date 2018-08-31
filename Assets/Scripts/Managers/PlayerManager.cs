@@ -10,10 +10,10 @@ public class PlayerManager {
     {
         CreatePlayer();
     }
-    public void Update()
+    public void Update(float dt)
     {
         if (player)
-            player.UpdatePlayer();
+            player.UpdatePlayer(dt);
     }
     public void CreatePlayer()
     {
