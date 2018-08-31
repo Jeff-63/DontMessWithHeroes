@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
+public enum PlayerClasses { Warrior, Wizard}
 public class BaseCharacterClass {
 
     public string characterClass; // for player : wizard or warrior -- for ennemies : enemy type 
@@ -20,8 +22,8 @@ public class BaseCharacterClass {
 
 
 
-    public UIManager.UIpkg CreaterUIPkg()
-    {
-
-    }
+  //  public UIManager.UIpkg CreaterUIPkg()
+  //  {
+  //     // return new //
+  //  }
 }
