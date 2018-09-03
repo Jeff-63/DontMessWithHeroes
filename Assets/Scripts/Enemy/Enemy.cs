@@ -7,7 +7,7 @@ public class Enemy : MonoBehaviour
 
     readonly float Ennemi_Speed = 5;
     Rigidbody2D rb2D;
-    BaseCharacterClass bcc;
+    public BaseCharacterClass bcc;
     bool isOrc = true; // les orcs et elementaux seront random --- test value en attendant
     bool isBoss = false;
     int orc = 1;
@@ -28,11 +28,11 @@ public class Enemy : MonoBehaviour
         {
             bcc = new Elemental();
         }
-        if(isBoss == true)
+        if (isBoss == true)
         {
             bcc = new Boss();
         }
-      
+
 
     }
     public void UpdateEnnemi(float dt)

@@ -7,7 +7,7 @@ public class Player : MonoBehaviour
     readonly float Player_Speed = 5;
     InputManager inputManager;
     Rigidbody2D rb2D;
-    BaseCharacterClass bcc;
+    public BaseCharacterClass bcc;
     bool isWarrior = true; // choix qui sera fait au main menu --- test value en attendant
 
     Enemy enemy;

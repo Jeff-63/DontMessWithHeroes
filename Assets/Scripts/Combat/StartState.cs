@@ -5,7 +5,7 @@ using UnityEngine;
 public class StartState
 {
     BaseCharacterClass enemy, player;
-    
+
 
     public void InitEnemy(CharacterClasses enemyClass) // initialise le bon type d'ennemi selon la collision
     {
@@ -22,11 +22,11 @@ public class StartState
             enemy = new Boss();
         }
     }
-    public bool PlayerGoesFirst() // determine qui attaque en premier
+    public bool PlayerGoesFirst(Enemy enemy, Player player) // determine qui attaque en premier
     {
         bool playerGoesFirst = false;
 
-        if (enemy.agility <= player.agility)
+        if (enemy.bcc.agility <= player.bcc.agility)
         {
             playerGoesFirst = true;
         }
