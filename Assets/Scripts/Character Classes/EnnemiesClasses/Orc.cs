@@ -7,7 +7,7 @@ public class Orc : BaseCharacterClass
 
     public Orc()
     {
-        characterClass = "Orc";
+        characterClass = CharacterClasses.Orc;
         characterClassDescription = "";
 
         characterLevel = 1;

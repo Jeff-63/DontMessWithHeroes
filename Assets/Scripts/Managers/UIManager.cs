@@ -11,16 +11,15 @@ public class UIManager
     {
         uiLinks = GameObject.FindObjectOfType<UILinks>();
     }
+
     public void GetUIPkg(UIpkg uiPkg)
     {
-        Debug.Log("Package : " + uiPkg.ToString());
         uiLinks.hpBar.fillAmount = uiPkg.currentHP / uiPkg.maxHP;
         uiLinks.manaBar.fillAmount = uiPkg.currentMana / uiPkg.maxMana;
     }
 
     public class UIpkg
     {
-      
         public int characterLevel, experience, maxExperience, strenght, endurance, intelligence, agility, currentHP, maxHP, currentMana, maxMana;
 
         public UIpkg(int _characterLevel,int _experience,int _maxExperience, int _strenght, int _endurance, int _intelligence, int _agility, int _currentHP, int _maxHP, int _currentMana, int _maxMana)

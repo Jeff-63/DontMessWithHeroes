@@ -6,7 +6,7 @@ public class Elemental : BaseCharacterClass {
 
     public Elemental()
     {
-        characterClass = "Elemental";
+        characterClass = CharacterClasses.Elemental;
         characterClassDescription = "";
 
         characterLevel = 1;

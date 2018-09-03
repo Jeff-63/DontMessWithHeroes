@@ -40,11 +40,11 @@ public class CombatUI : MonoBehaviour
 
         switch (player.characterClass)
         {
-            case "Warrior":
+            case CharacterClasses.Warrior:
                 playerImage.sprite = Resources.Load<Sprite>("Sprites/Gladiator_Portrait");
                 break;
 
-            case "Mage":
+            case CharacterClasses.Wizard:
                 playerImage.sprite = Resources.Load<Sprite>("Sprites/Wizards_Portrait");
                 break;
 
@@ -55,15 +55,15 @@ public class CombatUI : MonoBehaviour
 
         switch (ennemi.characterClass)
         {
-            case "Orc":
+            case CharacterClasses.Orc:
                 ennemiImage.sprite = Resources.Load<Sprite>("Sprites/Orc_Portrait");
                 break;
 
-            case "Elemental":
+            case CharacterClasses.Elemental:
                 ennemiImage.sprite = Resources.Load<Sprite>("Sprites/Elemental_Portrait");
                 break;
 
-            case "Boss":
+            case CharacterClasses.Boss:
                 ennemiImage.sprite = Resources.Load<Sprite>("Sprites/Golem_Portrait");
                 break;
 

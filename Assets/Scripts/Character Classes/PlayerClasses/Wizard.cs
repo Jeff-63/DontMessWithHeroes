@@ -6,7 +6,7 @@ public class WizardClass : BaseCharacterClass {
 
 	public WizardClass()
     {
-        characterClass = "Wizard";
+        characterClass = CharacterClasses.Wizard;
         characterClassDescription = "Wizards are considered to be spellcasters who wield powerful spells, but are often physically weak as a trade-off.";
 
         characterLevel = 1;

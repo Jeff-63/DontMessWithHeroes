@@ -7,6 +7,7 @@ public class CombatStateMachine : MonoBehaviour
 
     public static BattleStates currentState;
     bool hasAddedXP;
+    Rect GUINextStateButton;
 
     public enum BattleStates
     {
@@ -22,6 +23,7 @@ public class CombatStateMachine : MonoBehaviour
     {
         hasAddedXP = false;
         currentState = BattleStates.START;
+        GUINextStateButton = new Rect(10, 10, 60, 30);
     }
 
     void Update()
@@ -56,7 +58,7 @@ public class CombatStateMachine : MonoBehaviour
 
     private void OnGUI()
     {
-        if (GUI.Button(new Rect(10, 10, 150, 100), "NEXT STATE"))
+        if (GUI.Button(GUINextStateButton, "NEXT STATE"))
         {
             if (currentState == BattleStates.START)
                 currentState = BattleStates.PLAYERCHOICE;
