@@ -9,8 +9,11 @@ public class CombatUI : MonoBehaviour
     Text playerHp, playerMana, ennemiHP, ennemiMana;
     Image playerHpImage, playerManaImage, ennemiHPImage, ennemiManaImage, playerImage, ennemiImage;
 
-    BaseCharacterClass player;
-    BaseCharacterClass ennemi;
+    BaseCharacterClass player, ennemi;
+
+    float characterSize = 3;
+
+    Vector2 playerStartingPosition,  ennemiStartingPosition;
 
     void Start()
     {
@@ -19,6 +22,9 @@ public class CombatUI : MonoBehaviour
 
         player.currentHP -= 10;
         ennemi.currentHP -= 15;
+
+        playerStartingPosition = new Vector2(-7, 0);
+        ennemiStartingPosition = new Vector2(7, 0);
 
         playerHp = GameObject.Find("PlayerHealthValue").GetComponent<Text>(); //pointeur vers le composant text des HP du joueur
         playerMana = GameObject.Find("PlayerManaValue").GetComponent<Text>(); //pointeur vers le composant text de la mana du joueur
@@ -65,6 +71,14 @@ public class CombatUI : MonoBehaviour
                 Debug.Log("Unhandeled character class : " + ennemi.characterClass);
                 break;
         }
+
+        GameObject playerObj = GameObject.Instantiate<GameObject>(Resources.Load<GameObject>("Prefabs/Player")); 
+        playerObj.transform.position = playerStartingPosition;
+        playerObj.transform.localScale *= characterSize;
+
+        GameObject ennemiObj = GameObject.Instantiate<GameObject>(Resources.Load<GameObject>("Prefabs/Ennemi"));
+        ennemiObj.transform.position = ennemiStartingPosition;
+        ennemiObj.transform.localScale *= characterSize;
 
     }
 
