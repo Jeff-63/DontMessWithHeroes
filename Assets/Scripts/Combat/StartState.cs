@@ -9,7 +9,13 @@ public class StartState
 
     public void InitEnemy(CharacterClasses enemyClass) // initialise le bon type d'ennemi selon la collision
     {
-        if (enemy.characterClass == CharacterClasses.Orc)
+        if (enemy.characterClass == CharacterClasses.Orc) // ne sinitialise pas avec lennemi par defaut --- 
+
+        #region probleme lorsque lon rentre en combat
+       // NullReferenceException: Object reference not set to an instance of an object
+       //  StartState.InitEnemy(CharacterClasses enemyClass)(at Assets / Scripts / Combat / StartState.cs:12)
+       //  CombatStateMachine.Update()(at Assets / Scripts / Combat / CombatStateMachine.cs:38)
+            #endregion
         {
             enemy = new Orc();
         }
