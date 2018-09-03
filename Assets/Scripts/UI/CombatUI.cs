@@ -103,6 +103,9 @@ public class CombatUI : MonoBehaviour
                 break;
         }
 
+        ennemiImage.sprite = Resources.Load<Sprite>(String.Format("Sprites/{0}_Portrait",ennemi.characterClass));
+
+
         switch (ennemi.characterClass)
         {
             case "Orc":
