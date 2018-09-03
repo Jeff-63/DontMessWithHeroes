@@ -27,6 +27,4 @@ public class PlayerManager {
         vcam = GameObject.Find("Vcam").GetComponent<CinemachineVirtualCamera>();
         vcam.Follow = playerObj.transform;
     }
-
-    
 }

@@ -188,7 +188,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 220099972}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1088494990}
+        m_MethodName: AboutButtonPressed
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &220099972
@@ -600,7 +611,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 833886666}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1088494990}
+        m_MethodName: StartButtonPressed
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &833886666
@@ -645,6 +667,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1088494989}
   - component: {fileID: 1088494988}
+  - component: {fileID: 1088494990}
   m_Layer: 0
   m_Name: MainScript
   m_TagString: Untagged
@@ -677,6 +700,17 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1088494990
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1088494987}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 09c1ab39db4e24c4c8af33676c08b21b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1102393502
 GameObject:
   m_ObjectHideFlags: 0
@@ -857,15 +891,15 @@ RectTransform:
   m_GameObject: {fileID: 1500380847}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 3, y: 3, z: 1}
+  m_LocalScale: {x: 2.32333, y: 1.5941634, z: 0.53138775}
   m_Children: []
   m_Father: {fileID: 664877695}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 86.5}
-  m_SizeDelta: {x: -588, y: -432.3}
+  m_AnchorMin: {x: 0.17600001, y: 0.638}
+  m_AnchorMax: {x: 0.81900007, y: 0.8934358}
+  m_AnchoredPosition: {x: 0.5, y: 2.5}
+  m_SizeDelta: {x: -249, y: -50.299988}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1500380849
 MonoBehaviour:
