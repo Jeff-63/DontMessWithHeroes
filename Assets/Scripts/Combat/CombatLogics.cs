@@ -45,10 +45,7 @@ public class CombatLogics : BaseCharacterClass
 
             }
         }
-
-
-
-
+        
         return damageDealt;
     }
     public static bool DefendingAttack()

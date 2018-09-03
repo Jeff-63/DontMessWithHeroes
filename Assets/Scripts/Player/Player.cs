@@ -7,14 +7,26 @@ public class Player : MonoBehaviour
     readonly float Player_Speed = 5;
     InputManager inputManager;
     Rigidbody2D rb2D;
-    BaseCharacterClass bcc, enemy;
-    CharacterClasses enemyType;
+    BaseCharacterClass bcc;
+    bool isWarrior = true; // choix qui sera fait au main menu --- test value en attendant
+
+    Enemy enemy;
+    public CharacterClasses enemyType;
 
     public void Init()
     {
         inputManager = new InputManager();
         rb2D = GetComponent<Rigidbody2D>();
-        bcc = new BaseCharacterClass();
+        //classe du player selon le choix .... pour linstant 1 = guerrier, 2 = mage;
+        if (isWarrior)
+        {
+            bcc = new Warrior();
+        }
+        else
+        {
+            bcc = new WizardClass();
+        }
+
     }
 
     public void UpdatePlayer(float dt)
@@ -43,11 +55,11 @@ public class Player : MonoBehaviour
 
         if (collision.gameObject.tag == "Ennemi")
         {
-            enemy = collision.gameObject.GetComponent<BaseCharacterClass>();
-            enemyType = enemy.characterClass;
+            enemy = collision.gameObject.GetComponent<Enemy>();
+            enemyType = enemy.GetEnemyClass(enemy);
 
             Application.LoadLevel("CombatScene");
-            
+
         }
         else
         {

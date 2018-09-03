@@ -5,13 +5,9 @@ using UnityEngine;
 public class StartState
 {
     BaseCharacterClass enemy, player;
+    
 
-
-    public void PrepareBattle()
-    {
-
-    }
-    public void InitEnemy(CharacterClasses enemyClass)
+    public void InitEnemy(CharacterClasses enemyClass) // initialise le bon type d'ennemi selon la collision
     {
         if (enemy.characterClass == CharacterClasses.Orc)
         {
@@ -34,7 +30,6 @@ public class StartState
         {
             playerGoesFirst = true;
         }
-
 
         return playerGoesFirst;
     }

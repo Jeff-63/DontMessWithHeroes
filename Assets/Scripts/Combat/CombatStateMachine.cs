@@ -7,6 +7,7 @@ public class CombatStateMachine : MonoBehaviour
 
     public static BattleStates currentState;
     private StartState battleStartState = new StartState();
+    Player p = new Player(); // need player to get the enemy type from the collision
     bool hasAddedXP;
     Rect GUINextStateButton;
 
@@ -32,10 +33,10 @@ public class CombatStateMachine : MonoBehaviour
         switch (currentState)
         {
             case BattleStates.START:
-                battleStartState.PrepareBattle();
-
-
-                if(battleStartState.PlayerGoesFirst())
+                //setup Combat
+                battleStartState.InitEnemy(p.enemyType); // instanciate the good enemy type from the collision
+                //Choix de celui qui commence
+                if (battleStartState.PlayerGoesFirst())
                 {
                     goto case BattleStates.PLAYERCHOICE;
                 }
@@ -43,8 +44,6 @@ public class CombatStateMachine : MonoBehaviour
                 {
                     goto case BattleStates.ENEMYCHOICE;
                 }
-                //setup Combat
-                //Choix de celui qui commence
                 break;
             case BattleStates.PLAYERCHOICE:
                 //choix de l'action du joueur
