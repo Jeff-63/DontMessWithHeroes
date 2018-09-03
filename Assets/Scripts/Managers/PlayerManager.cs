@@ -1,10 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Cinemachine;
 
 public class PlayerManager {
     Player player;
     GameObject spawnPoint;
+    CinemachineVirtualCamera vcam;
 
     public void Init()
     {
@@ -22,6 +24,8 @@ public class PlayerManager {
         playerObj.transform.position = spawnPoint.transform.position;
         player = playerObj.GetComponent<Player>();
         player.Init();
+        vcam = GameObject.Find("Vcam").GetComponent<CinemachineVirtualCamera>();
+        vcam.Follow = playerObj.transform;
     }
 
     
