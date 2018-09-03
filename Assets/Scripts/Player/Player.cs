@@ -68,4 +68,19 @@ public class Player : MonoBehaviour
 
         return enemyType;
     }
+
+    public void SavePlayer()
+    {
+        OmniPlayer.Instance.characterLevel = bcc.characterLevel;
+        OmniPlayer.Instance.experience = bcc.experience;
+        OmniPlayer.Instance.maxExperience = bcc.maxExperience;
+        OmniPlayer.Instance.strenght = bcc.strenght;
+        OmniPlayer.Instance.endurance = bcc.endurance;
+        OmniPlayer.Instance.intelligence = bcc.intelligence;
+        OmniPlayer.Instance.agility = bcc.agility;
+        OmniPlayer.Instance.currentHP = bcc.currentHP;
+        OmniPlayer.Instance.maxHP = bcc.maxHP;
+        OmniPlayer.Instance.currentMana = bcc.currentMana;
+        OmniPlayer.Instance.maxMana = bcc.maxMana;
+    }
 }
