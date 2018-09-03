@@ -6,18 +6,20 @@ using UnityEngine;
 public class CombatFlow : Flow{
 
     UIManager uiManager;
+    BaseCharacterClass bcc;
 
     public override void InitializeFlow() //initialisation de tous éléments du flux
     {
         base.InitializeFlow();
         uiManager = new UIManager();
+        bcc = new BaseCharacterClass();
     }
 
     //Update de tous éléments du flux
     public override void Update(float dt)
     {
         base.Update(dt);
-      //  uiManager.GetUIPkg(/*create ui package*/);
+       uiManager.GetUIPkg(bcc.CreaterUIPkg());
     }
 
     //FixedUpdate de tous éléments du flux

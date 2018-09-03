@@ -51,25 +51,12 @@ public class CombatLogics : BaseCharacterClass
 
         return damageDealt;
     }
-    public static float DefendingAttack(BaseCharacterClass attacker, BaseCharacterClass defender, AttackType atkType)
+    public static bool DefendingAttack()
     {
-        float damageDealt = 0;
-        if (!EvadeAttack())
-        {
-            if (atkType == AttackType.Physical)
-            {
+        bool isBlocking = true;
 
-                damageDealt = (attacker.strenght - defender.endurance) / BlockReduction;
-            }
-            else
-            {
-                damageDealt = (attacker.intelligence - defender.intelligence) / BlockReduction;
-            }
-        }
+        return isBlocking;
 
-
-
-        return damageDealt;
     }
     public static bool CriticalHit()
     {
