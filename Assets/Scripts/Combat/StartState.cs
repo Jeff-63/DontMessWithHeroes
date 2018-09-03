@@ -2,15 +2,41 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class StartState : MonoBehaviour {
+public class StartState
+{
+    BaseCharacterClass enemy, player;
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+
+    public void PrepareBattle()
+    {
+
+    }
+    public void InitEnemy(CharacterClasses enemyClass)
+    {
+        if (enemy.characterClass == CharacterClasses.Orc)
+        {
+            enemy = new Orc();
+        }
+        else if (enemy.characterClass == CharacterClasses.Elemental)
+        {
+            enemy = new Elemental();
+        }
+        else
+        {
+            enemy = new Boss();
+        }
+    }
+    public bool PlayerGoesFirst() // determine qui attaque en premier
+    {
+        bool playerGoesFirst = false;
+
+        if (enemy.agility <= player.agility)
+        {
+            playerGoesFirst = true;
+        }
+
+
+        return playerGoesFirst;
+    }
+
 }

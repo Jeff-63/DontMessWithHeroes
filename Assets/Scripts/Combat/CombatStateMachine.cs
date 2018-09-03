@@ -6,6 +6,7 @@ public class CombatStateMachine : MonoBehaviour
 {
 
     public static BattleStates currentState;
+    private StartState battleStartState = new StartState();
     bool hasAddedXP;
     Rect GUINextStateButton;
 
@@ -31,6 +32,17 @@ public class CombatStateMachine : MonoBehaviour
         switch (currentState)
         {
             case BattleStates.START:
+                battleStartState.PrepareBattle();
+
+
+                if(battleStartState.PlayerGoesFirst())
+                {
+                    goto case BattleStates.PLAYERCHOICE;
+                }
+                else
+                {
+                    goto case BattleStates.ENEMYCHOICE;
+                }
                 //setup Combat
                 //Choix de celui qui commence
                 break;

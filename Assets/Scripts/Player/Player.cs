@@ -7,7 +7,8 @@ public class Player : MonoBehaviour
     readonly float Player_Speed = 5;
     InputManager inputManager;
     Rigidbody2D rb2D;
-    BaseCharacterClass bcc;
+    BaseCharacterClass bcc, enemy;
+    CharacterClasses enemyType;
 
     public void Init()
     {
@@ -37,14 +38,22 @@ public class Player : MonoBehaviour
 
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private CharacterClasses OnCollisionEnter2D(Collision2D collision)
     {
 
         if (collision.gameObject.tag == "Ennemi")
         {
+            enemy = collision.gameObject.GetComponent<BaseCharacterClass>();
+            enemyType = enemy.characterClass;
+
             Application.LoadLevel("CombatScene");
+            
+        }
+        else
+        {
+            enemyType = CharacterClasses.NA;
         }
 
-
+        return enemyType;
     }
 }
