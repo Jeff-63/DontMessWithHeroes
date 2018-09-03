@@ -7,7 +7,7 @@ public class Warrior : BaseCharacterClass
     
     public Warrior()
     {
-        characterClass = "Warrior";
+        characterClass = CharacterClasses.Warrior;
         characterClassDescription = "The Warrior is skilled in combat, and usually can make use of some of the most powerful heavy armor and weaponry in the game. As such, the warrior is a well-rounded physical combatant.";
 
         characterLevel = 1;

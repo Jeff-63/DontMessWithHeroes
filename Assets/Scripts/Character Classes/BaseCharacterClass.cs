@@ -6,7 +6,7 @@ using UnityEngine;
 public enum CharacterClasses { Warrior, Wizard, Orc, Elemental, Boss}
 public class BaseCharacterClass {
 
-    public string characterClass; // for player : wizard or warrior -- for ennemies : enemy type 
+    public CharacterClasses characterClass; // for player : wizard or warrior -- for ennemies : enemy type 
     public string characterClassDescription;
 
     //stats

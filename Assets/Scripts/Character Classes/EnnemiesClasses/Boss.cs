@@ -6,7 +6,7 @@ public class Boss : BaseCharacterClass {
 
     public Boss()
     {
-        characterClass = "Boss";
+        characterClass = CharacterClasses.Boss;
         characterClassDescription = "";// need to find skeleton enemy description
 
         characterLevel = 5;
