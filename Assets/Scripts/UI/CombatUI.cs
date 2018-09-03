@@ -8,7 +8,7 @@ public class CombatUI : MonoBehaviour
 
     Text playerHp, playerMana, ennemiHP, ennemiMana;
     Image playerHpImage, playerManaImage, ennemiHPImage, ennemiManaImage, playerImage, ennemiImage;
-
+    Player p;
     BaseCharacterClass player, ennemi;
 
     float characterSize = 3;
