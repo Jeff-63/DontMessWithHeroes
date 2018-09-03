@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Ennemi
   - Environnement
+  - Ground
   layers:
   - Default
   - TransparentFX
@@ -18,8 +19,8 @@ TagManager:
   - Ennemi
   - Player
   - Environnement
-  - 
-  - 
+  - Ground
+  - Camera
   - 
   - 
   - 
@@ -51,4 +52,7 @@ TagManager:
     locked: 0
   - name: Characters
     uniqueID: 3773115551
+    locked: 0
+  - name: Ground
+    uniqueID: 2367473457
     locked: 0
