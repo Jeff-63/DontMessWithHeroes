@@ -15,11 +15,21 @@ public class CombatLogics : BaseCharacterClass
 
 
 
-    public static float Attack(BaseCharacterClass attacker, BaseCharacterClass defender, AttackType atkType)
+    public static float Attack(BaseCharacterClass attacker, BaseCharacterClass defender)
     {
         float damageDealt = 0;
+        AttackType atkType;
         if (!EvadeAttack())
         {
+            if(attacker.GetType() == typeof(Warrior))
+            {
+                atkType = AttackType.Physical;
+            }
+            else
+            {
+                atkType = AttackType.Magic;
+            }
+
             if (atkType == AttackType.Physical)
             {
                 if (CriticalHit())
