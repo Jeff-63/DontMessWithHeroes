@@ -20,9 +20,6 @@ public class CombatUI : MonoBehaviour
         player = new Warrior();
         ennemi = new Orc();
 
-        player.currentHP -= 10;
-        ennemi.currentHP -= 15;
-
         playerStartingPosition = new Vector2(-7, 0);
         ennemiStartingPosition = new Vector2(7, 0);
 
@@ -143,11 +140,18 @@ public class CombatUI : MonoBehaviour
 
     private void Update()
     {
-        playerHp.text = player.currentHP.ToString() + " / " + player.maxHP.ToString(); //update du texte des pv du personnage
-        ennemiHP.text = ennemi.currentHP.ToString() + " / " + ennemi.maxHP.ToString(); //update du texte des pv de l'ennemi
+        playerHp.text = OmniPlayer.Instance.currentHP.ToString() + " / " + OmniPlayer.Instance.maxHP.ToString(); //update du texte des pv du personnage
+        ennemiHP.text = OmniEnemy.Instance.currentHP.ToString() + " / " + OmniEnemy.Instance.maxHP.ToString(); //update du texte des pv de l'ennemi
 
-        playerHpImage.fillAmount = ((float)player.currentHP / (float)player.maxHP); //update de l'image des pv du personnage
-        ennemiHPImage.fillAmount = ((float)ennemi.currentHP / (float)ennemi.maxHP); //update de l'image des pv de l'ennemi
+        playerMana.text = OmniPlayer.Instance.currentMana.ToString() + " / " + OmniPlayer.Instance.maxMana.ToString();//update txt mana player
+        ennemiMana.text = OmniEnemy.Instance.currentMana.ToString() + " / " + OmniEnemy.Instance.maxMana.ToString();//update txt mana enemy
+
+        playerHpImage.fillAmount = ((float)OmniPlayer.Instance.currentHP / (float)OmniPlayer.Instance.maxHP); //update de l'image des pv du personnage
+        ennemiHPImage.fillAmount = ((float)OmniEnemy.Instance.currentHP / (float)OmniEnemy.Instance.maxHP); //update de l'image des pv de l'ennemi
+
+        playerManaImage.fillAmount = (OmniPlayer.Instance.currentMana / OmniPlayer.Instance.maxMana);//update mana bar player  
+        ennemiManaImage.fillAmount = (OmniEnemy.Instance.currentMana / OmniEnemy.Instance.maxMana);//update mana bar enemy
+            
     }
 
     /*public void UpdateUI(float dt)

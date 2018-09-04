@@ -37,6 +37,7 @@ public class Enemy : MonoBehaviour
     }
     public void UpdateEnnemi(float dt)
     {
+        SaveEnemy();
     }
     public void FixedUpdateEnnemi(float dt)
     {
@@ -54,5 +55,19 @@ public class Enemy : MonoBehaviour
     public void DeathEnnemi()
     {
 
+    }
+    public void SaveEnemy()
+    {
+        OmniEnemy.Instance.characterLevel = bcc.characterLevel;
+        OmniEnemy.Instance.experience = bcc.experience;
+        OmniEnemy.Instance.maxExperience = bcc.maxExperience;
+        OmniEnemy.Instance.strenght = bcc.strenght;
+        OmniEnemy.Instance.endurance = bcc.endurance;
+        OmniEnemy.Instance.intelligence = bcc.intelligence;
+        OmniEnemy.Instance.agility = bcc.agility;
+        OmniEnemy.Instance.currentHP = bcc.currentHP;
+        OmniEnemy.Instance.maxHP = bcc.maxHP;
+        OmniEnemy.Instance.currentMana = bcc.currentMana;
+        OmniEnemy.Instance.maxMana = bcc.maxMana;
     }
 }

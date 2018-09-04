@@ -2,14 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+public class OmniEnemy : MonoBehaviour {
 
-public enum CharacterClasses { Warrior, Wizard, Orc, Elemental, Boss, NA}
-public class BaseCharacterClass {
-
-    public CharacterClasses characterClass; // for player : wizard or warrior -- for ennemies : enemy type 
-    public string characterClassDescription;
-
-    //stats
+    public static OmniEnemy Instance;
     public int characterLevel;
     public int experience;
     public int maxExperience; // will increase for each level up (1.5x current xp?)
@@ -21,11 +16,18 @@ public class BaseCharacterClass {
     public int maxHP; // max value for health, can increase with the levels
     public int currentMana; // value of mana at the current moment
     public int maxMana; // max value of mana, can be increased with the levels
-    public bool isPhysicalAttacker; // if not physical its magic attacker
 
-    public void CopyFromOmniPlayer(OmniPlayer toCopy)
+    void Awake()
     {
-
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+        else if (Instance != this)
+        {
+            Destroy(gameObject);
+        }
     }
+
 
 }
