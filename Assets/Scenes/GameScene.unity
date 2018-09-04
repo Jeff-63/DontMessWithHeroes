@@ -290,7 +290,7 @@ MonoBehaviour:
   m_Follow: {fileID: 0}
   m_Lens:
     FieldOfView: 46.9
-    OrthographicSize: 2.75
+    OrthographicSize: 3.07
     NearClipPlane: 0.1
     FarClipPlane: 5000
     Dutch: 0
@@ -324,7 +324,7 @@ MonoBehaviour:
   m_BoundingVolume: {fileID: 0}
   m_BoundingShape2D: {fileID: 408563372}
   m_ConfineScreenEdges: 1
-  m_Damping: 3.52
+  m_Damping: 0
 --- !u!1001 &1257356679
 Prefab:
   m_ObjectHideFlags: 0
@@ -440,7 +440,7 @@ Camera:
   far clip plane: 5000
   field of view: 46.9
   orthographic: 1
-  orthographic size: 2.75
+  orthographic size: 3.07
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2

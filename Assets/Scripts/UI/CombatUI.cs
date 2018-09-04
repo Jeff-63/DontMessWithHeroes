@@ -72,11 +72,11 @@ public class CombatUI : MonoBehaviour
                 break;
         }
 
-        GameObject playerObj = GameObject.Instantiate<GameObject>(Resources.Load<GameObject>("Prefabs/Player")); 
+        GameObject playerObj = GameObject.Instantiate<GameObject>(Resources.Load<GameObject>("Prefabs/Warrior")); 
         playerObj.transform.position = playerStartingPosition;
         playerObj.transform.localScale *= characterSize;
 
-        GameObject ennemiObj = GameObject.Instantiate<GameObject>(Resources.Load<GameObject>("Prefabs/Ennemi"));
+        GameObject ennemiObj = GameObject.Instantiate<GameObject>(Resources.Load<GameObject>("Prefabs/Orc"));
         ennemiObj.transform.position = ennemiStartingPosition;
         ennemiObj.transform.localScale *= characterSize;
 
