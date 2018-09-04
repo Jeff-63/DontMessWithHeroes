@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+
 
 public class Player : MonoBehaviour
 {
@@ -13,6 +15,21 @@ public class Player : MonoBehaviour
     Enemy enemy;
     public CharacterClasses enemyType;
 
+
+    private void Start()
+    {
+      //  bcc.characterLevel = OmniPlayer.Instance.characterLevel;
+      //  bcc.experience = OmniPlayer.Instance.experience;
+      //  bcc.maxExperience = OmniPlayer.Instance.maxExperience;
+      //  bcc.strenght = OmniPlayer.Instance.strenght;
+      //  bcc.endurance = OmniPlayer.Instance.endurance;
+      //  bcc.intelligence = OmniPlayer.Instance.intelligence;
+      //  bcc.agility = OmniPlayer.Instance.agility;
+      //  bcc.currentHP = OmniPlayer.Instance.currentHP;
+      //  bcc.maxHP = OmniPlayer.Instance.maxHP;
+      //  bcc.currentMana = OmniPlayer.Instance.currentMana;
+      //  bcc.maxMana = OmniPlayer.Instance.maxMana;
+    }
     public void Init()
     {
         inputManager = new InputManager();
@@ -58,7 +75,7 @@ public class Player : MonoBehaviour
             enemy = collision.gameObject.GetComponent<Enemy>();
             enemyType = enemy.GetEnemyClass(enemy);
 
-            Application.LoadLevel("CombatScene");
+            SceneManager.LoadScene("CombatScene");
 
         }
         else
