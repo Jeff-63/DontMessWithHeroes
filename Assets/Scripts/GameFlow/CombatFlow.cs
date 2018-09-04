@@ -7,6 +7,7 @@ public class CombatFlow : Flow
 {
 
     UIManager uiManagerPlayer, uiManagerEnemy;
+    public static GameLinks gl;
     BaseCharacterClass bcc;
     Player p;
     Enemy e;
@@ -14,6 +15,7 @@ public class CombatFlow : Flow
     public override void InitializeFlow() //initialisation de tous éléments du flux
     {
         base.InitializeFlow();
+        gl = GameObject.FindObjectOfType<GameLinks>(); //récupérations de tous les liens de la scene
         uiManagerPlayer = new UIManager();
         uiManagerEnemy = new UIManager();
         bcc = new BaseCharacterClass();
@@ -25,7 +27,6 @@ public class CombatFlow : Flow
     public override void Update(float dt)
     {
         base.Update(dt);
-        
     }
 
     //FixedUpdate de tous éléments du flux

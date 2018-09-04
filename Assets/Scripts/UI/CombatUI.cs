@@ -10,6 +10,8 @@ public class CombatUI : MonoBehaviour
     Image playerHpImage, playerManaImage, ennemiHPImage, ennemiManaImage, playerImage, ennemiImage;
     Player p;
     BaseCharacterClass player, ennemi;
+    float UIWidth;
+    float pixelPerUnitUI;
 
     float characterSize = 3;
 
@@ -17,23 +19,29 @@ public class CombatUI : MonoBehaviour
 
     void Start()
     {
+        UIWidth = CombatFlow.gl.CombatUiCanvas.pixelRect.size.x;
+        pixelPerUnitUI = CombatFlow.gl.CombatUiCanvas.referencePixelsPerUnit;
+
         player = new Warrior();
         ennemi = new Orc();
 
-        playerStartingPosition = new Vector2(-7, 0);
-        ennemiStartingPosition = new Vector2(7, 0);
+        player.currentHP -= 10;
+        ennemi.currentHP -= 15;
 
-        playerHp = GameObject.Find("PlayerHealthValue").GetComponent<Text>(); //pointeur vers le composant text des HP du joueur
-        playerMana = GameObject.Find("PlayerManaValue").GetComponent<Text>(); //pointeur vers le composant text de la mana du joueur
-        ennemiHP = GameObject.Find("EnnemiHealthValue").GetComponent<Text>(); //pointeur vers le composant text des HP de l'ennemi
-        ennemiMana = GameObject.Find("EnnemiManaValue").GetComponent<Text>(); //pointeur vers le composant text de la mana de l'ennemi
+        playerStartingPosition = new Vector2((-UIWidth/ pixelPerUnitUI), 0);
+        ennemiStartingPosition = new Vector2((UIWidth / pixelPerUnitUI), 0);
 
-        playerHpImage = GameObject.Find("PlayerHealthBar").GetComponent<Image>(); //pointeur vers le composant image des HP du joueur
-        playerManaImage = GameObject.Find("PlayerMana").GetComponent<Image>(); //pointeur vers le composant image de la mana du joueur
-        ennemiHPImage = GameObject.Find("EnnemiHealthBar").GetComponent<Image>(); //pointeur vers le composant image des HP de l'ennemi
-        ennemiManaImage = GameObject.Find("EnnemiMana").GetComponent<Image>(); //pointeur vers le composant image de la mana de l'ennemi
-        playerImage = GameObject.Find("PlayerPortrait").GetComponent<Image>(); //pointeur vers le composant image du portrait du joueur
-        ennemiImage = GameObject.Find("EnnemiPortrait").GetComponent<Image>(); //pointeur vers le composant image du portrait de l'ennemi
+        playerHp = CombatFlow.gl.playerHp.GetComponent<Text>(); //pointeur vers le composant text des HP du joueur
+        playerMana = CombatFlow.gl.playerMana.GetComponent<Text>(); //pointeur vers le composant text de la mana du joueur
+        ennemiHP = CombatFlow.gl.ennemiHP.GetComponent<Text>(); //pointeur vers le composant text des HP de l'ennemi
+        ennemiMana = CombatFlow.gl.ennemiMana.GetComponent<Text>(); //pointeur vers le composant text de la mana de l'ennemi
+
+        playerHpImage = CombatFlow.gl.playerHpImage.GetComponent<Image>(); //pointeur vers le composant image des HP du joueur
+        playerManaImage = CombatFlow.gl.playerManaImage.GetComponent<Image>(); //pointeur vers le composant image de la mana du joueur
+        ennemiHPImage = CombatFlow.gl.ennemiHPImage.GetComponent<Image>(); //pointeur vers le composant image des HP de l'ennemi
+        ennemiManaImage = CombatFlow.gl.ennemiManaImage.GetComponent<Image>(); //pointeur vers le composant image de la mana de l'ennemi
+        playerImage = CombatFlow.gl.playerImage.GetComponent<Image>(); //pointeur vers le composant image du portrait du joueur
+        ennemiImage = CombatFlow.gl.ennemiImage.GetComponent<Image>(); //pointeur vers le composant image du portrait de l'ennemi
 
         switch (player.characterClass)
         {
@@ -81,60 +89,6 @@ public class CombatUI : MonoBehaviour
 
     /*public void Initialize()
     {      
-        player = new Warrior();
-        ennemi = new Orc();
-
-        player.currentHP -= 10;
-        ennemi.currentHP -= 15;
-
-        playerHp = GameObject.Find("PlayerHealthValue").GetComponent<Text>(); //pointeur vers le composant text des HP du joueur
-        playerMana = GameObject.Find("PlayerManaValue").GetComponent<Text>(); //pointeur vers le composant text de la mana du joueur
-        ennemiHP = GameObject.Find("EnnemiHealthValue").GetComponent<Text>(); //pointeur vers le composant text des HP de l'ennemi
-        ennemiMana = GameObject.Find("EnnemiManaValue").GetComponent<Text>(); //pointeur vers le composant text de la mana de l'ennemi
-
-        playerHpImage = GameObject.Find("PlayerHealthBar").GetComponent<Image>(); //pointeur vers le composant image des HP du joueur
-        playerManaImage = GameObject.Find("PlayerMana").GetComponent<Image>(); //pointeur vers le composant image de la mana du joueur
-        ennemiHPImage = GameObject.Find("EnnemiHealthBar").GetComponent<Image>(); //pointeur vers le composant image des HP de l'ennemi
-        ennemiManaImage = GameObject.Find("EnnemiMana").GetComponent<Image>(); //pointeur vers le composant image de la mana de l'ennemi
-        playerImage = GameObject.Find("PlayerPortrait").GetComponent<Image>(); //pointeur vers le composant image du portrait du joueur
-        ennemiImage = GameObject.Find("EnnemiPortrait").GetComponent<Image>(); //pointeur vers le composant image du portrait de l'ennemi
-
-        switch (player.characterClass)
-        {
-            case "Warrior":
-                playerImage.sprite = Resources.Load<Sprite>("Sprites/Gladiator_Portrait");
-                break;
-
-            case "Mage":
-                playerImage.sprite = Resources.Load<Sprite>("Sprites/Wizards_Portrait");
-                break;
-
-            default:
-                Debug.Log("Unhandeled character class : " + player.characterClass);
-                break;
-        }
-
-        ennemiImage.sprite = Resources.Load<Sprite>(String.Format("Sprites/{0}_Portrait",ennemi.characterClass));
-
-
-        switch (ennemi.characterClass)
-        {
-            case "Orc":
-                ennemiImage.sprite = Resources.Load<Sprite>("Sprites/Orc_Portrait");
-                break;
-
-            case "Elemental":
-                ennemiImage.sprite = Resources.Load<Sprite>("Sprites/Elemental_Portrait");
-                break;
-
-            case "Boss":
-                ennemiImage.sprite = Resources.Load<Sprite>("Sprites/Golem_Portrait");
-                break;
-
-            default:
-                Debug.Log("Unhandeled character class : " + ennemi.characterClass);
-                break;
-        }
 
     }*/
 

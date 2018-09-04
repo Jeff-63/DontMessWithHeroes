@@ -3,10 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-
 public class Player : MonoBehaviour
 {
-    readonly float Player_Speed = 5;
+    readonly float Player_Speed = 150;
     InputManager inputManager;
     Rigidbody2D rb2D;
     Animator anim;
@@ -54,8 +53,9 @@ public class Player : MonoBehaviour
     public void UpdatePlayer(float dt)
     {
         InputManager.InputPkg inputPkg = inputManager.GetKeysPressed();
-        MovePlayer(inputPkg.directionPressed);
-       
+
+        MovePlayer(inputPkg.directionPressed, dt);
+        SavePlayer();
     }
 
     public void FixedUpdatePlayer()
@@ -63,9 +63,9 @@ public class Player : MonoBehaviour
 
     }
 
-    public void MovePlayer(Vector2 direction)
+    public void MovePlayer(Vector2 direction, float dt)
     {
-        rb2D.velocity = direction.normalized * Player_Speed; // need to test if its to slow and we need to add a player speed
+        rb2D.velocity = direction.normalized * (Player_Speed*dt); 
 
         if (rb2D.velocity.x != 0 || rb2D.velocity.y != 0)
         {

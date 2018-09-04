@@ -24,7 +24,6 @@ public class PlayerManager {
         playerObj.transform.position = spawnPoint.transform.position;
         player = playerObj.GetComponent<Player>();
         player.Init();
-        vcam = GameObject.Find("Vcam").GetComponent<CinemachineVirtualCamera>();
-        vcam.Follow = playerObj.transform;
+        GameFlow.gl.vcam.Follow = playerObj.transform;
     }
 }
