@@ -25,8 +25,7 @@ public class CombatFlow : Flow
     public override void Update(float dt)
     {
         base.Update(dt);
-        uiManagerPlayer.GetUIPkg(p.bcc.CreaterUIPkg());
-        uiManagerEnemy.GetUIPkg(e.bcc.CreaterUIPkg());
+        
     }
 
     //FixedUpdate de tous éléments du flux

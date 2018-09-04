@@ -55,7 +55,7 @@ public class Player : MonoBehaviour
     {
         InputManager.InputPkg inputPkg = inputManager.GetKeysPressed();
         MovePlayer(inputPkg.directionPressed);
-        SavePlayer();
+       
     }
 
     public void FixedUpdatePlayer()
@@ -94,12 +94,12 @@ public class Player : MonoBehaviour
 
     private CharacterClasses OnCollisionEnter2D(Collision2D collision)
     {
-
         if (collision.gameObject.tag == "Ennemi")
         {
             enemy = collision.gameObject.GetComponent<Enemy>();
             enemyType = enemy.GetEnemyClass(enemy);
 
+            SavePlayer();
             SceneManager.LoadScene("CombatScene");
 
         }
