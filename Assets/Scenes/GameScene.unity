@@ -172,6 +172,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   vcam: {fileID: 1232963652}
+  playerHp: {fileID: 0}
+  playerMana: {fileID: 0}
+  ennemiHP: {fileID: 0}
+  ennemiMana: {fileID: 0}
+  playerHpImage: {fileID: 0}
+  playerManaImage: {fileID: 0}
+  ennemiHPImage: {fileID: 0}
+  ennemiManaImage: {fileID: 0}
+  playerImage: {fileID: 0}
+  ennemiImage: {fileID: 0}
+  CombatUiCanvas: {fileID: 0}
 --- !u!1 &1071539937
 GameObject:
   m_ObjectHideFlags: 3

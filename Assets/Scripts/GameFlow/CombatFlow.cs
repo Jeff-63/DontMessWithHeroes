@@ -6,7 +6,7 @@ using UnityEngine;
 public class CombatFlow : Flow
 {
 
-    UIManager uiManagerPlayer, uiManagerEnemy;
+    UIManager uiManager;
     public static GameLinks gl;
     BaseCharacterClass bcc;
     Player p;
@@ -16,9 +16,9 @@ public class CombatFlow : Flow
     {
         base.InitializeFlow();
         gl = GameObject.FindObjectOfType<GameLinks>(); //récupérations de tous les liens de la scene
-        uiManagerPlayer = new UIManager();
-        uiManagerEnemy = new UIManager();
         bcc = new BaseCharacterClass();
+        uiManager = new UIManager();
+        uiManager.Init();
         p = new Player();
         e = new Enemy();
     }
@@ -27,6 +27,7 @@ public class CombatFlow : Flow
     public override void Update(float dt)
     {
         base.Update(dt);
+        uiManager.Update(dt);
     }
 
     //FixedUpdate de tous éléments du flux

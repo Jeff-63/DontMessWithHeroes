@@ -55,7 +55,7 @@ public class Player : MonoBehaviour
         InputManager.InputPkg inputPkg = inputManager.GetKeysPressed();
 
         MovePlayer(inputPkg.directionPressed, dt);
-        SavePlayer();
+
     }
 
     public void FixedUpdatePlayer()

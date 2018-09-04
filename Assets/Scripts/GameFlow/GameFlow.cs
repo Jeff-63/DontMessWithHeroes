@@ -15,7 +15,6 @@ public class GameFlow : Flow {
         gl = GameObject.FindObjectOfType<GameLinks>(); //récupérations de tous les liens de la scene
         playerManager = new PlayerManager();
         enemyManager = new EnemyManager();
-
         playerManager.Init();// initialisation du joueur
         enemyManager.Init();
 
