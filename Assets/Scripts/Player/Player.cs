@@ -9,8 +9,11 @@ public class Player : MonoBehaviour
     readonly float Player_Speed = 5;
     InputManager inputManager;
     Rigidbody2D rb2D;
+    Animator anim;
     public BaseCharacterClass bcc;
     bool isWarrior = true; // choix qui sera fait au main menu --- test value en attendant
+    bool isWalking = false;
+    bool isIdle = true;
 
     Enemy enemy;
     public CharacterClasses enemyType;
@@ -19,7 +22,9 @@ public class Player : MonoBehaviour
     {
         inputManager = new InputManager();
         rb2D = GetComponent<Rigidbody2D>();
-        //classe du player selon le choix .... pour l'instant 1 = guerrier, 2 = mage;
+        anim = GetComponent<Animator>();
+        //classe du player selon le choix .... pour linstant 1 = guerrier, 2 = mage;
+
         if (isWarrior)
         {
             bcc = new Warrior();
@@ -60,6 +65,25 @@ public class Player : MonoBehaviour
     public void MovePlayer(Vector2 direction)
     {
         rb2D.velocity = direction.normalized * Player_Speed; // need to test if its to slow and we need to add a player speed
+
+        if (rb2D.velocity.x != 0 || rb2D.velocity.y != 0)
+        {
+            if (!isWalking)
+            {
+                anim.SetTrigger("Walk");
+                isWalking = true;
+                isIdle = false;
+            }
+        }
+        else
+        {
+            if(!isIdle)
+            {
+                anim.SetTrigger("Idle");
+                isWalking = false;
+                isIdle = true;
+            }
+        }
     }
 
     public void DeathPlayer()
