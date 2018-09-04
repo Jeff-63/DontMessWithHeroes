@@ -18,17 +18,17 @@ public class Player : MonoBehaviour
 
     private void Start()
     {
-        bcc.characterLevel = OmniPlayer.Instance.characterLevel;
-        bcc.experience = OmniPlayer.Instance.experience;
-        bcc.maxExperience = OmniPlayer.Instance.maxExperience;
-        bcc.strenght = OmniPlayer.Instance.strenght;
-        bcc.endurance = OmniPlayer.Instance.endurance;
-        bcc.intelligence = OmniPlayer.Instance.intelligence;
-        bcc.agility = OmniPlayer.Instance.agility;
-        bcc.currentHP = OmniPlayer.Instance.currentHP;
-        bcc.maxHP = OmniPlayer.Instance.maxHP;
-        bcc.currentMana = OmniPlayer.Instance.currentMana;
-        bcc.maxMana = OmniPlayer.Instance.maxMana;
+      //  bcc.characterLevel = OmniPlayer.Instance.characterLevel;
+      //  bcc.experience = OmniPlayer.Instance.experience;
+      //  bcc.maxExperience = OmniPlayer.Instance.maxExperience;
+      //  bcc.strenght = OmniPlayer.Instance.strenght;
+      //  bcc.endurance = OmniPlayer.Instance.endurance;
+      //  bcc.intelligence = OmniPlayer.Instance.intelligence;
+      //  bcc.agility = OmniPlayer.Instance.agility;
+      //  bcc.currentHP = OmniPlayer.Instance.currentHP;
+      //  bcc.maxHP = OmniPlayer.Instance.maxHP;
+      //  bcc.currentMana = OmniPlayer.Instance.currentMana;
+      //  bcc.maxMana = OmniPlayer.Instance.maxMana;
     }
     public void Init()
     {
