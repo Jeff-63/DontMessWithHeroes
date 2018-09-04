@@ -15,7 +15,7 @@ public class CombatUI : MonoBehaviour
 
     float characterSize = 3;
 
-    Vector2 playerStartingPosition,  ennemiStartingPosition;
+    Vector2 playerStartingPosition, ennemiStartingPosition;
 
     void Start()
     {
@@ -28,20 +28,29 @@ public class CombatUI : MonoBehaviour
         player.currentHP -= 10;
         ennemi.currentHP -= 15;
 
-        playerStartingPosition = new Vector2((-UIWidth/ pixelPerUnitUI), 0);
+        playerStartingPosition = new Vector2((-UIWidth / pixelPerUnitUI), 0);
         ennemiStartingPosition = new Vector2((UIWidth / pixelPerUnitUI), 0);
 
-        playerHp = CombatFlow.gl.playerHp.GetComponent<Text>(); //pointeur vers le composant text des HP du joueur
-        playerMana = CombatFlow.gl.playerMana.GetComponent<Text>(); //pointeur vers le composant text de la mana du joueur
-        ennemiHP = CombatFlow.gl.ennemiHP.GetComponent<Text>(); //pointeur vers le composant text des HP de l'ennemi
-        ennemiMana = CombatFlow.gl.ennemiMana.GetComponent<Text>(); //pointeur vers le composant text de la mana de l'ennemi
+        try
+        {
+            playerHp = CombatFlow.gl.playerHp.GetComponent<Text>(); //pointeur vers le composant text des HP du joueur
+            playerMana = CombatFlow.gl.playerMana.GetComponent<Text>(); //pointeur vers le composant text de la mana du joueur
+            ennemiHP = CombatFlow.gl.ennemiHP.GetComponent<Text>(); //pointeur vers le composant text des HP de l'ennemi
+            ennemiMana = CombatFlow.gl.ennemiMana.GetComponent<Text>(); //pointeur vers le composant text de la mana de l'ennemi
 
-        playerHpImage = CombatFlow.gl.playerHpImage.GetComponent<Image>(); //pointeur vers le composant image des HP du joueur
-        playerManaImage = CombatFlow.gl.playerManaImage.GetComponent<Image>(); //pointeur vers le composant image de la mana du joueur
-        ennemiHPImage = CombatFlow.gl.ennemiHPImage.GetComponent<Image>(); //pointeur vers le composant image des HP de l'ennemi
-        ennemiManaImage = CombatFlow.gl.ennemiManaImage.GetComponent<Image>(); //pointeur vers le composant image de la mana de l'ennemi
-        playerImage = CombatFlow.gl.playerImage.GetComponent<Image>(); //pointeur vers le composant image du portrait du joueur
-        ennemiImage = CombatFlow.gl.ennemiImage.GetComponent<Image>(); //pointeur vers le composant image du portrait de l'ennemi
+            playerHpImage = CombatFlow.gl.playerHpImage.GetComponent<Image>(); //pointeur vers le composant image des HP du joueur
+            playerManaImage = CombatFlow.gl.playerManaImage.GetComponent<Image>(); //pointeur vers le composant image de la mana du joueur
+            ennemiHPImage = CombatFlow.gl.ennemiHPImage.GetComponent<Image>(); //pointeur vers le composant image des HP de l'ennemi
+            ennemiManaImage = CombatFlow.gl.ennemiManaImage.GetComponent<Image>(); //pointeur vers le composant image de la mana de l'ennemi
+            playerImage = CombatFlow.gl.playerImage.GetComponent<Image>(); //pointeur vers le composant image du portrait du joueur
+            ennemiImage = CombatFlow.gl.ennemiImage.GetComponent<Image>(); //pointeur vers le composant image du portrait de l'ennemi
+        }
+        catch
+        {
+            Debug.Log("Some value at 0");
+        }
+
+
 
         switch (player.characterClass)
         {
@@ -77,7 +86,7 @@ public class CombatUI : MonoBehaviour
                 break;
         }
 
-        GameObject playerObj = GameObject.Instantiate<GameObject>(Resources.Load<GameObject>("Prefabs/Warrior")); 
+        GameObject playerObj = GameObject.Instantiate<GameObject>(Resources.Load<GameObject>("Prefabs/Warrior"));
         playerObj.transform.position = playerStartingPosition;
         playerObj.transform.localScale *= characterSize;
 
@@ -105,7 +114,7 @@ public class CombatUI : MonoBehaviour
 
         playerManaImage.fillAmount = (OmniPlayer.Instance.currentMana / OmniPlayer.Instance.maxMana);//update mana bar player  
         ennemiManaImage.fillAmount = (OmniEnemy.Instance.currentMana / OmniEnemy.Instance.maxMana);//update mana bar enemy
-            
+
     }
 
     /*public void UpdateUI(float dt)
