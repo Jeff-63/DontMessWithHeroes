@@ -30,12 +30,6 @@ public class CombatFlow : Flow
         uiManager.Update(dt);
     }
 
-    //FixedUpdate de tous éléments du flux
-    public override void FixedUpdate(float dt)
-    {
-        base.FixedUpdate(dt);
-    }
-
     //Fermeture du flux
     public override void EndFlow()
     {

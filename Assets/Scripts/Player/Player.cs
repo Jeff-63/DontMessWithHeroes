@@ -58,11 +58,6 @@ public class Player : MonoBehaviour
 
     }
 
-    public void FixedUpdatePlayer()
-    {
-
-    }
-
     public void MovePlayer(Vector2 direction, float dt)
     {
         rb2D.velocity = direction.normalized * (Player_Speed*dt); 
@@ -125,4 +120,5 @@ public class Player : MonoBehaviour
         OmniPlayer.Instance.currentMana = bcc.currentMana;
         OmniPlayer.Instance.maxMana = bcc.maxMana;
     }
+
 }

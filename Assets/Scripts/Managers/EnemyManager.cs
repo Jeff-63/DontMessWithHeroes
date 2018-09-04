@@ -28,5 +28,4 @@ public class EnemyManager{
         enemy.Init();
         ennemies.Add(enemy);
     }
-
 }

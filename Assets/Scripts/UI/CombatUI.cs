@@ -5,13 +5,17 @@ using UnityEngine.UI;
 
 public class CombatUI : MonoBehaviour
 {
+    enum AnimationTurn { PlayerTurn, EnnemiTurn }
 
     Text playerHp, playerMana, ennemiHP, ennemiMana;
     Image playerHpImage, playerManaImage, ennemiHPImage, ennemiManaImage, playerImage, ennemiImage;
     Player p;
     BaseCharacterClass player, ennemi;
+    GameObject playerObj, ennemiObj;
+    Animator playerAnimator, ennemiAnimator;
     float UIWidth;
     float pixelPerUnitUI;
+    AnimationTurn animTurn;
 
     float characterSize = 3;
 
@@ -19,6 +23,7 @@ public class CombatUI : MonoBehaviour
 
     public void Initialize()
     {
+        animTurn = AnimationTurn.PlayerTurn;
         UIWidth = CombatFlow.gl.CombatUiCanvas.pixelRect.size.x;
         pixelPerUnitUI = CombatFlow.gl.CombatUiCanvas.referencePixelsPerUnit;
 
@@ -77,13 +82,17 @@ public class CombatUI : MonoBehaviour
                 break;
         }
 
-        GameObject playerObj = GameObject.Instantiate<GameObject>(Resources.Load<GameObject>("Prefabs/Warrior"));
+        playerObj = GameObject.Instantiate<GameObject>(Resources.Load<GameObject>("Prefabs/Warrior"));
         playerObj.transform.position = playerStartingPosition;
         playerObj.transform.localScale *= characterSize;
 
-        GameObject ennemiObj = GameObject.Instantiate<GameObject>(Resources.Load<GameObject>("Prefabs/Orc"));
+        playerAnimator = playerObj.GetComponent<Animator>();
+
+        ennemiObj = GameObject.Instantiate<GameObject>(Resources.Load<GameObject>("Prefabs/Orc"));
         ennemiObj.transform.position = ennemiStartingPosition;
         ennemiObj.transform.localScale *= characterSize;
+
+        ennemiAnimator = ennemiObj.GetComponent<Animator>();
     }
 
     public void UpdateUI(float dt)
@@ -108,8 +117,44 @@ public class CombatUI : MonoBehaviour
 
     }
 
-    /*public void FixedUpdateUI(float dt)
+    public void AttackAnimation()
     {
+        switch (animTurn)
+        {
+            case AnimationTurn.PlayerTurn:
+                playerAnimator.SetTrigger("Attack");
+                ennemiAnimator.SetTrigger("GetDamage");
+                break;
+            case AnimationTurn.EnnemiTurn:
+                ennemiAnimator.SetTrigger("Attack");
+                playerAnimator.SetTrigger("GetDamage");
+                break;
+            default:
+                Debug.Log("Unhandled Value : " + animTurn);
+                break;
+        }
+        
+    }
 
-    }*/
+    public void DefenseAnimation()
+    {
+        switch (animTurn)
+        {
+            case AnimationTurn.PlayerTurn:
+                playerAnimator.SetTrigger("GetDamage");
+                break;
+            case AnimationTurn.EnnemiTurn:
+                ennemiAnimator.SetTrigger("GetDamage");
+                break;
+            default:
+                Debug.Log("Unhandled Value : " + animTurn);
+                break;
+        }
+    }
+
+    public void RunAnimation()
+    {
+        playerAnimator.SetTrigger("Run");
+    }
+
 }

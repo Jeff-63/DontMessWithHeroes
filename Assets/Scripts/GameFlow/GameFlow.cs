@@ -17,7 +17,6 @@ public class GameFlow : Flow {
         enemyManager = new EnemyManager();
         playerManager.Init();// initialisation du joueur
         enemyManager.Init();
-
     }
 
     //Update de tous éléments du flux
@@ -26,12 +25,6 @@ public class GameFlow : Flow {
         base.Update(dt);
         playerManager.Update(dt);
         enemyManager.Update(dt);
-    }
-
-    //FixedUpdate de tous éléments du flux
-    public override void FixedUpdate(float dt)
-    {
-        base.FixedUpdate(dt);
     }
 
     //Fermeture du flux
