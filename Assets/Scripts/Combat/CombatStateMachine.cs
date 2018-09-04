@@ -19,7 +19,8 @@ public class CombatStateMachine : MonoBehaviour
         ENEMYCHOICE,
         CALCULDAMAGE,
         LOSE,
-        WIN
+        WIN,
+        ESCAPE
     }
 
     void Start()
@@ -45,7 +46,6 @@ public class CombatStateMachine : MonoBehaviour
                 {
                     goto case BattleStates.ENEMYCHOICE;
                 }
-                break;
             case BattleStates.PLAYERCHOICE:
                 //choix de l'action du joueur
                 break;
@@ -60,6 +60,8 @@ public class CombatStateMachine : MonoBehaviour
                     //Fonction pour ajouter de l'XP
                     hasAddedXP = true;
                 }
+                break;
+            case BattleStates.ESCAPE:
                 break;
             default:
                 break;

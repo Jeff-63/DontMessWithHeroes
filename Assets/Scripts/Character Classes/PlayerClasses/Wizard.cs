@@ -18,5 +18,6 @@ public class WizardClass : BaseCharacterClass {
         agility = 9;
         currentHP = 100;
         maxHP = 100;
+        isPhysicalAttacker = false;
     }
 }

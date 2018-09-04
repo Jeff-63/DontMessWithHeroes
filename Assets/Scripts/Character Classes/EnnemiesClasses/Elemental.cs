@@ -17,5 +17,6 @@ public class Elemental : BaseCharacterClass {
         intelligence = 14;
         currentHP = 80;
         maxHP = 80;
+        isPhysicalAttacker = false;
     }
 }
