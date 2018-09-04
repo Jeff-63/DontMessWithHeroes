@@ -12,10 +12,9 @@ public class GameFlow : Flow {
     public override void InitializeFlow() //initialisation de tous éléments du flux
     {
         base.InitializeFlow();
-        gl = GameObject.FindObjectOfType<GameLinks>(); //récupérations de tous les liens du jeu
+        gl = GameObject.FindObjectOfType<GameLinks>(); //récupérations de tous les liens de la scene
         playerManager = new PlayerManager();
         enemyManager = new EnemyManager();
-
 
         playerManager.Init();// initialisation du joueur
         enemyManager.Init();

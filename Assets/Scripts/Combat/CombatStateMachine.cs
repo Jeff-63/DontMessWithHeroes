@@ -45,7 +45,6 @@ public class CombatStateMachine : MonoBehaviour
                 {
                     goto case BattleStates.ENEMYCHOICE;
                 }
-                break;
             case BattleStates.PLAYERCHOICE:
                 //choix de l'action du joueur
                 break;
