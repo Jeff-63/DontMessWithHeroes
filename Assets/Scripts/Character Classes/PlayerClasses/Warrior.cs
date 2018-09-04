@@ -19,6 +19,7 @@ public class Warrior : BaseCharacterClass
         agility = 9;
         currentHP = 100;
         maxHP = 100;
+        isPhysicalAttacker = true;
     }
 
 

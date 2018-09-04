@@ -11,7 +11,6 @@ public class CombatLogics : BaseCharacterClass
     readonly static float CriticalHitChance = 8;
     readonly static float EvadeChance = 5;
     readonly static float CritRatio = 2;
-    readonly static float BlockReduction = 2;
 
 
 
@@ -19,16 +18,11 @@ public class CombatLogics : BaseCharacterClass
     {
         float damageDealt = 0;
         AttackType atkType;
+        Debug.Log("Is evading atk : " + EvadeAttack());
         if (!EvadeAttack())
         {
-            if(attacker.GetType() == typeof(Warrior))
-            {
-                atkType = AttackType.Physical;
-            }
-            else
-            {
-                atkType = AttackType.Magic;
-            }
+            atkType = (attacker.isPhysicalAttacker) ? AttackType.Physical: AttackType.Magic;
+
 
             if (atkType == AttackType.Physical)
             {
@@ -67,15 +61,20 @@ public class CombatLogics : BaseCharacterClass
     }
     public static bool CriticalHit()
     {
-        bool isCCHit = false;
-
-        if (Random.Range(0, 100) <= CriticalHitChance) // 8% chance to crit, if you crit x2 damage
-        {
-            isCCHit = true;
-        }
 
 
-        return isCCHit;
+
+       // bool isCCHit = false;
+       //
+       // if (Random.Range(0, 100) <= CriticalHitChance) // 8% chance to crit, if you crit x2 damage
+       // {
+       //     isCCHit = true;
+       // }
+       //
+       //
+       // return isCCHit;
+
+        return (Random.Range(0, 100) <= CriticalHitChance); // same thing as the code above
     }
     public static bool EvadeAttack()
     {

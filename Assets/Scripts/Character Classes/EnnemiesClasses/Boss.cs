@@ -17,6 +17,7 @@ public class Boss : BaseCharacterClass {
         intelligence = 14;
         currentHP = 300;
         maxHP = 300;
+        isPhysicalAttacker = true;
     }
 }
 

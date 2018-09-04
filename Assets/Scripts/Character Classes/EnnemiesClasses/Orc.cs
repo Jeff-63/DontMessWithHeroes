@@ -18,5 +18,6 @@ public class Orc : BaseCharacterClass
         intelligence = 5;
         currentHP = 80;
         maxHP = 80;
+        isPhysicalAttacker = true;
     }
 }
