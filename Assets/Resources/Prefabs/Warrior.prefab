@@ -23,8 +23,9 @@ GameObject:
   - component: {fileID: 114773043544190826}
   - component: {fileID: 50112857714710804}
   - component: {fileID: 60884575366564428}
+  - component: {fileID: 95146438954063446}
   m_Layer: 9
-  m_Name: Player
+  m_Name: Warrior
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -118,6 +119,23 @@ PolygonCollider2D:
       - {x: 0.21, y: -0.04}
       - {x: 0.19, y: -0.049999997}
       - {x: 0.17999999, y: -0.08}
+--- !u!95 &95146438954063446
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1960287922869010}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: a4e949e78455e5940bfb023252db1b1a, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &114773043544190826
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -129,6 +147,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3193c8fd7995db846bd223103b6bc3d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemyType: 0
 --- !u!212 &212677225440874092
 SpriteRenderer:
   m_ObjectHideFlags: 1

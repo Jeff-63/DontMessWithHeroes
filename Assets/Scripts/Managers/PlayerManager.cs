@@ -19,7 +19,7 @@ public class PlayerManager {
     }
     public void CreatePlayer()
     {
-        GameObject playerObj = GameObject.Instantiate<GameObject>(Resources.Load<GameObject>("Prefabs/Player")); //crée instance joueur
+        GameObject playerObj = GameObject.Instantiate<GameObject>(Resources.Load<GameObject>("Prefabs/Warrior")); //crée instance joueur
         spawnPoint = GameObject.Instantiate<GameObject>(Resources.Load<GameObject>("Prefabs/Spawn"));// cree le spawnpoint
         playerObj.transform.position = spawnPoint.transform.position;
         player = playerObj.GetComponent<Player>();

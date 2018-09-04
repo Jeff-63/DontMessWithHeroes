@@ -22,7 +22,7 @@ public class EnemyManager{
 
     public void CreateEnnemi()
     {
-        GameObject enemyObj = GameObject.Instantiate<GameObject>(Resources.Load<GameObject>("Prefabs/Ennemi")); //crée instance ennemi
+        GameObject enemyObj = GameObject.Instantiate<GameObject>(Resources.Load<GameObject>("Prefabs/Orc")); //crée instance ennemi
         enemyObj.transform.position = GameObject.Instantiate<GameObject>(Resources.Load<GameObject>("Prefabs/EnnemiSpawn")).transform.position;
         Enemy enemy = enemyObj.GetComponent<Enemy>();
         enemy.Init();

@@ -23,8 +23,9 @@ GameObject:
   - component: {fileID: 114003595260255006}
   - component: {fileID: 50455060430595058}
   - component: {fileID: 60911474529660188}
+  - component: {fileID: 95998832183358692}
   m_Layer: 8
-  m_Name: Ennemi
+  m_Name: Orc
   m_TagString: Ennemi
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -120,6 +121,23 @@ PolygonCollider2D:
       - {x: 0.345, y: -0.53}
       - {x: 0.42499998, y: -0.44}
       - {x: 0.465, y: -0.47}
+--- !u!95 &95998832183358692
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1736541840467962}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 73843605950b8a84099f15c50ec2af3e, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &114003595260255006
 MonoBehaviour:
   m_ObjectHideFlags: 1
