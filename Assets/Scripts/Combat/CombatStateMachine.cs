@@ -7,8 +7,8 @@ public class CombatStateMachine : MonoBehaviour
 
     public static BattleStates currentState;
     private StartState battleStartState = new StartState();
-    Player p = new Player(); // need player to get the enemy type from the collision and agility stat (from bcc) for who goes first ---- *********** need to get real player, not a new one **********
-    Enemy e = new Enemy(); // need enemy bcc to know who goes first ---- *************need to get real enemy, not a new one **********************
+    Player p; // need player to get the enemy type from the collision and agility stat (from bcc) for who goes first ---- *********** need to get real player, not a new one **********
+    Enemy e; // need enemy bcc to know who goes first ---- *************need to get real enemy, not a new one **********************
     bool hasAddedXP;
     Rect GUINextStateButton;
 
@@ -28,6 +28,8 @@ public class CombatStateMachine : MonoBehaviour
         hasAddedXP = false;
         currentState = BattleStates.START;
         GUINextStateButton = new Rect(10, 10, 60, 30);
+
+
     }
 
     void Update()
@@ -36,21 +38,28 @@ public class CombatStateMachine : MonoBehaviour
         {
             case BattleStates.START:
                 //setup Combat
-                battleStartState.InitEnemy(p.enemyType); // instanciate the good enemy type from the collision
+                //     battleStartState.InitEnemy(p.enemyType); // instanciate the good enemy type from the collision
                 //Choix de celui qui commence
-                if (battleStartState.PlayerGoesFirst(e,p))
+
+                if (battleStartState.PlayerGoesFirst(OmniEnemy.Instance.agility,OmniPlayer.Instance.agility))
                 {
+                    Debug.Log("Player was faster");
                     goto case BattleStates.PLAYERCHOICE;
+                    
                 }
                 else
                 {
+                    Debug.Log("Enemy was faster");
                     goto case BattleStates.ENEMYCHOICE;
+                
                 }
             case BattleStates.PLAYERCHOICE:
                 //choix de l'action du joueur
+                Debug.Log("in player choice");
                 break;
             case BattleStates.ENEMYCHOICE:
                 //choix de l'action de l'ennemi
+                Debug.Log("in enemy choice");
                 break;
             case BattleStates.LOSE:
                 break;

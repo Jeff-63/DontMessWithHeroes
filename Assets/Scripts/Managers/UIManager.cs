@@ -9,6 +9,7 @@ public class UIManager
     public void Init()
     {
         cmbtUI = CombatFlow.gl.CombatUiCanvas.GetComponent<CombatUI>();
+        cmbtUI.Initialize();
     }
 
     public void Update(float dt)

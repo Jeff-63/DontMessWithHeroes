@@ -7,35 +7,29 @@ public class StartState
     BaseCharacterClass enemy;
 
 
-    public void InitEnemy(CharacterClasses enemyClass) // initialise le bon type d'ennemi selon la collision
-    {
-        if (enemy.characterClass == CharacterClasses.Orc) // ne sinitialise pas avec l'ennemi par defaut --- 
-
-        #region probleme lorsque l'on rentre en combat
-       // NullReferenceException: Object reference not set to an instance of an object
-       //  StartState.InitEnemy(CharacterClasses enemyClass)(at Assets / Scripts / Combat / StartState.cs:12)
-       //  CombatStateMachine.Update()(at Assets / Scripts / Combat / CombatStateMachine.cs:38)
-            #endregion
-        {
-            enemy = new Orc();
-        }
-        else if (enemy.characterClass == CharacterClasses.Elemental)
-        {
-            enemy = new Elemental();
-        }
-        else
-        {
-            enemy = new Boss();
-        }
-    }
-    public bool PlayerGoesFirst(Enemy enemy, Player player) // determine qui attaque en premier
+    //  public void InitEnemy(CharacterClasses enemyClass) // initialise le bon type d'ennemi selon la collision
+    //  {
+    //      if (enemy.characterClass == CharacterClasses.Orc) // ne sinitialise pas avec l'ennemi par defaut --- 
+    //      {
+    //          enemy = new Orc();
+    //      }
+    //      else if (enemy.characterClass == CharacterClasses.Elemental)
+    //      {
+    //          enemy = new Elemental();
+    //      }
+    //      else
+    //      {
+    //          enemy = new Boss();
+    //      }
+    //  }
+    public bool PlayerGoesFirst(int enemyAgi, int playerAgi) // determine qui attaque en premier
     {
         bool playerGoesFirst = false;
-
-        if (enemy.bcc.agility <= player.bcc.agility)
-        {
-            playerGoesFirst = true;
-        }
+   
+            if (enemyAgi <= playerAgi)
+            {
+                playerGoesFirst = true;
+            }
 
         return playerGoesFirst;
     }
