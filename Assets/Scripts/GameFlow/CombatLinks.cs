@@ -11,6 +11,7 @@ public class CombatLinks : MonoBehaviour {
     public Text playerMana, ennemiHP, ennemiMana;
     public Image playerHpImage, playerManaImage, ennemiHPImage, ennemiManaImage, playerImage, ennemiImage;
     public Canvas combatUiCanvas;
+    public GameObject uiActionContainer;
     public Button attackButton;
     public Button defenseButton;
     public Button runAwayButton;

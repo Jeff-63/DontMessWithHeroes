@@ -68,6 +68,7 @@ public class CombatStateMachine : MonoBehaviour
                 Debug.Log("in enemy choice");
                 damage = (int)CombatLogics.Attack(CombatFlow.cl.EnemyCharacter, CombatFlow.cl.PlayerCharacter);
                 GetDamageFromEnemy(OmniPlayer.Instance, damage);
+                CombatFlow.cl.cUI.AttackAnimation();
                 if (OmniPlayer.Instance.currentHP <= 0)
                 {
                     goto case BattleStates.LOSE; // si vie du player a 0 goto lose state
