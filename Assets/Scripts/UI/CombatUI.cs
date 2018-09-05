@@ -129,9 +129,6 @@ public class CombatUI : MonoBehaviour
         {
             ennemiManaImage.fillAmount = FILL_VALUE;//update mana bar player 
         }
-
-
-
     }
 
     public void AttackAnimation()

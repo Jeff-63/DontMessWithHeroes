@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
+    readonly Vector3 tweekPosition = new Vector3(-1,0);
     readonly float Player_Speed = 150;
     InputManager inputManager;
     Rigidbody2D rb2D;
@@ -13,6 +14,7 @@ public class Player : MonoBehaviour
     bool isWarrior = true; // choix qui sera fait au main menu --- test value en attendant
     bool isWalking = false;
     bool isIdle = true;
+    
 
     public void Init()
     {
@@ -20,44 +22,51 @@ public class Player : MonoBehaviour
         rb2D = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
         //classe du player selon le choix .... pour linstant 1 = guerrier, 2 = mage;
-
-        if (isWarrior)
+        if (OmniPlayer.Instance.characterLevel != 0) //get previous scene data
         {
-            bcc = new Warrior();
+            bcc = new BaseCharacterClass();
+            bcc.characterClass = OmniPlayer.Instance.characterClass;
+            bcc.characterLevel = OmniPlayer.Instance.characterLevel;
+            bcc.experience = OmniPlayer.Instance.experience;
+            bcc.maxExperience = OmniPlayer.Instance.maxExperience;
+            bcc.strenght = OmniPlayer.Instance.strenght;
+            bcc.endurance = OmniPlayer.Instance.endurance;
+            bcc.intelligence = OmniPlayer.Instance.intelligence;
+            bcc.agility = OmniPlayer.Instance.agility;
+            bcc.currentHP = OmniPlayer.Instance.currentHP;
+            bcc.maxHP = OmniPlayer.Instance.maxHP;
+            bcc.currentMana = OmniPlayer.Instance.currentMana;
+            bcc.maxMana = OmniPlayer.Instance.maxMana;
+            gameObject.transform.position = OmniPlayer.Instance.position;
+
         }
         else
         {
-            bcc = new Wizard();
+            if (isWarrior)
+            {
+                bcc = new Warrior();
+            }
+            else
+            {
+                bcc = new Wizard();
+            }
         }
 
-      //  if (OmniPlayer.Instance != null)
-      //  {
-      //       bcc.characterLevel = OmniPlayer.Instance.characterLevel;
-      //       bcc.experience = OmniPlayer.Instance.experience;
-      //       bcc.maxExperience = OmniPlayer.Instance.maxExperience;
-      //       bcc.strenght = OmniPlayer.Instance.strenght;
-      //       bcc.endurance = OmniPlayer.Instance.endurance;
-      //       bcc.intelligence = OmniPlayer.Instance.intelligence;
-      //       bcc.agility = OmniPlayer.Instance.agility;
-      //       bcc.currentHP = OmniPlayer.Instance.currentHP;
-      //       bcc.maxHP = OmniPlayer.Instance.maxHP;
-      //       bcc.currentMana = OmniPlayer.Instance.currentMana;
-      //       bcc.maxMana = OmniPlayer.Instance.maxMana;
-      //  }
+
+
 
     }
 
     public void UpdatePlayer(float dt)
     {
         InputManager.InputPkg inputPkg = inputManager.GetKeysPressed();
-
         MovePlayer(inputPkg.directionPressed, dt);
 
     }
 
     public void MovePlayer(Vector2 direction, float dt)
     {
-        rb2D.velocity = direction.normalized * (Player_Speed*dt); 
+        rb2D.velocity = direction.normalized * (Player_Speed * dt);
 
         if (rb2D.velocity.x != 0 || rb2D.velocity.y != 0)
         {
@@ -70,7 +79,7 @@ public class Player : MonoBehaviour
         }
         else
         {
-            if(!isIdle)
+            if (!isIdle)
             {
                 anim.SetTrigger("Idle");
                 isWalking = false;
@@ -92,12 +101,13 @@ public class Player : MonoBehaviour
             collision.gameObject.GetComponent<Enemy>().SaveEnemy();
 
             SceneManager.LoadScene("CombatScene");
-
         }
     }
 
     public void SavePlayer()
     {
+
+       
         OmniPlayer.Instance.characterClass = bcc.characterClass;
         OmniPlayer.Instance.characterLevel = bcc.characterLevel;
         OmniPlayer.Instance.experience = bcc.experience;
@@ -110,8 +120,8 @@ public class Player : MonoBehaviour
         OmniPlayer.Instance.maxHP = bcc.maxHP;
         OmniPlayer.Instance.currentMana = bcc.currentMana;
         OmniPlayer.Instance.maxMana = bcc.maxMana;
-        OmniPlayer.Instance.x = bcc.x;
-        OmniPlayer.Instance.y = bcc.y;
+        OmniPlayer.Instance.position = gameObject.transform.position +tweekPosition;
+
     }
 
 }

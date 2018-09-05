@@ -101,7 +101,6 @@ public class CombatStateMachine : MonoBehaviour
             case BattleStates.ESCAPE:
                 Debug.Log("I ESCAPE");
                 SceneManager.LoadScene("GameScene");
-                //  SceneManager.LoadScene("GameScene");
                 break;
             default:
                 break;
@@ -139,8 +138,6 @@ public class CombatStateMachine : MonoBehaviour
         {
             player.currentHP -= damage;
         }
-
-
         CombatFlow.cl.csm.currentState = CombatStateMachine.BattleStates.PLAYERCHOICE;
     }
 }
