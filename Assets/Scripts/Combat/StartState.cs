@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class StartState
 {
-
-
     public bool PlayerGoesFirst(int enemyAgi, int playerAgi) // determine qui attaque en premier
     {
         bool playerGoesFirst = false;
@@ -17,5 +15,4 @@ public class StartState
 
         return playerGoesFirst;
     }
-
 }

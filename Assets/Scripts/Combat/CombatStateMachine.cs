@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class CombatStateMachine : MonoBehaviour
 {
-
+    float cooldown = 2;
     public BattleStates currentState;
     private StartState battleStartState = new StartState();
     Player p; // need player to get the enemy type from the collision and agility stat (from bcc) for who goes first ---- *********** need to get real player, not a new one **********
@@ -68,9 +68,15 @@ public class CombatStateMachine : MonoBehaviour
             case BattleStates.ENEMYCHOICE:
                 //choix de l'action de l'ennemi
                 Debug.Log("in enemy choice");
-                damage = (int)CombatLogics.Attack(CombatFlow.cl.EnemyCharacter, CombatFlow.cl.PlayerCharacter);
-                GetDamageFromEnemy(OmniPlayer.Instance, damage);
-                CombatFlow.cl.cUI.AttackAnimation();
+                cooldown -= Time.deltaTime;// timer so animation can take place
+                if (cooldown < 0)
+                {
+                    damage = (int)CombatLogics.Attack(CombatFlow.cl.EnemyCharacter, CombatFlow.cl.PlayerCharacter);
+                    GetDamageFromEnemy(OmniPlayer.Instance, damage);
+                    CombatFlow.cl.cUI.AttackAnimation();
+                    cooldown = 2;
+                }
+
                 if (OmniPlayer.Instance.currentHP <= 0)
                 {
                     goto case BattleStates.LOSE; // si vie du player a 0 goto lose state
@@ -126,7 +132,7 @@ public class CombatStateMachine : MonoBehaviour
         player = OmniPlayer.Instance;
         if (isDefending)
         {
-            player.currentHP += (int)(damage * 0.5);
+            player.currentHP -= (int)(damage * 0.5);
             isDefending = false;
         }
         else

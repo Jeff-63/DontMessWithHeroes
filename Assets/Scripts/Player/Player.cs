@@ -110,6 +110,8 @@ public class Player : MonoBehaviour
         OmniPlayer.Instance.maxHP = bcc.maxHP;
         OmniPlayer.Instance.currentMana = bcc.currentMana;
         OmniPlayer.Instance.maxMana = bcc.maxMana;
+        OmniPlayer.Instance.x = bcc.x;
+        OmniPlayer.Instance.y = bcc.y;
     }
 
 }

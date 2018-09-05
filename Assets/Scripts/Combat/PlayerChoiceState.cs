@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerChoiceState : MonoBehaviour
 {
-
+   
 
     public void OnClickAttackChoice()
     {
@@ -13,7 +13,6 @@ public class PlayerChoiceState : MonoBehaviour
 
         CombatFlow.cl.EnemyCharacter.currentHP = CombatFlow.cl.EnemyCharacter.currentHP - (int)damage;
         OmniEnemy.Instance.currentHP = CombatFlow.cl.EnemyCharacter.currentHP;
-
         CombatFlow.cl.csm.currentState = CombatStateMachine.BattleStates.ENEMYCHOICE;
     }
     public void OnClickDefenseChoice()
