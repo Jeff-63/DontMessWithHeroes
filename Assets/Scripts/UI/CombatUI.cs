@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class CombatUI : MonoBehaviour
 {
     readonly float CHARACTER_SIZE = 3;
-    readonly float PIXEL_PER_UNIT_RATIO = 3;
+    readonly float PIXEL_PER_UNIT_RATIO = 1.5f;
     enum AnimationTurn { PlayerTurn, EnnemiTurn }
 
     Text playerHp, playerMana, ennemiHP, ennemiMana;
@@ -18,14 +18,12 @@ public class CombatUI : MonoBehaviour
     float pixelPerUnit;
     AnimationTurn animTurn;
 
-
-
     Vector2 playerStartingPosition, ennemiStartingPosition;
 
     public void Initialize()
     {
         animTurn = AnimationTurn.PlayerTurn;
-        pixelPerUnit = CombatFlow.cl.combatUiCanvas.referencePixelsPerUnit * 1.2f;
+        pixelPerUnit = CombatFlow.cl.combatUiCanvas.referencePixelsPerUnit * PIXEL_PER_UNIT_RATIO;
 
 
         playerStartingPosition = new Vector2(((-screenWidth / 2) / (pixelPerUnit)), 0);
