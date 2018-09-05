@@ -4,52 +4,45 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    Rigidbody2D rb2D;
-    public BaseCharacterClass bcc;
-    bool isBoss = false;
+    
     int orc = 1;
     int elemental = 2;
-    int random;
-    CharacterClasses enemyClass;
+    public BaseCharacterClass bcc;
 
-    public void Init()
+    public void Init(int enemyType)
     {
-        rb2D = GetComponent<Rigidbody2D>();
-        random = Random.Range(orc, elemental);
-        // peut etre utiliser un switch pour code plus propre
-        if (random == orc)
+        if (enemyType == orc)
         {
             bcc = new Orc();
         }
-        else
+        else if(enemyType == elemental)
         {
             bcc = new Elemental();
         }
-        if (isBoss == true)
+        else
         {
             bcc = new Boss();
         }
     }
+
     public void UpdateEnnemi(float dt)
     {
     }
+
     public void FixedUpdateEnnemi(float dt)
     {
 
     }
+
     public void MoveEnnemi()
     {
     }
-    public CharacterClasses GetEnemyClass(Enemy enemy)
-    {
-        enemyClass = this.bcc.characterClass;
 
-        return enemyClass;
-    }
     public void DeathEnnemi()
     {
 
     }
+
     public void SaveEnemy()
     {
         OmniEnemy.Instance.characterClass = bcc.characterClass;

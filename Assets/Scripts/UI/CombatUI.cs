@@ -45,11 +45,13 @@ public class CombatUI : MonoBehaviour
             case CharacterClasses.Warrior:
                 player = new Warrior();
                 playerImage.sprite = Resources.Load<Sprite>("Sprites/Gladiator_Portrait");
+                playerObj = GameObject.Instantiate<GameObject>(Resources.Load<GameObject>("Prefabs/Warrior"));
                 break;
 
             case CharacterClasses.Wizard:
                 player = new Wizard();
                 playerImage.sprite = Resources.Load<Sprite>("Sprites/Wizards_Portrait");
+                playerObj = GameObject.Instantiate<GameObject>(Resources.Load<GameObject>("Prefabs/Wizard"));
                 break;
 
             default:
@@ -63,16 +65,19 @@ public class CombatUI : MonoBehaviour
             case CharacterClasses.Orc:
                 ennemi = new Orc();
                 ennemiImage.sprite = Resources.Load<Sprite>("Sprites/Orc_Portrait");
+                ennemiObj = GameObject.Instantiate<GameObject>(Resources.Load<GameObject>("Prefabs/Orc"));
                 break;
 
             case CharacterClasses.Elemental:
                 ennemi = new Elemental();
                 ennemiImage.sprite = Resources.Load<Sprite>("Sprites/Elemental_Portrait");
+                ennemiObj = GameObject.Instantiate<GameObject>(Resources.Load<GameObject>("Prefabs/Elemental"));
                 break;
 
             case CharacterClasses.Boss:
                 ennemi = new Boss();
                 ennemiImage.sprite = Resources.Load<Sprite>("Sprites/Golem_Portrait");
+                ennemiObj = GameObject.Instantiate<GameObject>(Resources.Load<GameObject>("Prefabs/Boss"));
                 break;
 
             default:
@@ -81,13 +86,12 @@ public class CombatUI : MonoBehaviour
         }
         CombatFlow.cl.EnemyCharacter = ennemi;
 
-        playerObj = GameObject.Instantiate<GameObject>(Resources.Load<GameObject>("Prefabs/Warrior"));
+        
         playerObj.transform.position = playerStartingPosition;
         playerObj.transform.localScale *= CHARACTER_SIZE;
-
         playerAnimator = playerObj.GetComponent<Animator>();
 
-        ennemiObj = GameObject.Instantiate<GameObject>(Resources.Load<GameObject>("Prefabs/Orc"));
+        
         ennemiObj.transform.position = ennemiStartingPosition;
         ennemiObj.transform.localScale *= CHARACTER_SIZE;
 
