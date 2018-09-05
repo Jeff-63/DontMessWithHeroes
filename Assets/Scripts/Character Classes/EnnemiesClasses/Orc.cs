@@ -12,7 +12,7 @@ public class Orc : BaseCharacterClass
 
         characterLevel = 1;
         experience = 25; //enemy experience is the experience that is grant to the player if he kills it
-        strenght = 12;
+        strenght = 16;
         endurance = 12;
         agility = 9;
         intelligence = 5;
