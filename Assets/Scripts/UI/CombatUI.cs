@@ -14,6 +14,8 @@ public class CombatUI : MonoBehaviour
     Text playerHp, playerMana, ennemiHP, ennemiMana;
     Image playerHpImage, playerManaImage, ennemiHPImage, ennemiManaImage, playerImage, ennemiImage;
     BaseCharacterClass player, ennemi;
+    ParticleSystem[] playerEffect;
+    ParticleSystem[] ennemiEffect;
     GameObject playerObj, ennemiObj;
     GameObject uiActionContainer;
     Animator playerAnimator, ennemiAnimator;
@@ -93,11 +95,12 @@ public class CombatUI : MonoBehaviour
         playerObj.transform.localScale *= CHARACTER_SIZE;
         playerAnimator = playerObj.GetComponent<Animator>();
 
-
         ennemiObj.transform.position = ennemiStartingPosition;
         ennemiObj.transform.localScale *= CHARACTER_SIZE;
-
         ennemiAnimator = ennemiObj.GetComponent<Animator>();
+
+        playerEffect = playerObj.GetComponentsInChildren<ParticleSystem>();
+        ennemiEffect = playerObj.GetComponentsInChildren<ParticleSystem>();
     }
 
     public void UpdateUI(float dt)
@@ -166,12 +169,12 @@ public class CombatUI : MonoBehaviour
         switch (animTurn)
         {
             case AnimationTurn.PlayerTurn:
-                playerAnimator.SetTrigger("GetDamage");
+                ActivateShieldPlayer();
                 Show_HideActionContainer();
                 animTurn = AnimationTurn.EnnemiTurn;
                 break;
             case AnimationTurn.EnnemiTurn:
-                ennemiAnimator.SetTrigger("GetDamage");
+                ActivateShieldEnnemi();
                 Show_HideActionContainer();
                 animTurn = AnimationTurn.PlayerTurn;
                 break;
@@ -194,4 +197,19 @@ public class CombatUI : MonoBehaviour
         uiActionContainer.SetActive(isShowingActionContainer);
     }
 
+    public void ActivateShieldPlayer()
+    {
+        foreach (ParticleSystem ps in playerEffect)
+        {
+            ps.Play();
+        }
+    }
+
+    public void ActivateShieldEnnemi()
+    {
+        foreach (ParticleSystem ps in ennemiEffect)
+        {
+            ps.Play();
+        }
+    }
 }
