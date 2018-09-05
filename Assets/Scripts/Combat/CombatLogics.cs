@@ -21,7 +21,7 @@ public class CombatLogics
         Debug.Log("Is evading atk : " + EvadeAttack());
         if (!EvadeAttack())
         {
-            atkType = (attacker.isPhysicalAttacker) ? AttackType.Physical: AttackType.Magic;
+            atkType = (attacker.isPhysicalAttacker) ? AttackType.Physical : AttackType.Magic;
 
 
             if (atkType == AttackType.Physical)
@@ -49,7 +49,11 @@ public class CombatLogics
 
             }
         }
-        
+        if (damageDealt < 0)
+        {
+            damageDealt = 0;
+        }
+
         return damageDealt;
     }
 
@@ -58,15 +62,15 @@ public class CombatLogics
 
 
 
-       // bool isCCHit = false;
-       //
-       // if (Random.Range(0, 100) <= CriticalHitChance) // 8% chance to crit, if you crit x2 damage
-       // {
-       //     isCCHit = true;
-       // }
-       //
-       //
-       // return isCCHit;
+        // bool isCCHit = false;
+        //
+        // if (Random.Range(0, 100) <= CriticalHitChance) // 8% chance to crit, if you crit x2 damage
+        // {
+        //     isCCHit = true;
+        // }
+        //
+        //
+        // return isCCHit;
 
         return (Random.Range(0, 100) <= CriticalHitChance); // same thing as the code above
     }

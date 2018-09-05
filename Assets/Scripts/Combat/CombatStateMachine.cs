@@ -137,7 +137,7 @@ public class CombatStateMachine : MonoBehaviour
         }
         else
         {
-            player.currentHP += damage;
+            player.currentHP -= damage;
         }
 
 
