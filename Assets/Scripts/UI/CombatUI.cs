@@ -163,6 +163,8 @@ public class CombatUI : MonoBehaviour
     public void RunAnimation()
     {
         playerAnimator.SetTrigger("Run");
+        Show_HideActionContainer();
+        animTurn = AnimationTurn.EnnemiTurn;
     }
 
     public void Show_HideActionContainer()
