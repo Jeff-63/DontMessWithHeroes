@@ -19,6 +19,7 @@ public class CombatUI : MonoBehaviour
     float pixelPerUnit;
     AnimationTurn animTurn;
     private bool isShowingActionContainer = true;
+    int fillValue = 1;
 
     Vector2 playerStartingPosition, ennemiStartingPosition;
 
@@ -107,15 +108,26 @@ public class CombatUI : MonoBehaviour
 
         playerHpImage.fillAmount = ((float)OmniPlayer.Instance.currentHP / (float)OmniPlayer.Instance.maxHP); //update de l'image des pv du personnage
         ennemiHPImage.fillAmount = ((float)OmniEnemy.Instance.currentHP / (float)OmniEnemy.Instance.maxHP); //update de l'image des pv de l'ennemi
-        try
+
+
+        if (OmniPlayer.Instance.maxMana > 0)
         {
             playerManaImage.fillAmount = (OmniPlayer.Instance.currentMana / OmniPlayer.Instance.maxMana);//update mana bar player  
+        }
+        else
+        {
+            playerManaImage.fillAmount = fillValue;//update mana bar player 
+        }
+        if (OmniEnemy.Instance.maxMana > 0)
+        {
             ennemiManaImage.fillAmount = (OmniEnemy.Instance.currentMana / OmniEnemy.Instance.maxMana);//update mana bar enemy
         }
-        catch
+        else
         {
-
+            ennemiManaImage.fillAmount = fillValue;//update mana bar player 
         }
+
+
 
     }
 
