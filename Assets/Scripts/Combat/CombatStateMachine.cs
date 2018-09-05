@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class CombatStateMachine : MonoBehaviour
 {
@@ -10,6 +11,7 @@ public class CombatStateMachine : MonoBehaviour
     Player p; // need player to get the enemy type from the collision and agility stat (from bcc) for who goes first ---- *********** need to get real player, not a new one **********
     Enemy e; // need enemy bcc to know who goes first ---- *************need to get real enemy, not a new one **********************
     bool hasAddedXP;
+    public bool isDefending;
     int damage;
     Rect GUINextStateButton;
 
@@ -82,6 +84,7 @@ public class CombatStateMachine : MonoBehaviour
                 break;
             case BattleStates.WIN:
                 Debug.Log("I WIN");
+                SceneManager.LoadScene("GameScene");
                 if (!hasAddedXP)
                 {
                     //Fonction pour ajouter de l'XP
@@ -89,6 +92,9 @@ public class CombatStateMachine : MonoBehaviour
                 }
                 break;
             case BattleStates.ESCAPE:
+                Debug.Log("I ESCAPE");
+                SceneManager.LoadScene("GameScene");
+                //  SceneManager.LoadScene("GameScene");
                 break;
             default:
                 break;
@@ -117,7 +123,16 @@ public class CombatStateMachine : MonoBehaviour
     private void GetDamageFromEnemy(OmniPlayer player, int damage)
     {
         player = OmniPlayer.Instance;
-        player.currentHP += damage;
+        if (isDefending)
+        {
+            player.currentHP += (int)(damage * 0.5);
+            isDefending = false;
+        }
+        else
+        {
+            player.currentHP += damage;
+        }
+
 
         CombatFlow.cl.csm.currentState = CombatStateMachine.BattleStates.PLAYERCHOICE;
     }

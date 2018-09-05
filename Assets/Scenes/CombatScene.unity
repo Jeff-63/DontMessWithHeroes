@@ -451,6 +451,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentState: 0
+  isDefending: 0
 --- !u!114 &1454170505
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -506,12 +507,12 @@ Prefab:
     - target: {fileID: 114106058314240426, guid: 7ee67d98074d2574b9cb9d1ecec73f1d,
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 114437444928170722, guid: 7ee67d98074d2574b9cb9d1ecec73f1d,
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 224369646368746180, guid: 7ee67d98074d2574b9cb9d1ecec73f1d,
         type: 2}
@@ -774,6 +775,56 @@ Prefab:
       value: OnClickAttackChoice
       objectReference: {fileID: 0}
     - target: {fileID: 114267571985609280, guid: 7ee67d98074d2574b9cb9d1ecec73f1d,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 114106058314240426, guid: 7ee67d98074d2574b9cb9d1ecec73f1d,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114106058314240426, guid: 7ee67d98074d2574b9cb9d1ecec73f1d,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114106058314240426, guid: 7ee67d98074d2574b9cb9d1ecec73f1d,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 1454170506}
+    - target: {fileID: 114106058314240426, guid: 7ee67d98074d2574b9cb9d1ecec73f1d,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: OnClickDefenseChoice
+      objectReference: {fileID: 0}
+    - target: {fileID: 114106058314240426, guid: 7ee67d98074d2574b9cb9d1ecec73f1d,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 114437444928170722, guid: 7ee67d98074d2574b9cb9d1ecec73f1d,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114437444928170722, guid: 7ee67d98074d2574b9cb9d1ecec73f1d,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114437444928170722, guid: 7ee67d98074d2574b9cb9d1ecec73f1d,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 1454170506}
+    - target: {fileID: 114437444928170722, guid: 7ee67d98074d2574b9cb9d1ecec73f1d,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: OnClickEscapeChoice
+      objectReference: {fileID: 0}
+    - target: {fileID: 114437444928170722, guid: 7ee67d98074d2574b9cb9d1ecec73f1d,
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine

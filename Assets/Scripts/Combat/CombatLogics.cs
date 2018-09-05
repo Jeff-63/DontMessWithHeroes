@@ -52,13 +52,7 @@ public class CombatLogics
         
         return damageDealt;
     }
-    public static bool DefendingAttack()
-    {
-        bool isBlocking = true;
 
-        return isBlocking;
-
-    }
     public static bool CriticalHit()
     {
 
