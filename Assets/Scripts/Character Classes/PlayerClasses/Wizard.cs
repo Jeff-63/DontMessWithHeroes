@@ -11,7 +11,7 @@ public class Wizard : BaseCharacterClass {
 
         characterLevel = 1;
         experience = 0;
-        maxExperience = 100;
+        maxExperience = 25;
         strenght = 5;
         endurance = 12;
         intelligence = 17;

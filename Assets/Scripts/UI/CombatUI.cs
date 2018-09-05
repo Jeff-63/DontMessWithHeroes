@@ -60,7 +60,7 @@ public class CombatUI : MonoBehaviour
                 Debug.Log("Unhandeled character class : " + player.characterClass);
                 break;
         }
-        CombatFlow.cl.PlayerCharacter = player;
+        CombatFlow.cl.PlayerCharacter = ChargerPlayer(player);
 
         switch (OmniEnemy.Instance.characterClass)
         {
@@ -189,6 +189,24 @@ public class CombatUI : MonoBehaviour
     {
         isShowingActionContainer = !isShowingActionContainer;
         uiActionContainer.SetActive(isShowingActionContainer);
+    }
+
+    public BaseCharacterClass ChargerPlayer(BaseCharacterClass player)
+    {
+        player.characterClass = OmniPlayer.Instance.characterClass;
+        player.characterLevel = OmniPlayer.Instance.characterLevel;
+        player.experience = OmniPlayer.Instance.experience;
+        player.maxExperience = OmniPlayer.Instance.maxExperience;
+        player.strenght = OmniPlayer.Instance.strenght;
+        player.endurance = OmniPlayer.Instance.endurance;
+        player.intelligence = OmniPlayer.Instance.intelligence;
+        player.agility = OmniPlayer.Instance.agility;
+        player.currentHP = OmniPlayer.Instance.currentHP;
+        player.maxHP = OmniPlayer.Instance.maxHP;
+        player.currentMana = OmniPlayer.Instance.currentMana;
+        player.maxMana = OmniPlayer.Instance.maxMana;
+
+        return player;
     }
 
 }
