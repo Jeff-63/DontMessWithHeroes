@@ -5,7 +5,7 @@ using UnityEngine;
 
 public enum AttackType { Physical, Magic }
 public enum ActionEnCombat { Attack, Defense, Escape }
-public class CombatLogics : BaseCharacterClass
+public class CombatLogics
 {
     readonly static float EnemyNerfValueForEscape = 0.9f;
     readonly static float CriticalHitChance = 8;

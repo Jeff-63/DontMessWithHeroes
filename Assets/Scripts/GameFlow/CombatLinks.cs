@@ -15,4 +15,6 @@ public class CombatLinks : MonoBehaviour {
     [Header("CombatMachine Setting")]
     public CombatStateMachine csm;
     public CombatUI cUI;
+    public BaseCharacterClass PlayerCharacter;
+    public BaseCharacterClass EnemyCharacter;
 }

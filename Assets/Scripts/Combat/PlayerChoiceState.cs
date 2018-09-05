@@ -2,15 +2,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerChoiceState : MonoBehaviour {
+public class PlayerChoiceState : MonoBehaviour
+{
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+
+    public void OnClickAttackChoice()
+    {
+        Debug.Log("ATTACK");
+        float damage = CombatLogics.Attack(CombatFlow.cl.PlayerCharacter, CombatFlow.cl.EnemyCharacter);
+
+        CombatFlow.cl.EnemyCharacter.currentHP = CombatFlow.cl.EnemyCharacter.currentHP - (int)damage;
+        OmniEnemy.Instance.currentHP = CombatFlow.cl.EnemyCharacter.currentHP;
+        
+    }
+
 }
