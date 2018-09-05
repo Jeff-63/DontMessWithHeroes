@@ -24,6 +24,7 @@ public class BaseCharacterClass {
     public int currentMana; // value of mana at the current moment
     public int maxMana; // max value of mana, can be increased with the levels
     public bool isPhysicalAttacker; // if not physical its magic attacker
+    public float x, y;
 
     public void CopyFromOmniPlayer(OmniPlayer toCopy)
     {

@@ -17,6 +17,7 @@ public class OmniEnemy : MonoBehaviour {
     public int maxHP; // max value for health, can increase with the levels
     public int currentMana; // value of mana at the current moment
     public int maxMana; // max value of mana, can be increased with the levels
+    public float x, y;
 
     void Awake()
     {

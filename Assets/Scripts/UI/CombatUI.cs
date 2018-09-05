@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class CombatUI : MonoBehaviour
 {
     readonly float CHARACTER_SIZE = 3;
+    readonly int FILL_VALUE = 1;
     enum AnimationTurn { PlayerTurn, EnnemiTurn }
 
     Text playerHp, playerMana, ennemiHP, ennemiMana;
@@ -17,6 +18,7 @@ public class CombatUI : MonoBehaviour
     AnimationTurn animTurn;
     private bool isShowingActionContainer = true;
 
+
     Vector2 playerStartingPosition, ennemiStartingPosition;
 
     public void Initialize()
@@ -25,7 +27,7 @@ public class CombatUI : MonoBehaviour
         uiActionContainer = CombatFlow.cl.uiActionContainer;
 
         //utilisation du viewport de la camera pour placer les characters
-        playerStartingPosition = CombatFlow.cl.camera.ViewportToWorldPoint(new Vector2(.2f,.5f)); 
+        playerStartingPosition = CombatFlow.cl.camera.ViewportToWorldPoint(new Vector2(.2f, .5f));
         ennemiStartingPosition = CombatFlow.cl.camera.ViewportToWorldPoint(new Vector2(.8f, .5f));
 
         playerHp = CombatFlow.cl.playerHp; //pointeur vers le composant text des HP du joueur
@@ -109,20 +111,32 @@ public class CombatUI : MonoBehaviour
 
         playerHpImage.fillAmount = ((float)OmniPlayer.Instance.currentHP / (float)OmniPlayer.Instance.maxHP); //update de l'image des pv du personnage
         ennemiHPImage.fillAmount = ((float)OmniEnemy.Instance.currentHP / (float)OmniEnemy.Instance.maxHP); //update de l'image des pv de l'ennemi
-        try
+
+
+        if (OmniPlayer.Instance.maxMana > 0)
         {
             playerManaImage.fillAmount = (OmniPlayer.Instance.currentMana / OmniPlayer.Instance.maxMana);//update mana bar player  
+        }
+        else
+        {
+            playerManaImage.fillAmount = FILL_VALUE;//update mana bar player 
+        }
+        if (OmniEnemy.Instance.maxMana > 0)
+        {
             ennemiManaImage.fillAmount = (OmniEnemy.Instance.currentMana / OmniEnemy.Instance.maxMana);//update mana bar enemy
         }
-        catch
+        else
         {
-
+            ennemiManaImage.fillAmount = FILL_VALUE;//update mana bar player 
         }
+
+
 
     }
 
     public void AttackAnimation()
     {
+        float timer = 1;
         switch (animTurn)
         {
             case AnimationTurn.PlayerTurn:
@@ -134,8 +148,11 @@ public class CombatUI : MonoBehaviour
             case AnimationTurn.EnnemiTurn:
                 ennemiAnimator.SetTrigger("Attack");
                 playerAnimator.SetTrigger("GetDamage");
-                Show_HideActionContainer();
+                Show_HideActionContainer();// le UI s'affiche avant le debut du tour du joueur
                 animTurn = AnimationTurn.PlayerTurn;
+
+
+
                 break;
             default:
                 Debug.Log("Unhandled Value : " + animTurn);
