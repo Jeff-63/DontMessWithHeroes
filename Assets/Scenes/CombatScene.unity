@@ -410,6 +410,7 @@ MonoBehaviour:
   ennemiImage: {fileID: 2088999371}
   combatUiCanvas: {fileID: 1999322137}
   uiActionContainer: {fileID: 1999322134}
+  camera: {fileID: 665337885}
   attackButton: {fileID: 1999322133}
   defenseButton: {fileID: 1999322132}
   runAwayButton: {fileID: 1999322131}
