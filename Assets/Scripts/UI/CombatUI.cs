@@ -6,7 +6,6 @@ using UnityEngine.UI;
 public class CombatUI : MonoBehaviour
 {
     readonly float CHARACTER_SIZE = 3;
-    readonly float PIXEL_PER_UNIT_RATIO = 1.5f;
     enum AnimationTurn { PlayerTurn, EnnemiTurn }
 
     Text playerHp, playerMana, ennemiHP, ennemiMana;
@@ -15,8 +14,6 @@ public class CombatUI : MonoBehaviour
     GameObject playerObj, ennemiObj;
     GameObject uiActionContainer;
     Animator playerAnimator, ennemiAnimator;
-    float screenWidth = Screen.width;
-    float pixelPerUnit;
     AnimationTurn animTurn;
     private bool isShowingActionContainer = true;
     int fillValue = 1;
@@ -26,11 +23,11 @@ public class CombatUI : MonoBehaviour
     public void Initialize()
     {
         animTurn = AnimationTurn.PlayerTurn;
-        pixelPerUnit = CombatFlow.cl.combatUiCanvas.referencePixelsPerUnit * PIXEL_PER_UNIT_RATIO;
         uiActionContainer = CombatFlow.cl.uiActionContainer;
 
-        playerStartingPosition = new Vector2(((-screenWidth / 2) / (pixelPerUnit)), 0);
-        ennemiStartingPosition = new Vector2(((screenWidth / 2) / (pixelPerUnit)), 0);
+        //utilisation du viewport de la camera pour placer les characters
+        playerStartingPosition = CombatFlow.cl.camera.ViewportToWorldPoint(new Vector2(.2f,.5f)); 
+        ennemiStartingPosition = CombatFlow.cl.camera.ViewportToWorldPoint(new Vector2(.8f, .5f));
 
         playerHp = CombatFlow.cl.playerHp; //pointeur vers le composant text des HP du joueur
         playerMana = CombatFlow.cl.playerMana; //pointeur vers le composant text de la mana du joueur
@@ -100,6 +97,7 @@ public class CombatUI : MonoBehaviour
 
     public void UpdateUI(float dt)
     {
+
         playerHp.text = OmniPlayer.Instance.currentHP.ToString() + " / " + OmniPlayer.Instance.maxHP.ToString(); //update du texte des pv du personnage
         ennemiHP.text = OmniEnemy.Instance.currentHP.ToString() + " / " + OmniEnemy.Instance.maxHP.ToString(); //update du texte des pv de l'ennemi
 
