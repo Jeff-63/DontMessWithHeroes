@@ -14,9 +14,6 @@ public class Player : MonoBehaviour
     bool isWalking = false;
     bool isIdle = true;
 
-    Enemy enemy;
-    public CharacterClasses enemyType;
-
     public void Init()
     {
         inputManager = new InputManager();
@@ -30,7 +27,7 @@ public class Player : MonoBehaviour
         }
         else
         {
-            bcc = new WizardClass();
+            bcc = new Wizard();
         }
 
       //  if (OmniPlayer.Instance != null)
@@ -87,27 +84,21 @@ public class Player : MonoBehaviour
 
     }
 
-    private CharacterClasses OnCollisionEnter2D(Collision2D collision)
+    private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "Ennemi")
         {
-            enemy = collision.gameObject.GetComponent<Enemy>();
-            enemyType = enemy.GetEnemyClass(enemy);
-
             SavePlayer();
+            collision.gameObject.GetComponent<Enemy>().SaveEnemy();
+
             SceneManager.LoadScene("CombatScene");
 
         }
-        else
-        {
-            enemyType = CharacterClasses.NA;
-        }
-
-        return enemyType;
     }
 
     public void SavePlayer()
     {
+        OmniPlayer.Instance.characterClass = bcc.characterClass;
         OmniPlayer.Instance.characterLevel = bcc.characterLevel;
         OmniPlayer.Instance.experience = bcc.experience;
         OmniPlayer.Instance.maxExperience = bcc.maxExperience;

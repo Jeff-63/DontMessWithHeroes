@@ -5,6 +5,7 @@ using UnityEngine;
 public class OmniPlayer : MonoBehaviour {
 
     public static OmniPlayer Instance;
+    public CharacterClasses characterClass;
     public int characterLevel;
     public int experience;
     public int maxExperience; // will increase for each level up (1.5x current xp?)

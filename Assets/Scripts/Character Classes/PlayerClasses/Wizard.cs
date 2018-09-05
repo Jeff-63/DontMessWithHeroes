@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WizardClass : BaseCharacterClass {
+public class Wizard : BaseCharacterClass {
 
-	public WizardClass()
+	public Wizard()
     {
         characterClass = CharacterClasses.Wizard;
         characterClassDescription = "Wizards are considered to be spellcasters who wield powerful spells, but are often physically weak as a trade-off.";

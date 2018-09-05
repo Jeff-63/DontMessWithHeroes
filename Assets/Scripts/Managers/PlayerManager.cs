@@ -12,11 +12,13 @@ public class PlayerManager {
     {
         CreatePlayer();
     }
+
     public void Update(float dt)
     {
         if (player)
             player.UpdatePlayer(dt);
     }
+
     public void CreatePlayer()
     {
         GameObject playerObj = GameObject.Instantiate<GameObject>(Resources.Load<GameObject>("Prefabs/Warrior")); //crée instance joueur

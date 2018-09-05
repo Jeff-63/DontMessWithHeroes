@@ -8,7 +8,7 @@ public class UIManager
 
     public void Init()
     {
-        cmbtUI = CombatFlow.gl.CombatUiCanvas.GetComponent<CombatUI>();
+        cmbtUI = CombatFlow.cl.cUI;
         cmbtUI.Initialize();
     }
 
