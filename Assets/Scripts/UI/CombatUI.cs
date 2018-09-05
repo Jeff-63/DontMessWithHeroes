@@ -57,6 +57,7 @@ public class CombatUI : MonoBehaviour
                 Debug.Log("Unhandeled character class : " + player.characterClass);
                 break;
         }
+        CombatFlow.cl.PlayerCharacter = player;
 
         switch (OmniEnemy.Instance.characterClass)
         {
@@ -79,6 +80,7 @@ public class CombatUI : MonoBehaviour
                 Debug.Log("Unhandeled character class : " + player.characterClass);
                 break;
         }
+        CombatFlow.cl.EnemyCharacter = ennemi;
 
         playerObj = GameObject.Instantiate<GameObject>(Resources.Load<GameObject>("Prefabs/Warrior"));
         playerObj.transform.position = playerStartingPosition;

@@ -17,7 +17,6 @@ public class CombatStateMachine : MonoBehaviour
         START,
         PLAYERCHOICE,
         ENEMYCHOICE,
-        CALCULDAMAGE,
         LOSE,
         WIN,
         ESCAPE
@@ -28,8 +27,6 @@ public class CombatStateMachine : MonoBehaviour
         hasAddedXP = false;
         currentState = BattleStates.START;
         GUINextStateButton = new Rect(10, 10, 60, 30);
-
-
     }
 
     void Update()
@@ -56,14 +53,39 @@ public class CombatStateMachine : MonoBehaviour
             case BattleStates.PLAYERCHOICE:
                 //choix de l'action du joueur
                 Debug.Log("in player choice");
-                break;
+                if (OmniPlayer.Instance.currentHP <= 0)
+                {
+                    goto case BattleStates.LOSE; // si vie du player a 0 goto lose state
+                }
+                else if (OmniEnemy.Instance.currentHP <= 0)// si vie de l'ennemi a 0 win state
+                {
+                    goto case BattleStates.WIN;
+                }
+                else
+                {
+                    goto case BattleStates.ENEMYCHOICE;
+                }
             case BattleStates.ENEMYCHOICE:
                 //choix de l'action de l'ennemi
                 Debug.Log("in enemy choice");
-                break;
+                CombatLogics.Attack(CombatFlow.cl.EnemyCharacter, CombatFlow.cl.PlayerCharacter);
+                if (OmniPlayer.Instance.currentHP <= 0)
+                {
+                    goto case BattleStates.LOSE; // si vie du player a 0 goto lose state
+                }
+                else if (OmniEnemy.Instance.currentHP <= 0)// si vie de l'ennemi a 0 win state
+                {
+                    goto case BattleStates.WIN;
+                }
+                else
+                {
+                    goto case BattleStates.PLAYERCHOICE;
+                }
             case BattleStates.LOSE:
+                Debug.Log("I LOSE");
                 break;
             case BattleStates.WIN:
+                Debug.Log("I WIN");
                 if (!hasAddedXP)
                 {
                     //Fonction pour ajouter de l'XP
