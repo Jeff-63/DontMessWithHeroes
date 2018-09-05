@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class CombatStateMachine : MonoBehaviour
 {
     readonly float STATS_BOOST_PER_LVL = 1.1f;
+    readonly float EXP_MOAR_NEED_PER_LVL = 1.5f;
     float cooldown = 2;
     public BattleStates currentState;
     private StartState battleStartState = new StartState();
@@ -168,7 +169,7 @@ public class CombatStateMachine : MonoBehaviour
     {
         OmniPlayer.Instance.characterLevel += 1;
         OmniPlayer.Instance.experience = 0;
-        OmniPlayer.Instance.maxExperience = (int)((float)OmniPlayer.Instance.maxExperience * STATS_BOOST_PER_LVL); 
+        OmniPlayer.Instance.maxExperience = (int)((float)OmniPlayer.Instance.maxExperience * EXP_MOAR_NEED_PER_LVL); 
         OmniPlayer.Instance.strenght = (int)((float)OmniPlayer.Instance.strenght * STATS_BOOST_PER_LVL);
         OmniPlayer.Instance.endurance = (int)((float)OmniPlayer.Instance.endurance * STATS_BOOST_PER_LVL);
         OmniPlayer.Instance.intelligence = (int)((float)OmniPlayer.Instance.intelligence * STATS_BOOST_PER_LVL);
