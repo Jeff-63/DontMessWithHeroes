@@ -5,6 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class CombatStateMachine : MonoBehaviour
 {
+    readonly float STATS_BOOST_PER_LVL = 1.1f;
+    readonly float EXP_MOAR_NEED_PER_LVL = 1.5f;
     float cooldown = 2;
     public BattleStates currentState;
     private StartState battleStartState = new StartState();
@@ -23,7 +25,8 @@ public class CombatStateMachine : MonoBehaviour
         ENEMYCHOICE,
         LOSE,
         WIN,
-        ESCAPE
+        ESCAPE,
+        LVLUP
     }
 
     void Start()
@@ -55,7 +58,7 @@ public class CombatStateMachine : MonoBehaviour
                 else
                 {
                     Debug.Log("Enemy was faster");
-                    if(start)
+                    if (start)
                     {
                         CombatFlow.cl.cUI.animTurn = CombatUI.AnimationTurn.EnnemiTurn;
                         CombatFlow.cl.cUI.Show_HideActionContainer();
@@ -73,7 +76,7 @@ public class CombatStateMachine : MonoBehaviour
                 }
                 else if (OmniEnemy.Instance.currentHP <= 0)// si vie de l'ennemi a 0 win state
                 {
-                    goto case BattleStates.WIN;
+                    goto case BattleStates.LVLUP;
                 }
                 break;
             case BattleStates.ENEMYCHOICE:
@@ -94,7 +97,7 @@ public class CombatStateMachine : MonoBehaviour
                 }
                 else if (OmniEnemy.Instance.currentHP <= 0)// si vie de l'ennemi a 0 win state
                 {
-                    goto case BattleStates.WIN;
+                    goto case BattleStates.LVLUP;
                 }
                 break;
             case BattleStates.LOSE:
@@ -103,16 +106,26 @@ public class CombatStateMachine : MonoBehaviour
             case BattleStates.WIN:
                 Debug.Log("I WIN");
                 SceneManager.LoadScene("GameScene");
-                if (!hasAddedXP)
-                {
-                    //Fonction pour ajouter de l'XP
-                    hasAddedXP = true;
-                }
+
                 break;
             case BattleStates.ESCAPE:
                 Debug.Log("I ESCAPE");
                 SceneManager.LoadScene("GameScene");
-                //  SceneManager.LoadScene("GameScene");
+                break;
+            case BattleStates.LVLUP:
+                if (!hasAddedXP)
+                {
+                    OmniPlayer.Instance.experience += OmniEnemy.Instance.experience;
+                    hasAddedXP = true;
+                    Debug.Log("Now my xp is : " + OmniPlayer.Instance.experience);
+                    if (OmniPlayer.Instance.experience >= OmniPlayer.Instance.maxExperience)
+                    {
+                        GetNewLvl();
+                        Debug.Log("I got a new lvl!");
+                        goto case BattleStates.WIN;
+                    }
+                    
+                }
                 break;
             default:
                 break;
@@ -150,8 +163,21 @@ public class CombatStateMachine : MonoBehaviour
         {
             player.currentHP -= damage;
         }
-
-
         CombatFlow.cl.csm.currentState = CombatStateMachine.BattleStates.PLAYERCHOICE;
+    }
+    private void GetNewLvl()
+    {
+        OmniPlayer.Instance.characterLevel += 1;
+        OmniPlayer.Instance.experience = 0;
+        OmniPlayer.Instance.maxExperience = (int)((float)OmniPlayer.Instance.maxExperience * EXP_MOAR_NEED_PER_LVL); 
+        OmniPlayer.Instance.strenght = (int)((float)OmniPlayer.Instance.strenght * STATS_BOOST_PER_LVL);
+        OmniPlayer.Instance.endurance = (int)((float)OmniPlayer.Instance.endurance * STATS_BOOST_PER_LVL);
+        OmniPlayer.Instance.intelligence = (int)((float)OmniPlayer.Instance.intelligence * STATS_BOOST_PER_LVL);
+        OmniPlayer.Instance.agility += 1;
+        OmniPlayer.Instance.maxHP = (int)((float)OmniPlayer.Instance.maxHP * STATS_BOOST_PER_LVL);
+        OmniPlayer.Instance.currentHP = (int)((float)OmniPlayer.Instance.currentHP * STATS_BOOST_PER_LVL);
+        OmniPlayer.Instance.maxMana = (int)((float)OmniPlayer.Instance.maxMana * STATS_BOOST_PER_LVL);
+        Debug.Log("lvlupiscalled");
+
     }
 }
