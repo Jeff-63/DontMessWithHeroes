@@ -14,6 +14,7 @@ public class CombatStateMachine : MonoBehaviour
     public bool isDefending;
     int damage;
     Rect GUINextStateButton;
+    bool start = true;
 
     public enum BattleStates
     {
@@ -44,12 +45,22 @@ public class CombatStateMachine : MonoBehaviour
                 if (battleStartState.PlayerGoesFirst(OmniEnemy.Instance.agility, OmniPlayer.Instance.agility))
                 {
                     Debug.Log("Player was faster");
+                    if (start)
+                    {
+                        CombatFlow.cl.cUI.animTurn = CombatUI.AnimationTurn.PlayerTurn;
+                    }
                     goto case BattleStates.PLAYERCHOICE;
 
                 }
                 else
                 {
                     Debug.Log("Enemy was faster");
+                    if(start)
+                    {
+                        CombatFlow.cl.cUI.animTurn = CombatUI.AnimationTurn.EnnemiTurn;
+                        CombatFlow.cl.cUI.Show_HideActionContainer();
+                        start = false;
+                    }
                     goto case BattleStates.ENEMYCHOICE;
 
                 }
