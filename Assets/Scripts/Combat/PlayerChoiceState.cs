@@ -13,7 +13,8 @@ public class PlayerChoiceState : MonoBehaviour
 
         CombatFlow.cl.EnemyCharacter.currentHP = CombatFlow.cl.EnemyCharacter.currentHP - (int)damage;
         OmniEnemy.Instance.currentHP = CombatFlow.cl.EnemyCharacter.currentHP;
-        
+
+        CombatFlow.cl.csm.currentState = CombatStateMachine.BattleStates.ENEMYCHOICE;
     }
 
 }

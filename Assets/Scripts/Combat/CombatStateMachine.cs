@@ -5,11 +5,12 @@ using UnityEngine;
 public class CombatStateMachine : MonoBehaviour
 {
 
-    public static BattleStates currentState;
+    public BattleStates currentState;
     private StartState battleStartState = new StartState();
     Player p; // need player to get the enemy type from the collision and agility stat (from bcc) for who goes first ---- *********** need to get real player, not a new one **********
     Enemy e; // need enemy bcc to know who goes first ---- *************need to get real enemy, not a new one **********************
     bool hasAddedXP;
+    int damage;
     Rect GUINextStateButton;
 
     public enum BattleStates
@@ -38,17 +39,17 @@ public class CombatStateMachine : MonoBehaviour
                 //     battleStartState.InitEnemy(p.enemyType); // instanciate the good enemy type from the collision
                 //Choix de celui qui commence
 
-                if (battleStartState.PlayerGoesFirst(OmniEnemy.Instance.agility,OmniPlayer.Instance.agility))
+                if (battleStartState.PlayerGoesFirst(OmniEnemy.Instance.agility, OmniPlayer.Instance.agility))
                 {
                     Debug.Log("Player was faster");
                     goto case BattleStates.PLAYERCHOICE;
-                    
+
                 }
                 else
                 {
                     Debug.Log("Enemy was faster");
                     goto case BattleStates.ENEMYCHOICE;
-                
+
                 }
             case BattleStates.PLAYERCHOICE:
                 //choix de l'action du joueur
@@ -61,14 +62,12 @@ public class CombatStateMachine : MonoBehaviour
                 {
                     goto case BattleStates.WIN;
                 }
-                else
-                {
-                    goto case BattleStates.ENEMYCHOICE;
-                }
+                break;
             case BattleStates.ENEMYCHOICE:
                 //choix de l'action de l'ennemi
                 Debug.Log("in enemy choice");
-                CombatLogics.Attack(CombatFlow.cl.EnemyCharacter, CombatFlow.cl.PlayerCharacter);
+                damage = (int)CombatLogics.Attack(CombatFlow.cl.EnemyCharacter, CombatFlow.cl.PlayerCharacter);
+                GetDamageFromEnemy(OmniPlayer.Instance, damage);
                 if (OmniPlayer.Instance.currentHP <= 0)
                 {
                     goto case BattleStates.LOSE; // si vie du player a 0 goto lose state
@@ -77,10 +76,7 @@ public class CombatStateMachine : MonoBehaviour
                 {
                     goto case BattleStates.WIN;
                 }
-                else
-                {
-                    goto case BattleStates.PLAYERCHOICE;
-                }
+                break;
             case BattleStates.LOSE:
                 Debug.Log("I LOSE");
                 break;
@@ -116,5 +112,13 @@ public class CombatStateMachine : MonoBehaviour
             else if (currentState == BattleStates.LOSE)
                 currentState = BattleStates.START;
         }
+    }
+
+    private void GetDamageFromEnemy(OmniPlayer player, int damage)
+    {
+        player = OmniPlayer.Instance;
+        player.currentHP += damage;
+
+        CombatFlow.cl.csm.currentState = CombatStateMachine.BattleStates.PLAYERCHOICE;
     }
 }
