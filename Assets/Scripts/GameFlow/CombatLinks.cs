@@ -16,6 +16,7 @@ public class CombatLinks : MonoBehaviour {
     public Button attackButton;
     public Button defenseButton;
     public Button runAwayButton;
+    public Vector2 playerPosition;
 
 
     [Header("CombatMachine Setting")]

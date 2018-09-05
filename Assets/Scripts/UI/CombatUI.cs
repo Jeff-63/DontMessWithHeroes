@@ -48,13 +48,13 @@ public class CombatUI : MonoBehaviour
         {
             case CharacterClasses.Warrior:
                 player = new Warrior();
-                playerImage.sprite = Resources.Load<Sprite>("Sprites/Gladiator_Portrait");
+                playerImage.sprite = GameObject.Instantiate<Sprite>(Resources.Load<Sprite>("Sprites/Gladiator_Portrait"));
                 playerObj = GameObject.Instantiate<GameObject>(Resources.Load<GameObject>("Prefabs/Warrior"));
                 break;
 
             case CharacterClasses.Wizard:
                 player = new Wizard();
-                playerImage.sprite = Resources.Load<Sprite>("Sprites/Wizards_Portrait");
+                playerImage.sprite = GameObject.Instantiate<Sprite>(Resources.Load<Sprite>("Sprites/Wizards_Portrait"));
                 playerObj = GameObject.Instantiate<GameObject>(Resources.Load<GameObject>("Prefabs/Wizard"));
                 break;
 
@@ -68,19 +68,19 @@ public class CombatUI : MonoBehaviour
         {
             case CharacterClasses.Orc:
                 ennemi = new Orc();
-                ennemiImage.sprite = Resources.Load<Sprite>("Sprites/Orc_Portrait");
+                ennemiImage.sprite = GameObject.Instantiate<Sprite>(Resources.Load<Sprite>("Sprites/Orc_Portrait"));
                 ennemiObj = GameObject.Instantiate<GameObject>(Resources.Load<GameObject>("Prefabs/Orc"));
                 break;
 
             case CharacterClasses.Elemental:
                 ennemi = new Elemental();
-                ennemiImage.sprite = Resources.Load<Sprite>("Sprites/Elemental_Portrait");
+                ennemiImage.sprite = GameObject.Instantiate<Sprite>(Resources.Load<Sprite>("Sprites/Elemental_Portrait"));
                 ennemiObj = GameObject.Instantiate<GameObject>(Resources.Load<GameObject>("Prefabs/Elemental"));
                 break;
 
             case CharacterClasses.Boss:
                 ennemi = new Boss();
-                ennemiImage.sprite = Resources.Load<Sprite>("Sprites/Golem_Portrait");
+                ennemiImage.sprite = GameObject.Instantiate<Sprite>(Resources.Load<Sprite>("Sprites/Golem_Portrait"));
                 ennemiObj = GameObject.Instantiate<GameObject>(Resources.Load<GameObject>("Prefabs/Boss"));
                 break;
 
@@ -91,7 +91,7 @@ public class CombatUI : MonoBehaviour
         CombatFlow.cl.EnemyCharacter = ennemi;
 
 
-        playerObj.transform.position = playerStartingPosition;
+        playerObj.transform.position = CombatFlow.cl.playerPosition = playerStartingPosition;
         playerObj.transform.localScale *= CHARACTER_SIZE;
         playerAnimator = playerObj.GetComponent<Animator>();
 

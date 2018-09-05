@@ -26,7 +26,7 @@ public class CombatStateMachine : MonoBehaviour
         LOSE,
         WIN,
         ESCAPE,
-        LVLUP
+        LVLUPCHECK
     }
 
     void Start()
@@ -76,7 +76,7 @@ public class CombatStateMachine : MonoBehaviour
                 }
                 else if (OmniEnemy.Instance.currentHP <= 0)// si vie de l'ennemi a 0 win state
                 {
-                    goto case BattleStates.LVLUP;
+                    goto case BattleStates.LVLUPCHECK;
                 }
                 break;
             case BattleStates.ENEMYCHOICE:
@@ -97,7 +97,7 @@ public class CombatStateMachine : MonoBehaviour
                 }
                 else if (OmniEnemy.Instance.currentHP <= 0)// si vie de l'ennemi a 0 win state
                 {
-                    goto case BattleStates.LVLUP;
+                    goto case BattleStates.LVLUPCHECK;
                 }
                 break;
             case BattleStates.LOSE:
@@ -106,13 +106,12 @@ public class CombatStateMachine : MonoBehaviour
             case BattleStates.WIN:
                 Debug.Log("I WIN");
                 SceneManager.LoadScene("GameScene");
-
                 break;
             case BattleStates.ESCAPE:
                 Debug.Log("I ESCAPE");
                 SceneManager.LoadScene("GameScene");
                 break;
-            case BattleStates.LVLUP:
+            case BattleStates.LVLUPCHECK:
                 if (!hasAddedXP)
                 {
                     OmniPlayer.Instance.experience += OmniEnemy.Instance.experience;
@@ -122,9 +121,12 @@ public class CombatStateMachine : MonoBehaviour
                     {
                         GetNewLvl();
                         Debug.Log("I got a new lvl!");
-                        goto case BattleStates.WIN;
+                        cooldown -= Time.deltaTime;// timer so animation can take place
+                        if (cooldown < 0)
+                        {
+                            goto case BattleStates.WIN;
+                        }
                     }
-                    
                 }
                 break;
             default:
@@ -132,23 +134,6 @@ public class CombatStateMachine : MonoBehaviour
         }
 
         Debug.Log(currentState);
-    }
-
-    private void OnGUI()
-    {
-        if (GUI.Button(GUINextStateButton, "NEXT STATE"))
-        {
-            if (currentState == BattleStates.START)
-                currentState = BattleStates.PLAYERCHOICE;
-            else if (currentState == BattleStates.PLAYERCHOICE)
-                currentState = BattleStates.ENEMYCHOICE;
-            else if (currentState == BattleStates.ENEMYCHOICE)
-                currentState = BattleStates.WIN;
-            else if (currentState == BattleStates.WIN)
-                currentState = BattleStates.LOSE;
-            else if (currentState == BattleStates.LOSE)
-                currentState = BattleStates.START;
-        }
     }
 
     private void GetDamageFromEnemy(OmniPlayer player, int damage)
@@ -165,11 +150,12 @@ public class CombatStateMachine : MonoBehaviour
         }
         CombatFlow.cl.csm.currentState = CombatStateMachine.BattleStates.PLAYERCHOICE;
     }
+
     private void GetNewLvl()
     {
         OmniPlayer.Instance.characterLevel += 1;
         OmniPlayer.Instance.experience = 0;
-        OmniPlayer.Instance.maxExperience = (int)((float)OmniPlayer.Instance.maxExperience * EXP_MOAR_NEED_PER_LVL); 
+        OmniPlayer.Instance.maxExperience = (int)((float)OmniPlayer.Instance.maxExperience * EXP_MOAR_NEED_PER_LVL);
         OmniPlayer.Instance.strenght = (int)((float)OmniPlayer.Instance.strenght * STATS_BOOST_PER_LVL);
         OmniPlayer.Instance.endurance = (int)((float)OmniPlayer.Instance.endurance * STATS_BOOST_PER_LVL);
         OmniPlayer.Instance.intelligence = (int)((float)OmniPlayer.Instance.intelligence * STATS_BOOST_PER_LVL);
@@ -178,6 +164,13 @@ public class CombatStateMachine : MonoBehaviour
         OmniPlayer.Instance.currentHP = (int)((float)OmniPlayer.Instance.currentHP * STATS_BOOST_PER_LVL);
         OmniPlayer.Instance.maxMana = (int)((float)OmniPlayer.Instance.maxMana * STATS_BOOST_PER_LVL);
         Debug.Log("lvlupiscalled");
+
+        GameObject lvlUpParticle = GameObject.Instantiate<GameObject>(Resources.Load<GameObject>("Prefabs/LevelUp"));
+        lvlUpParticle.transform.position = CombatFlow.cl.playerPosition;
+        foreach (ParticleSystem p in lvlUpParticle.GetComponents<ParticleSystem>())
+        {
+            p.Play();
+        }
 
     }
 }
