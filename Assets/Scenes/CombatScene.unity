@@ -409,6 +409,7 @@ MonoBehaviour:
   playerImage: {fileID: 1800727454}
   ennemiImage: {fileID: 2088999371}
   combatUiCanvas: {fileID: 1999322137}
+  uiActionContainer: {fileID: 1999322134}
   attackButton: {fileID: 1999322133}
   defenseButton: {fileID: 1999322132}
   runAwayButton: {fileID: 1999322131}
@@ -851,6 +852,11 @@ MonoBehaviour:
     type: 2}
   m_PrefabInternal: {fileID: 1999322130}
   m_Script: {fileID: 1392445389, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+--- !u!1 &1999322134 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1592711734774756, guid: 7ee67d98074d2574b9cb9d1ecec73f1d,
+    type: 2}
+  m_PrefabInternal: {fileID: 1999322130}
 --- !u!223 &1999322137 stripped
 Canvas:
   m_PrefabParentObject: {fileID: 223939477747838036, guid: 7ee67d98074d2574b9cb9d1ecec73f1d,

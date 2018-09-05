@@ -13,10 +13,12 @@ public class CombatUI : MonoBehaviour
     Image playerHpImage, playerManaImage, ennemiHPImage, ennemiManaImage, playerImage, ennemiImage;
     BaseCharacterClass player, ennemi;
     GameObject playerObj, ennemiObj;
+    GameObject uiActionContainer;
     Animator playerAnimator, ennemiAnimator;
     float screenWidth = Screen.width;
     float pixelPerUnit;
     AnimationTurn animTurn;
+    private bool isShowingActionContainer = true;
 
     Vector2 playerStartingPosition, ennemiStartingPosition;
 
@@ -24,7 +26,7 @@ public class CombatUI : MonoBehaviour
     {
         animTurn = AnimationTurn.PlayerTurn;
         pixelPerUnit = CombatFlow.cl.combatUiCanvas.referencePixelsPerUnit * PIXEL_PER_UNIT_RATIO;
-
+        uiActionContainer = CombatFlow.cl.uiActionContainer;
 
         playerStartingPosition = new Vector2(((-screenWidth / 2) / (pixelPerUnit)), 0);
         ennemiStartingPosition = new Vector2(((screenWidth / 2) / (pixelPerUnit)), 0);
@@ -124,10 +126,14 @@ public class CombatUI : MonoBehaviour
             case AnimationTurn.PlayerTurn:
                 playerAnimator.SetTrigger("Attack");
                 ennemiAnimator.SetTrigger("GetDamage");
+                Show_HideActionContainer();
+                animTurn = AnimationTurn.EnnemiTurn;
                 break;
             case AnimationTurn.EnnemiTurn:
                 ennemiAnimator.SetTrigger("Attack");
                 playerAnimator.SetTrigger("GetDamage");
+                Show_HideActionContainer();
+                animTurn = AnimationTurn.PlayerTurn;
                 break;
             default:
                 Debug.Log("Unhandled Value : " + animTurn);
@@ -142,9 +148,13 @@ public class CombatUI : MonoBehaviour
         {
             case AnimationTurn.PlayerTurn:
                 playerAnimator.SetTrigger("GetDamage");
+                Show_HideActionContainer();
+                animTurn = AnimationTurn.EnnemiTurn;
                 break;
             case AnimationTurn.EnnemiTurn:
                 ennemiAnimator.SetTrigger("GetDamage");
+                Show_HideActionContainer();
+                animTurn = AnimationTurn.PlayerTurn;
                 break;
             default:
                 Debug.Log("Unhandled Value : " + animTurn);
@@ -155,6 +165,12 @@ public class CombatUI : MonoBehaviour
     public void RunAnimation()
     {
         playerAnimator.SetTrigger("Run");
+    }
+
+    public void Show_HideActionContainer()
+    {
+        isShowingActionContainer = !isShowingActionContainer;
+        uiActionContainer.SetActive(isShowingActionContainer);
     }
 
 }
