@@ -7,7 +7,9 @@ public class CombatUI : MonoBehaviour
 {
     readonly float CHARACTER_SIZE = 3;
     readonly int FILL_VALUE = 1;
-    enum AnimationTurn { PlayerTurn, EnnemiTurn }
+
+    public enum AnimationTurn { PlayerTurn, EnnemiTurn }
+    public AnimationTurn animTurn;
 
     Text playerHp, playerMana, ennemiHP, ennemiMana;
     Image playerHpImage, playerManaImage, ennemiHPImage, ennemiManaImage, playerImage, ennemiImage;
@@ -15,7 +17,6 @@ public class CombatUI : MonoBehaviour
     GameObject playerObj, ennemiObj;
     GameObject uiActionContainer;
     Animator playerAnimator, ennemiAnimator;
-    AnimationTurn animTurn;
     private bool isShowingActionContainer = true;
 
 
@@ -23,7 +24,6 @@ public class CombatUI : MonoBehaviour
 
     public void Initialize()
     {
-        animTurn = AnimationTurn.PlayerTurn;
         uiActionContainer = CombatFlow.cl.uiActionContainer;
 
         //utilisation du viewport de la camera pour placer les characters
@@ -88,12 +88,12 @@ public class CombatUI : MonoBehaviour
         }
         CombatFlow.cl.EnemyCharacter = ennemi;
 
-        
+
         playerObj.transform.position = playerStartingPosition;
         playerObj.transform.localScale *= CHARACTER_SIZE;
         playerAnimator = playerObj.GetComponent<Animator>();
 
-        
+
         ennemiObj.transform.position = ennemiStartingPosition;
         ennemiObj.transform.localScale *= CHARACTER_SIZE;
 

@@ -158,6 +158,8 @@ MonoBehaviour:
   maxHP: 0
   currentMana: 0
   maxMana: 0
+  x: 0
+  y: 0
 --- !u!114 &962894623
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -181,6 +183,8 @@ MonoBehaviour:
   maxHP: 0
   currentMana: 0
   maxMana: 0
+  x: 0
+  y: 0
 --- !u!4 &962894624
 Transform:
   m_ObjectHideFlags: 0
