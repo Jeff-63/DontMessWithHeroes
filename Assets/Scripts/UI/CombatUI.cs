@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class CombatUI : MonoBehaviour
 {
+    readonly float CHARACTER_SIZE = 3;
+    readonly float PIXEL_PER_UNIT_RATIO = 3;
     enum AnimationTurn { PlayerTurn, EnnemiTurn }
 
     Text playerHp, playerMana, ennemiHP, ennemiMana;
@@ -12,34 +14,34 @@ public class CombatUI : MonoBehaviour
     BaseCharacterClass player, ennemi;
     GameObject playerObj, ennemiObj;
     Animator playerAnimator, ennemiAnimator;
-    float UIWidth;
-    float pixelPerUnitUI;
+    float screenWidth = Screen.width;
+    float pixelPerUnit;
     AnimationTurn animTurn;
 
-    float characterSize = 3;
+
 
     Vector2 playerStartingPosition, ennemiStartingPosition;
 
     public void Initialize()
     {
         animTurn = AnimationTurn.PlayerTurn;
-        UIWidth = CombatFlow.cl.CombatUiCanvas.pixelRect.size.x;
-        pixelPerUnitUI = CombatFlow.cl.CombatUiCanvas.referencePixelsPerUnit;
+        pixelPerUnit = CombatFlow.cl.combatUiCanvas.referencePixelsPerUnit * 1.2f;
 
-        playerStartingPosition = new Vector2((-UIWidth / pixelPerUnitUI), 0);
-        ennemiStartingPosition = new Vector2((UIWidth / pixelPerUnitUI), 0);
 
-        playerHp = CombatFlow.cl.playerHp.GetComponent<Text>(); //pointeur vers le composant text des HP du joueur
-        playerMana = CombatFlow.cl.playerMana.GetComponent<Text>(); //pointeur vers le composant text de la mana du joueur
-        ennemiHP = CombatFlow.cl.ennemiHP.GetComponent<Text>(); //pointeur vers le composant text des HP de l'ennemi
-        ennemiMana = CombatFlow.cl.ennemiMana.GetComponent<Text>(); //pointeur vers le composant text de la mana de l'ennemi
+        playerStartingPosition = new Vector2(((-screenWidth / 2) / (pixelPerUnit)), 0);
+        ennemiStartingPosition = new Vector2(((screenWidth / 2) / (pixelPerUnit)), 0);
 
-        playerHpImage = CombatFlow.cl.playerHpImage.GetComponent<Image>(); //pointeur vers le composant image des HP du joueur
-        playerManaImage = CombatFlow.cl.playerManaImage.GetComponent<Image>(); //pointeur vers le composant image de la mana du joueur
-        ennemiHPImage = CombatFlow.cl.ennemiHPImage.GetComponent<Image>(); //pointeur vers le composant image des HP de l'ennemi
-        ennemiManaImage = CombatFlow.cl.ennemiManaImage.GetComponent<Image>(); //pointeur vers le composant image de la mana de l'ennemi
-        playerImage = CombatFlow.cl.playerImage.GetComponent<Image>(); //pointeur vers le composant image du portrait du joueur
-        ennemiImage = CombatFlow.cl.ennemiImage.GetComponent<Image>(); //pointeur vers le composant image du portrait de l'ennemi
+        playerHp = CombatFlow.cl.playerHp; //pointeur vers le composant text des HP du joueur
+        playerMana = CombatFlow.cl.playerMana; //pointeur vers le composant text de la mana du joueur
+        ennemiHP = CombatFlow.cl.ennemiHP; //pointeur vers le composant text des HP de l'ennemi
+        ennemiMana = CombatFlow.cl.ennemiMana; //pointeur vers le composant text de la mana de l'ennemi
+
+        playerHpImage = CombatFlow.cl.playerHpImage; //pointeur vers le composant image des HP du joueur
+        playerManaImage = CombatFlow.cl.playerManaImage; //pointeur vers le composant image de la mana du joueur
+        ennemiHPImage = CombatFlow.cl.ennemiHPImage; //pointeur vers le composant image des HP de l'ennemi
+        ennemiManaImage = CombatFlow.cl.ennemiManaImage; //pointeur vers le composant image de la mana de l'ennemi
+        playerImage = CombatFlow.cl.playerImage; //pointeur vers le composant image du portrait du joueur
+        ennemiImage = CombatFlow.cl.ennemiImage; //pointeur vers le composant image du portrait de l'ennemi
 
         switch (OmniPlayer.Instance.characterClass)
         {
@@ -82,13 +84,13 @@ public class CombatUI : MonoBehaviour
 
         playerObj = GameObject.Instantiate<GameObject>(Resources.Load<GameObject>("Prefabs/Warrior"));
         playerObj.transform.position = playerStartingPosition;
-        playerObj.transform.localScale *= characterSize;
+        playerObj.transform.localScale *= CHARACTER_SIZE;
 
         playerAnimator = playerObj.GetComponent<Animator>();
 
         ennemiObj = GameObject.Instantiate<GameObject>(Resources.Load<GameObject>("Prefabs/Orc"));
         ennemiObj.transform.position = ennemiStartingPosition;
-        ennemiObj.transform.localScale *= characterSize;
+        ennemiObj.transform.localScale *= CHARACTER_SIZE;
 
         ennemiAnimator = ennemiObj.GetComponent<Animator>();
     }
@@ -131,7 +133,7 @@ public class CombatUI : MonoBehaviour
                 Debug.Log("Unhandled Value : " + animTurn);
                 break;
         }
-        
+
     }
 
     public void DefenseAnimation()
