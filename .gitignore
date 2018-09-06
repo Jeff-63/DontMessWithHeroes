@@ -37,3 +37,7 @@ sysinfo.txt
 Assets/Scripts/ExoLoadGameObjectsInDictionnary.cs
 Assets/Scripts/ExoLoadGameObjectsInDictionnary.cs.meta
 Assets/Scripts/GameFlow/GameFlow.cs
+Packages/manifest.json
+ProjectSettings/PresetManager.asset
+UnityPackageManager/manifest.json
+ProjectSettings/ProjectVersion.txt
