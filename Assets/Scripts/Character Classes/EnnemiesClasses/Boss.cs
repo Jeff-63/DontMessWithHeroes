@@ -11,8 +11,8 @@ public class Boss : BaseCharacterClass {
 
         characterLevel = 5;
         experience = 500; //enemy experience is the experience that is grant to the player if he kills it
-        strenght = 24;
-        endurance = 20;
+        strenght = 35;
+        endurance = 35;
         agility = 12;
         intelligence = 14;
         currentHP = 300;

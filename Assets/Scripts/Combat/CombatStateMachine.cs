@@ -98,9 +98,9 @@ public class CombatStateMachine : MonoBehaviour
                 }
                 break;
             case BattleStates.LOSE:
-                //   SceneManager.LoadScene("GameOver");
+              
                 OmniPlayer.Instance.characterLevel = 0;
-                Debug.Log("GameOver");
+                SceneManager.LoadScene("GameOver");
                 break;
             case BattleStates.WIN:
                 SceneManager.LoadScene("GameScene");
