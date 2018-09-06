@@ -69,10 +69,12 @@ public class CombatStateMachine : MonoBehaviour
                 //choix de l'action du joueur
                 if (OmniPlayer.Instance.currentHP <= 0)
                 {
+                    CombatFlow.cl.cUI.DieAnimation(CombatUI.AnimationTurn.PlayerTurn);
                     goto case BattleStates.LOSE; // si vie du player a 0 goto lose state
                 }
                 else if (OmniEnemy.Instance.currentHP <= 0)// si vie de l'ennemi a 0 win state
                 {
+                    CombatFlow.cl.cUI.DieAnimation(CombatUI.AnimationTurn.EnnemiTurn);
                     goto case BattleStates.LVLUPCHECK;
                 }
                 break;
@@ -90,10 +92,12 @@ public class CombatStateMachine : MonoBehaviour
 
                 if (OmniPlayer.Instance.currentHP <= 0)
                 {
+                    CombatFlow.cl.cUI.DieAnimation(CombatUI.AnimationTurn.PlayerTurn);
                     goto case BattleStates.LOSE; // si vie du player a 0 goto lose state
                 }
                 else if (OmniEnemy.Instance.currentHP <= 0)// si vie de l'ennemi a 0 win state
                 {
+                    CombatFlow.cl.cUI.DieAnimation(CombatUI.AnimationTurn.EnnemiTurn);
                     goto case BattleStates.LVLUPCHECK;
                 }
                 break;

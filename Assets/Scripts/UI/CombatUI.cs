@@ -188,12 +188,26 @@ public class CombatUI : MonoBehaviour
         animTurn = AnimationTurn.EnnemiTurn;
     }
 
+    public void DieAnimation(AnimationTurn type)
+    {
+        switch (type)
+        {
+            case AnimationTurn.PlayerTurn:
+                playerAnimator.SetTrigger("Die");
+                break;
+            case AnimationTurn.EnnemiTurn:
+                ennemiAnimator.SetTrigger("Die");
+                break;
+            default:
+                break;
+        }
+    }
+
     public void Show_HideActionContainer()
     {
         isShowingActionContainer = !isShowingActionContainer;
         uiActionContainer.SetActive(isShowingActionContainer);
     }
-
 
     public void ActivateShieldPlayer()
     {
