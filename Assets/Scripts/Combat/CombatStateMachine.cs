@@ -7,8 +7,7 @@ public class CombatStateMachine : MonoBehaviour
 {
     readonly float STATS_BOOST_PER_LVL = 1.1f;
     readonly float EXP_MOAR_NEED_PER_LVL = 1.5f;
-    float cooldownE = 2;
-    float cooldownLvl = 2;
+    float cooldown = 2;
     public BattleStates currentState;
     private StartState battleStartState = new StartState();
     Player p; // need player to get the enemy type from the collision and agility stat (from bcc) for who goes first ---- *********** need to get real player, not a new one **********
@@ -79,13 +78,19 @@ public class CombatStateMachine : MonoBehaviour
                 break;
             case BattleStates.ENEMYCHOICE:
                 //choix de l'action de l'ennemi
+<<<<<<< HEAD
                 cooldownE -= Time.deltaTime;// timer so animation can take place
                 if (cooldownE < 0)
+=======
+                Debug.Log("in enemy choice");
+                cooldown -= Time.deltaTime;// timer so animation can take place
+                if (cooldown < 0)
+>>>>>>> da2216992609aafc43afb19ff056e19dfa3c6f6e
                 {
                     damage = (int)CombatLogics.Attack(CombatFlow.cl.EnemyCharacter, CombatFlow.cl.PlayerCharacter);
                     GetDamageFromEnemy(OmniPlayer.Instance, damage);
                     CombatFlow.cl.cUI.AttackAnimation();
-                    cooldownE = 2;
+                    cooldown = 2;
                 }
 
                 if (OmniPlayer.Instance.currentHP <= 0)
@@ -166,6 +171,7 @@ public class CombatStateMachine : MonoBehaviour
         }
 
     }
+<<<<<<< HEAD
     IEnumerator Timer()
     {
         float cooldown = 1.5f;
@@ -180,4 +186,6 @@ public class CombatStateMachine : MonoBehaviour
 
 
     }
+=======
+>>>>>>> da2216992609aafc43afb19ff056e19dfa3c6f6e
 }

@@ -6,14 +6,14 @@ using UnityEngine;
 public class CombatFlow : Flow
 {
 
-    UIManager uiManager;
+    CombatUIManager uiManager;
     public static CombatLinks cl;
 
     public override void InitializeFlow() //initialisation de tous éléments du flux
     {
         base.InitializeFlow();
         cl = GameObject.FindObjectOfType<CombatLinks>(); //récupérations de tous les liens de la scene
-        uiManager = new UIManager();
+        uiManager = new CombatUIManager();
         uiManager.Init();
     }
 
