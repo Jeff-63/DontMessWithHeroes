@@ -50,6 +50,7 @@ public class CombatStateMachine : MonoBehaviour
                     if (start)
                     {
                         CombatFlow.cl.cUI.animTurn = CombatUI.AnimationTurn.PlayerTurn;
+                        start = false;
                     }
                     goto case BattleStates.PLAYERCHOICE;
 
@@ -73,8 +74,9 @@ public class CombatStateMachine : MonoBehaviour
                     {
                         CombatFlow.cl.cUI.DieAnimation(CombatUI.AnimationTurn.PlayerTurn);
                         cooldownStart = true;
+                        StartCoroutine(EndBattle(BattleStates.LOSE));
                     }
-                    StartCoroutine(EndBattle(BattleStates.LOSE)); // si vie du player a 0 goto lose state
+
                 }
                 else if (OmniEnemy.Instance.currentHP <= 0)// si vie de l'ennemi a 0 win state
                 {
@@ -82,8 +84,8 @@ public class CombatStateMachine : MonoBehaviour
                     {
                         CombatFlow.cl.cUI.DieAnimation(CombatUI.AnimationTurn.EnnemiTurn);
                         cooldownStart = true;
+                        goto case BattleStates.LVLUPCHECK;
                     }
-                    goto case BattleStates.LVLUPCHECK;
                 }
                 break;
             case BattleStates.ENEMYCHOICE:
@@ -103,8 +105,9 @@ public class CombatStateMachine : MonoBehaviour
                     {
                         CombatFlow.cl.cUI.DieAnimation(CombatUI.AnimationTurn.PlayerTurn);
                         cooldownStart = true;
+                        StartCoroutine(EndBattle(BattleStates.LOSE));
                     }
-                    StartCoroutine(EndBattle(BattleStates.LOSE)); // si vie du player a 0 goto lose state
+
                 }
                 else if (OmniEnemy.Instance.currentHP <= 0)// si vie de l'ennemi a 0 win state
                 {
@@ -112,12 +115,11 @@ public class CombatStateMachine : MonoBehaviour
                     {
                         CombatFlow.cl.cUI.DieAnimation(CombatUI.AnimationTurn.EnnemiTurn);
                         cooldownStart = true;
+                        goto case BattleStates.LVLUPCHECK;
                     }
-                    goto case BattleStates.LVLUPCHECK;
                 }
                 break;
             case BattleStates.LOSE:
-
                 OmniPlayer.Instance.characterLevel = 0;
                 SceneManager.LoadScene("GameOver");
                 break;
@@ -134,7 +136,6 @@ public class CombatStateMachine : MonoBehaviour
                     hasAddedXP = true;
                     if (OmniPlayer.Instance.experience >= OmniPlayer.Instance.maxExperience)
                         GetNewLvl();
-
                     StartCoroutine(EndBattle(BattleStates.WIN));
 
                 }

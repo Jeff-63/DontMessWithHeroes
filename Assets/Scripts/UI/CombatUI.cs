@@ -149,9 +149,6 @@ public class CombatUI : MonoBehaviour
                 playerAnimator.SetTrigger("GetDamage");
                 Show_HideActionContainer();// le UI s'affiche avant le debut du tour du joueur
                 animTurn = AnimationTurn.PlayerTurn;
-
-
-
                 break;
             default:
                 Debug.Log("Unhandled Value : " + animTurn);
