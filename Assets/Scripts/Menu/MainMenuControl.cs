@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class MainMenuControl : MonoBehaviour {
+public class MainMenuControl : MonoBehaviour
+{
 
     public void StartButtonPressed()
     {
@@ -17,6 +18,16 @@ public class MainMenuControl : MonoBehaviour {
 
     public void ReturnButtonPressed()
     {
-        SceneManager.LoadScene("MainMenuScene");
+        SceneManager.LoadScene("MainMenu");
+    }
+
+    public void RestartButtonPressed()
+    {
+        SceneManager.LoadScene("GameScene");
+    }
+
+    public void QuitButtonPressed()
+    {
+        Application.Quit();
     }
 }
