@@ -7,7 +7,8 @@ public class CombatStateMachine : MonoBehaviour
 {
     readonly float STATS_BOOST_PER_LVL = 1.1f;
     readonly float EXP_MOAR_NEED_PER_LVL = 1.5f;
-    float cooldown = 2;
+    float cooldownE = 2;
+    float cooldownLvl = 2;
     public BattleStates currentState;
     private StartState battleStartState = new StartState();
     Player p; // need player to get the enemy type from the collision and agility stat (from bcc) for who goes first ---- *********** need to get real player, not a new one **********
@@ -82,13 +83,13 @@ public class CombatStateMachine : MonoBehaviour
             case BattleStates.ENEMYCHOICE:
                 //choix de l'action de l'ennemi
                 Debug.Log("in enemy choice");
-                cooldown -= Time.deltaTime;// timer so animation can take place
-                if (cooldown < 0)
+                cooldownE -= Time.deltaTime;// timer so animation can take place
+                if (cooldownE < 0)
                 {
                     damage = (int)CombatLogics.Attack(CombatFlow.cl.EnemyCharacter, CombatFlow.cl.PlayerCharacter);
                     GetDamageFromEnemy(OmniPlayer.Instance, damage);
                     CombatFlow.cl.cUI.AttackAnimation();
-                    cooldown = 2;
+                    cooldownE = 2;
                 }
 
                 if (OmniPlayer.Instance.currentHP <= 0)
@@ -121,11 +122,8 @@ public class CombatStateMachine : MonoBehaviour
                     {
                         GetNewLvl();
                         Debug.Log("I got a new lvl!");
-                        cooldown -= Time.deltaTime;// timer so animation can take place
-                        if (cooldown < 0)
-                        {
-                            goto case BattleStates.WIN;
-                        }
+                        StartCoroutine(Timer());
+                        
                     }
                 }
                 break;
@@ -171,6 +169,20 @@ public class CombatStateMachine : MonoBehaviour
         {
             p.Play();
         }
+
+    }
+    IEnumerator Timer()
+    {
+        float cooldown = 1.5f;
+
+        while(cooldown > 0)
+        {
+            cooldown -= Time.deltaTime;
+            yield return null;
+          
+        }
+        currentState = BattleStates.WIN;
+
 
     }
 }

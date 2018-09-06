@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerChoiceState : MonoBehaviour
 {
-   
+
 
     public void OnClickAttackChoice()
     {
@@ -13,8 +13,17 @@ public class PlayerChoiceState : MonoBehaviour
 
         CombatFlow.cl.EnemyCharacter.currentHP = CombatFlow.cl.EnemyCharacter.currentHP - (int)damage;
         OmniEnemy.Instance.currentHP = CombatFlow.cl.EnemyCharacter.currentHP;
-        CombatFlow.cl.csm.currentState = CombatStateMachine.BattleStates.ENEMYCHOICE;
+        if (OmniEnemy.Instance.currentHP <= 0)
+        {
+            CombatFlow.cl.csm.currentState = CombatStateMachine.BattleStates.LVLUPCHECK;
+        }
+        else
+        {
+            CombatFlow.cl.csm.currentState = CombatStateMachine.BattleStates.ENEMYCHOICE;
+        }
     }
+
+
     public void OnClickDefenseChoice()
     {
         Debug.Log("DEFEND");
@@ -26,7 +35,7 @@ public class PlayerChoiceState : MonoBehaviour
         Debug.Log("ESCAPE");
         bool isEscaping = false;
         isEscaping = CombatLogics.RunAwayFromCombat(CombatFlow.cl.PlayerCharacter, CombatFlow.cl.EnemyCharacter);
-        if(isEscaping)
+        if (isEscaping)
         {
             CombatFlow.cl.csm.currentState = CombatStateMachine.BattleStates.ESCAPE;
         }
