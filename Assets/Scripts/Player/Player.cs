@@ -5,8 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
-    readonly Vector3 tweekPosition = new Vector3(-1,0);
-    readonly float Player_Speed = 150;
+    readonly Vector3 TWEEK_POSITION = new Vector3(-1,0);
+    readonly float PLAYER_SPEED = 150;
     InputManager inputManager;
     Rigidbody2D rb2D;
     Animator anim;
@@ -63,7 +63,7 @@ public class Player : MonoBehaviour
 
     public void MovePlayer(Vector2 direction, float dt)
     {
-        rb2D.velocity = direction.normalized * (Player_Speed * dt);
+        rb2D.velocity = direction.normalized * (PLAYER_SPEED * dt);
 
         if (rb2D.velocity.x != 0 || rb2D.velocity.y != 0)
         {
@@ -83,11 +83,6 @@ public class Player : MonoBehaviour
                 isIdle = true;
             }
         }
-    }
-
-    public void DeathPlayer()
-    {
-
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -117,7 +112,7 @@ public class Player : MonoBehaviour
         OmniPlayer.Instance.maxHP = bcc.maxHP;
         OmniPlayer.Instance.currentMana = bcc.currentMana;
         OmniPlayer.Instance.maxMana = bcc.maxMana;
-        OmniPlayer.Instance.position = gameObject.transform.position +tweekPosition;
+        OmniPlayer.Instance.position = gameObject.transform.position +TWEEK_POSITION;
 
     }
 
