@@ -121,11 +121,9 @@ public class CombatStateMachine : MonoBehaviour
                     {
                         GetNewLvl();
                         Debug.Log("I got a new lvl!");
-                        cooldown -= Time.deltaTime;// timer so animation can take place
-                        if (cooldown < 0)
-                        {
-                            goto case BattleStates.WIN;
-                        }
+                        cooldown = 4;
+                        goto case BattleStates.WIN;
+
                     }
                 }
                 break;

@@ -8,6 +8,7 @@ public class GameFlow : Flow {
     public static GameLinks gl;
     PlayerManager playerManager;
     EnemyManager enemyManager;
+    GameUIManager gameUIManager;
 
     public override void InitializeFlow() //initialisation de tous éléments du flux
     {
@@ -15,8 +16,10 @@ public class GameFlow : Flow {
         gl = GameObject.FindObjectOfType<GameLinks>(); //récupérations de tous les liens de la scene
         playerManager = new PlayerManager();
         enemyManager = new EnemyManager();
+        gameUIManager = new GameUIManager();
         playerManager.Init();// initialisation du joueur
         enemyManager.Init();
+        gameUIManager.Init();
     }
 
     //Update de tous éléments du flux
@@ -25,6 +28,7 @@ public class GameFlow : Flow {
         base.Update(dt);
         playerManager.Update(dt);
         enemyManager.Update(dt);
+        gameUIManager.Update(dt);
     }
 
     //Fermeture du flux

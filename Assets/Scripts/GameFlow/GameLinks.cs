@@ -8,4 +8,8 @@ public class GameLinks : MonoBehaviour {
 
     [Header ("Camera Setting")]
     public CinemachineVirtualCamera vcam;
+    [Header("Player UI Setting")]
+    public GameUI gui;
+    public Text level;
+    public Text hp, strength, endurance, intelligence, agility, experience;
 }

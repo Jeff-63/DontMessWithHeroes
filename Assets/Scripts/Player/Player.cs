@@ -51,10 +51,7 @@ public class Player : MonoBehaviour
                 bcc = new Wizard();
             }
         }
-
-
-
-
+        SavePlayer();
     }
 
     public void UpdatePlayer(float dt)
