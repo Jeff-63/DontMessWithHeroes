@@ -27,7 +27,6 @@ public class GameFlow : Flow {
     {
         base.Update(dt);
         playerManager.Update(dt);
-        enemyManager.Update(dt);
         gameUIManager.Update(dt);
     }
 

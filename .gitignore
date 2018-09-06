@@ -37,3 +37,9 @@ sysinfo.txt
 Assets/Scripts/ExoLoadGameObjectsInDictionnary.cs
 Assets/Scripts/ExoLoadGameObjectsInDictionnary.cs.meta
 Assets/Scripts/GameFlow/GameFlow.cs
+UnityPackageManager/manifest.json
+Packages/manifest.json
+ProjectSettings/PresetManager.asset
+UnityPackageManager/manifest.json
+Assets/Cinemachine/CinemachineExamples.unitypackage.meta
+Assets/Cinemachine/Timeline/LegacyTimelineAPI.unitypackage.meta

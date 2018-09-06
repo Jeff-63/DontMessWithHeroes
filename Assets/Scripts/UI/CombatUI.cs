@@ -136,7 +136,6 @@ public class CombatUI : MonoBehaviour
 
     public void AttackAnimation()
     {
-        float timer = 1;
         switch (animTurn)
         {
             case AnimationTurn.PlayerTurn:

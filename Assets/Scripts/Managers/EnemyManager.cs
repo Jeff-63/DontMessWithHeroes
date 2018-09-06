@@ -18,13 +18,6 @@ public class EnemyManager
         CreateEnnemi(0, true); //Création du boss sur la map
     }
 
-    public void Update(float dt)
-    {
-        foreach (Enemy ennemi in ennemies)
-        {
-            ennemi.UpdateEnnemi(dt);
-        }
-    }
 
     public void CreateEnnemi(int i, bool isBoss)
     {
@@ -32,7 +25,7 @@ public class EnemyManager
         int enemyType = 0;
         if (!isBoss)
         {
-            enemyType = Random.Range(1, 3);
+            enemyType = Random.Range(1, 3);// use enum or loop through folder
             switch (enemyType)
             {
                 case 1:

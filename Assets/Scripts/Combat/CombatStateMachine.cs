@@ -8,6 +8,7 @@ public class CombatStateMachine : MonoBehaviour
     readonly float STATS_BOOST_PER_LVL = 1.1f;
     readonly float EXP_MOAR_NEED_PER_LVL = 1.5f;
     readonly float COOLDOWN_BASE_VALUE = 1.5f;
+    readonly float DEFENSE_BUFF_VALUE = 0.5f;
 
     float cooldown = 2;
     public BattleStates currentState;
@@ -41,7 +42,6 @@ public class CombatStateMachine : MonoBehaviour
         {
             case BattleStates.START:
                 //setup Combat
-                //     battleStartState.InitEnemy(p.enemyType); // instanciate the good enemy type from the collision
                 //Choix de celui qui commence
                 cooldownStart = false;
 
@@ -88,7 +88,6 @@ public class CombatStateMachine : MonoBehaviour
                 break;
             case BattleStates.ENEMYCHOICE:
                 //choix de l'action de l'ennemi
-                Debug.Log("in enemy choice");
                 cooldown -= Time.deltaTime;// timer so animation can take place
                 if (cooldown < 0)
                 {
@@ -152,7 +151,7 @@ public class CombatStateMachine : MonoBehaviour
         player = OmniPlayer.Instance;
         if (isDefending)
         {
-            player.currentHP -= (int)(damage * 0.5);
+            player.currentHP -= (int)(damage * DEFENSE_BUFF_VALUE);
             isDefending = false;
         }
         else
@@ -174,7 +173,6 @@ public class CombatStateMachine : MonoBehaviour
         OmniPlayer.Instance.maxHP = (int)((float)OmniPlayer.Instance.maxHP * STATS_BOOST_PER_LVL);
         OmniPlayer.Instance.currentHP = (int)((float)OmniPlayer.Instance.maxHP);
         OmniPlayer.Instance.maxMana = (int)((float)OmniPlayer.Instance.maxMana * STATS_BOOST_PER_LVL);
-        Debug.Log("lvlupiscalled");
 
         GameObject lvlUpParticle = GameObject.Instantiate<GameObject>(Resources.Load<GameObject>("Prefabs/LevelUp"));
         lvlUpParticle.transform.position = CombatFlow.cl.playerPosition;

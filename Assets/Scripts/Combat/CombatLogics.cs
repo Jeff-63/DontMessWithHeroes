@@ -11,6 +11,8 @@ public class CombatLogics
     readonly static float CriticalHitChance = 8;
     readonly static float EvadeChance = 5;
     readonly static float CritRatio = 2;
+    readonly static Vector2 MinMaxRandomEscape = new Vector2(0, 255);
+    readonly static Vector2 MinMaxRandomCCandEvade = new Vector2(0, 100);
 
 
 
@@ -18,7 +20,6 @@ public class CombatLogics
     {
         float damageDealt = 0;
         AttackType atkType;
-        Debug.Log("Is evading atk : " + EvadeAttack());
         if (!EvadeAttack())
         {
             atkType = (attacker.isPhysicalAttacker) ? AttackType.Physical : AttackType.Magic;
@@ -59,26 +60,13 @@ public class CombatLogics
 
     public static bool CriticalHit()
     {
-
-
-
-        // bool isCCHit = false;
-        //
-        // if (Random.Range(0, 100) <= CriticalHitChance) // 8% chance to crit, if you crit x2 damage
-        // {
-        //     isCCHit = true;
-        // }
-        //
-        //
-        // return isCCHit;
-
-        return (Random.Range(0, 100) <= CriticalHitChance); // same thing as the code above
+        return (Random.Range(MinMaxRandomCCandEvade.x, MinMaxRandomCCandEvade.y) <= CriticalHitChance); // same thing as the code above
     }
     public static bool EvadeAttack()
     {
         bool isEvading = false;
 
-        if (Random.Range(0, 100) <= EvadeChance) //5% evading an attack, 0 damage if evaded
+        if (Random.Range(MinMaxRandomCCandEvade.x, MinMaxRandomCCandEvade.y) <= EvadeChance) //5% evading an attack, 0 damage if evaded
         {
             isEvading = true;
         }
@@ -88,7 +76,7 @@ public class CombatLogics
     public static bool RunAwayFromCombat(BaseCharacterClass player, BaseCharacterClass enemy)
     {
         bool isRunningAwayFromCombat = false;
-        if ((player.agility * Random.Range(0, 255)) < (enemy.agility * Random.Range(0, 255) * EnemyNerfValueForEscape)) //Agil
+        if ((player.agility * Random.Range(MinMaxRandomEscape.x, MinMaxRandomEscape.y)) < (enemy.agility * Random.Range(MinMaxRandomEscape.x, MinMaxRandomEscape.y) * EnemyNerfValueForEscape)) //Agil
         {
             isRunningAwayFromCombat = true;
         }

@@ -25,23 +25,6 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    public void UpdateEnnemi(float dt)
-    {
-    }
-
-    public void FixedUpdateEnnemi(float dt)
-    {
-
-    }
-
-    public void MoveEnnemi()
-    {
-    }
-
-    public void DeathEnnemi()
-    {
-
-    }
 
     public void SaveEnemy()
     {

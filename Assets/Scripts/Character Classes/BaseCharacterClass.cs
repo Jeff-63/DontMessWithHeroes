@@ -25,10 +25,4 @@ public class BaseCharacterClass {
     public int maxMana; // max value of mana, can be increased with the levels
     public bool isPhysicalAttacker; // if not physical its magic attacker
     public Vector2 position;
-
-    public void CopyFromOmniPlayer(OmniPlayer toCopy)
-    {
-
-    }
-
 }

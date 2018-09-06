@@ -15,13 +15,11 @@ public class FlowManager{
 
         if (_initializeFlowType == FlowType.None)
         {
-            Debug.Log("Cannot Initialize flowType");
             return;
         }
 
         if (_initializeFlowType == currentActiveFlowType)
         {
-            Debug.Log("Flow already initialized");
             return;
         }
 

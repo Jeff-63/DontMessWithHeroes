@@ -12,7 +12,7 @@ public class CombatLinks : MonoBehaviour {
     public Image playerHpImage, playerManaImage, ennemiHPImage, ennemiManaImage, playerImage, ennemiImage;
     public Canvas combatUiCanvas;
     public GameObject uiActionContainer;
-    public Camera camera;
+    public Camera camera; // used in combatUI
     public Button attackButton;
     public Button defenseButton;
     public Button runAwayButton;
