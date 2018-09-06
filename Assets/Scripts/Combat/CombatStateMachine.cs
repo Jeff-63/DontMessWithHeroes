@@ -7,15 +7,14 @@ public class CombatStateMachine : MonoBehaviour
 {
     readonly float STATS_BOOST_PER_LVL = 1.1f;
     readonly float EXP_MOAR_NEED_PER_LVL = 1.5f;
+    readonly float COOLDOWN_BASE_VALUE = 1.5f;
+
     float cooldown = 2;
     public BattleStates currentState;
     private StartState battleStartState = new StartState();
-    Player p; // need player to get the enemy type from the collision and agility stat (from bcc) for who goes first ---- *********** need to get real player, not a new one **********
-    Enemy e; // need enemy bcc to know who goes first ---- *************need to get real enemy, not a new one **********************
     bool hasAddedXP;
     public bool isDefending;
     int damage;
-    Rect GUINextStateButton;
     bool start = true;
 
     public enum BattleStates
@@ -33,7 +32,6 @@ public class CombatStateMachine : MonoBehaviour
     {
         hasAddedXP = false;
         currentState = BattleStates.START;
-        GUINextStateButton = new Rect(10, 10, 60, 30);
     }
 
     void Update()
@@ -70,7 +68,7 @@ public class CombatStateMachine : MonoBehaviour
                 if (OmniPlayer.Instance.currentHP <= 0)
                 {
                     CombatFlow.cl.cUI.DieAnimation(CombatUI.AnimationTurn.PlayerTurn);
-                    goto case BattleStates.LOSE; // si vie du player a 0 goto lose state
+                    StartCoroutine(EndBattle(BattleStates.LOSE)); // si vie du player a 0 goto lose state
                 }
                 else if (OmniEnemy.Instance.currentHP <= 0)// si vie de l'ennemi a 0 win state
                 {
@@ -93,7 +91,7 @@ public class CombatStateMachine : MonoBehaviour
                 if (OmniPlayer.Instance.currentHP <= 0)
                 {
                     CombatFlow.cl.cUI.DieAnimation(CombatUI.AnimationTurn.PlayerTurn);
-                    goto case BattleStates.LOSE; // si vie du player a 0 goto lose state
+                    StartCoroutine(EndBattle(BattleStates.LOSE)); // si vie du player a 0 goto lose state
                 }
                 else if (OmniEnemy.Instance.currentHP <= 0)// si vie de l'ennemi a 0 win state
                 {
@@ -120,11 +118,11 @@ public class CombatStateMachine : MonoBehaviour
                     if (OmniPlayer.Instance.experience >= OmniPlayer.Instance.maxExperience)
                     {
                         GetNewLvl();
-                        StartCoroutine(Timer());
+                        StartCoroutine(EndBattle(BattleStates.WIN));
                     }
                     else
                     {
-                        goto case BattleStates.WIN;
+                        StartCoroutine(EndBattle(BattleStates.WIN));
                     }
                 }
                 break;
@@ -152,13 +150,13 @@ public class CombatStateMachine : MonoBehaviour
 
     private void GetNewLvl()
     {
-        OmniPlayer.Instance.characterLevel += 1;
+        OmniPlayer.Instance.characterLevel ++;
         OmniPlayer.Instance.experience = 0;
         OmniPlayer.Instance.maxExperience = (int)((float)OmniPlayer.Instance.maxExperience * EXP_MOAR_NEED_PER_LVL);
         OmniPlayer.Instance.strenght = (int)((float)OmniPlayer.Instance.strenght * STATS_BOOST_PER_LVL);
         OmniPlayer.Instance.endurance = (int)((float)OmniPlayer.Instance.endurance * STATS_BOOST_PER_LVL);
         OmniPlayer.Instance.intelligence = (int)((float)OmniPlayer.Instance.intelligence * STATS_BOOST_PER_LVL);
-        OmniPlayer.Instance.agility += 1;
+        OmniPlayer.Instance.agility ++;
         OmniPlayer.Instance.maxHP = (int)((float)OmniPlayer.Instance.maxHP * STATS_BOOST_PER_LVL);
         OmniPlayer.Instance.currentHP = (int)((float)OmniPlayer.Instance.currentHP * STATS_BOOST_PER_LVL);
         OmniPlayer.Instance.maxMana = (int)((float)OmniPlayer.Instance.maxMana * STATS_BOOST_PER_LVL);
@@ -173,9 +171,9 @@ public class CombatStateMachine : MonoBehaviour
 
     }
 
-    IEnumerator Timer()
+    IEnumerator EndBattle(BattleStates state)
     {
-        float cooldown = 1.5f;
+        float cooldown = COOLDOWN_BASE_VALUE;
 
         while (cooldown > 0)
         {
@@ -183,6 +181,6 @@ public class CombatStateMachine : MonoBehaviour
             yield return null;
 
         }
-        currentState = BattleStates.WIN;
+        currentState = state;
     }
 }
