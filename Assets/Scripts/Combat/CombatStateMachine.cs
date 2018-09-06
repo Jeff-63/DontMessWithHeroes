@@ -16,6 +16,7 @@ public class CombatStateMachine : MonoBehaviour
     public bool isDefending;
     int damage;
     bool start = true;
+    bool cooldownStart = false;
 
     public enum BattleStates
     {
@@ -42,6 +43,7 @@ public class CombatStateMachine : MonoBehaviour
                 //setup Combat
                 //     battleStartState.InitEnemy(p.enemyType); // instanciate the good enemy type from the collision
                 //Choix de celui qui commence
+                cooldownStart = false;
 
                 if (battleStartState.PlayerGoesFirst(OmniEnemy.Instance.agility, OmniPlayer.Instance.agility))
                 {
@@ -67,12 +69,20 @@ public class CombatStateMachine : MonoBehaviour
                 //choix de l'action du joueur
                 if (OmniPlayer.Instance.currentHP <= 0)
                 {
-                    CombatFlow.cl.cUI.DieAnimation(CombatUI.AnimationTurn.PlayerTurn);
+                    if (!cooldownStart)
+                    {
+                        CombatFlow.cl.cUI.DieAnimation(CombatUI.AnimationTurn.PlayerTurn);
+                        cooldownStart = true;
+                    }
                     StartCoroutine(EndBattle(BattleStates.LOSE)); // si vie du player a 0 goto lose state
                 }
                 else if (OmniEnemy.Instance.currentHP <= 0)// si vie de l'ennemi a 0 win state
                 {
-                    CombatFlow.cl.cUI.DieAnimation(CombatUI.AnimationTurn.EnnemiTurn);
+                    if (!cooldownStart)
+                    {
+                        CombatFlow.cl.cUI.DieAnimation(CombatUI.AnimationTurn.EnnemiTurn);
+                        cooldownStart = true;
+                    }
                     goto case BattleStates.LVLUPCHECK;
                 }
                 break;
@@ -90,17 +100,25 @@ public class CombatStateMachine : MonoBehaviour
 
                 if (OmniPlayer.Instance.currentHP <= 0)
                 {
-                    CombatFlow.cl.cUI.DieAnimation(CombatUI.AnimationTurn.PlayerTurn);
+                    if (!cooldownStart)
+                    {
+                        CombatFlow.cl.cUI.DieAnimation(CombatUI.AnimationTurn.PlayerTurn);
+                        cooldownStart = true;
+                    }
                     StartCoroutine(EndBattle(BattleStates.LOSE)); // si vie du player a 0 goto lose state
                 }
                 else if (OmniEnemy.Instance.currentHP <= 0)// si vie de l'ennemi a 0 win state
                 {
-                    CombatFlow.cl.cUI.DieAnimation(CombatUI.AnimationTurn.EnnemiTurn);
+                    if (!cooldownStart)
+                    {
+                        CombatFlow.cl.cUI.DieAnimation(CombatUI.AnimationTurn.EnnemiTurn);
+                        cooldownStart = true;
+                    }
                     goto case BattleStates.LVLUPCHECK;
                 }
                 break;
             case BattleStates.LOSE:
-              
+
                 OmniPlayer.Instance.characterLevel = 0;
                 SceneManager.LoadScene("GameOver");
                 break;
@@ -116,14 +134,10 @@ public class CombatStateMachine : MonoBehaviour
                     OmniPlayer.Instance.experience += OmniEnemy.Instance.experience;
                     hasAddedXP = true;
                     if (OmniPlayer.Instance.experience >= OmniPlayer.Instance.maxExperience)
-                    {
                         GetNewLvl();
-                        StartCoroutine(EndBattle(BattleStates.WIN));
-                    }
-                    else
-                    {
-                        StartCoroutine(EndBattle(BattleStates.WIN));
-                    }
+
+                    StartCoroutine(EndBattle(BattleStates.WIN));
+
                 }
                 break;
             default:
@@ -150,13 +164,13 @@ public class CombatStateMachine : MonoBehaviour
 
     private void GetNewLvl()
     {
-        OmniPlayer.Instance.characterLevel ++;
+        OmniPlayer.Instance.characterLevel++;
         OmniPlayer.Instance.experience = 0;
         OmniPlayer.Instance.maxExperience = (int)((float)OmniPlayer.Instance.maxExperience * EXP_MOAR_NEED_PER_LVL);
         OmniPlayer.Instance.strenght = (int)((float)OmniPlayer.Instance.strenght * STATS_BOOST_PER_LVL);
         OmniPlayer.Instance.endurance = (int)((float)OmniPlayer.Instance.endurance * STATS_BOOST_PER_LVL);
         OmniPlayer.Instance.intelligence = (int)((float)OmniPlayer.Instance.intelligence * STATS_BOOST_PER_LVL);
-        OmniPlayer.Instance.agility ++;
+        OmniPlayer.Instance.agility++;
         OmniPlayer.Instance.maxHP = (int)((float)OmniPlayer.Instance.maxHP * STATS_BOOST_PER_LVL);
         OmniPlayer.Instance.currentHP = (int)((float)OmniPlayer.Instance.maxHP);
         OmniPlayer.Instance.maxMana = (int)((float)OmniPlayer.Instance.maxMana * STATS_BOOST_PER_LVL);
@@ -173,6 +187,7 @@ public class CombatStateMachine : MonoBehaviour
 
     IEnumerator EndBattle(BattleStates state)
     {
+
         float cooldown = COOLDOWN_BASE_VALUE;
 
         while (cooldown > 0)
