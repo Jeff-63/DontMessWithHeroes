@@ -18,7 +18,7 @@ public class MainMenuControl : MonoBehaviour
 
     public void ReturnButtonPressed()
     {
-        SceneManager.LoadScene("MainMenu");
+        SceneManager.LoadScene("MainMenuScene");
     }
 
     public void RestartButtonPressed()

@@ -160,7 +160,7 @@ public class CombatStateMachine : MonoBehaviour
         OmniPlayer.Instance.intelligence = (int)((float)OmniPlayer.Instance.intelligence * STATS_BOOST_PER_LVL);
         OmniPlayer.Instance.agility += 1;
         OmniPlayer.Instance.maxHP = (int)((float)OmniPlayer.Instance.maxHP * STATS_BOOST_PER_LVL);
-        OmniPlayer.Instance.currentHP = (int)((float)OmniPlayer.Instance.currentHP * STATS_BOOST_PER_LVL);
+        OmniPlayer.Instance.currentHP = (int)((float)OmniPlayer.Instance.maxHP);
         OmniPlayer.Instance.maxMana = (int)((float)OmniPlayer.Instance.maxMana * STATS_BOOST_PER_LVL);
         Debug.Log("lvlupiscalled");
 
