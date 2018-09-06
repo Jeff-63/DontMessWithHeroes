@@ -13,7 +13,7 @@ public class Warrior : BaseCharacterClass
         characterLevel = 1;
         experience = 0;
         maxExperience = 25;
-        strenght = 50;
+        strenght = 35;
         endurance = 14;
         intelligence = 8;
         agility = 9;

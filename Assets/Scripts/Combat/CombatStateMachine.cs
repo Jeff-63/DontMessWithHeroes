@@ -78,14 +78,9 @@ public class CombatStateMachine : MonoBehaviour
                 break;
             case BattleStates.ENEMYCHOICE:
                 //choix de l'action de l'ennemi
-<<<<<<< HEAD
-                cooldownE -= Time.deltaTime;// timer so animation can take place
-                if (cooldownE < 0)
-=======
                 Debug.Log("in enemy choice");
                 cooldown -= Time.deltaTime;// timer so animation can take place
                 if (cooldown < 0)
->>>>>>> da2216992609aafc43afb19ff056e19dfa3c6f6e
                 {
                     damage = (int)CombatLogics.Attack(CombatFlow.cl.EnemyCharacter, CombatFlow.cl.PlayerCharacter);
                     GetDamageFromEnemy(OmniPlayer.Instance, damage);
@@ -103,7 +98,9 @@ public class CombatStateMachine : MonoBehaviour
                 }
                 break;
             case BattleStates.LOSE:
-                // game over scene
+                //   SceneManager.LoadScene("GameOver");
+                OmniPlayer.Instance.characterLevel = 0;
+                Debug.Log("GameOver");
                 break;
             case BattleStates.WIN:
                 SceneManager.LoadScene("GameScene");
@@ -171,7 +168,7 @@ public class CombatStateMachine : MonoBehaviour
         }
 
     }
-<<<<<<< HEAD
+
     IEnumerator Timer()
     {
         float cooldown = 1.5f;
@@ -183,9 +180,5 @@ public class CombatStateMachine : MonoBehaviour
 
         }
         currentState = BattleStates.WIN;
-
-
     }
-=======
->>>>>>> da2216992609aafc43afb19ff056e19dfa3c6f6e
 }
