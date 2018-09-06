@@ -48,7 +48,6 @@ public class CombatStateMachine : MonoBehaviour
 
                 if (battleStartState.PlayerGoesFirst(OmniEnemy.Instance.agility, OmniPlayer.Instance.agility))
                 {
-                    Debug.Log("Player was faster");
                     if (start)
                     {
                         CombatFlow.cl.cUI.animTurn = CombatUI.AnimationTurn.PlayerTurn;
@@ -58,7 +57,6 @@ public class CombatStateMachine : MonoBehaviour
                 }
                 else
                 {
-                    Debug.Log("Enemy was faster");
                     if (start)
                     {
                         CombatFlow.cl.cUI.animTurn = CombatUI.AnimationTurn.EnnemiTurn;
@@ -70,7 +68,6 @@ public class CombatStateMachine : MonoBehaviour
                 }
             case BattleStates.PLAYERCHOICE:
                 //choix de l'action du joueur
-                Debug.Log("in player choice");
                 if (OmniPlayer.Instance.currentHP <= 0)
                 {
                     goto case BattleStates.LOSE; // si vie du player a 0 goto lose state
@@ -82,7 +79,6 @@ public class CombatStateMachine : MonoBehaviour
                 break;
             case BattleStates.ENEMYCHOICE:
                 //choix de l'action de l'ennemi
-                Debug.Log("in enemy choice");
                 cooldownE -= Time.deltaTime;// timer so animation can take place
                 if (cooldownE < 0)
                 {
@@ -102,14 +98,12 @@ public class CombatStateMachine : MonoBehaviour
                 }
                 break;
             case BattleStates.LOSE:
-                Debug.Log("I LOSE");
+                // game over scene
                 break;
             case BattleStates.WIN:
-                Debug.Log("I WIN");
                 SceneManager.LoadScene("GameScene");
                 break;
             case BattleStates.ESCAPE:
-                Debug.Log("I ESCAPE");
                 SceneManager.LoadScene("GameScene");
                 break;
             case BattleStates.LVLUPCHECK:
@@ -117,13 +111,14 @@ public class CombatStateMachine : MonoBehaviour
                 {
                     OmniPlayer.Instance.experience += OmniEnemy.Instance.experience;
                     hasAddedXP = true;
-                    Debug.Log("Now my xp is : " + OmniPlayer.Instance.experience);
                     if (OmniPlayer.Instance.experience >= OmniPlayer.Instance.maxExperience)
                     {
                         GetNewLvl();
-                        Debug.Log("I got a new lvl!");
                         StartCoroutine(Timer());
-                        
+                    }
+                    else
+                    {
+                        goto case BattleStates.WIN;
                     }
                 }
                 break;
@@ -175,11 +170,11 @@ public class CombatStateMachine : MonoBehaviour
     {
         float cooldown = 1.5f;
 
-        while(cooldown > 0)
+        while (cooldown > 0)
         {
             cooldown -= Time.deltaTime;
             yield return null;
-          
+
         }
         currentState = BattleStates.WIN;
 
